@@ -1,0 +1,258 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #f5f5f5;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 30px;
+    color: #2c3e50;
+}
+
+h2 {
+    color: #3498db;
+    margin-bottom: 15px;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 5px;
+}
+
+h3 {
+    margin-bottom: 15px;
+}
+
+.main-content {
+    display: flex;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.sidebar {
+    flex: 0 0 300px;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    padding: 15px;
+    height: calc(100vh - 150px);
+    display: flex;
+    flex-direction: column;
+}
+
+.content {
+    flex: 1;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+}
+
+.speaker-selection {
+    margin-bottom: 20px;
+}
+
+#speaker-select {
+    width: 100%;
+    padding: 8px;
+    border-radius: 4px;
+    border: 1px solid #ddd;
+    margin-top: 5px;
+}
+
+.audio-list {
+    flex: 1;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.list-container {
+    flex: 1;
+    overflow-y: auto;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 10px;
+}
+
+.audio-item {
+    padding: 8px 10px;
+    margin-bottom: 5px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.audio-item:hover {
+    background-color: #f0f0f0;
+}
+
+.audio-item.active {
+    background-color: #e1f5fe;
+    font-weight: bold;
+}
+
+.audio-item.labeled {
+    color: #2ecc71;
+}
+
+.audio-player {
+    margin-bottom: 30px;
+}
+
+.player-container {
+    margin-top: 15px;
+}
+
+audio {
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.player-controls {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.emotion-labeling {
+    margin-bottom: 30px;
+}
+
+.emotion-container {
+    margin-top: 15px;
+}
+
+.neutral-checkbox {
+    margin-bottom: 15px;
+}
+
+.slider-container {
+    margin-bottom: 20px;
+}
+
+.slider-group {
+    margin-bottom: 15px;
+}
+
+.slider-group label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.slider-group input[type="range"] {
+    width: 100%;
+}
+
+.slider-group span {
+    display: inline-block;
+    margin-left: 10px;
+    font-weight: bold;
+}
+
+.standard-values {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    padding: 0 10px;
+}
+
+.radio-group {
+    text-align: center;
+}
+
+.radio-group input[type="radio"] {
+    margin-bottom: 5px;
+}
+
+.emotion-description {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.v-description, .a-description {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.8em;
+    color: #777;
+}
+
+.discrete-emotions {
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.emotion-options {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 15px;
+}
+
+.emotion-option {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.emotion-option input[type="radio"] {
+    margin-right: 5px;
+}
+
+.action-buttons {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+}
+
+button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.2s;
+}
+
+#save-button {
+    background-color: #3498db;
+    color: white;
+}
+
+#save-button:hover {
+    background-color: #2980b9;
+}
+
+#next-button, #continue-button {
+    background-color: #2ecc71;
+    color: white;
+}
+
+#next-button:hover, #continue-button:hover {
+    background-color: #27ae60;
+}
+
+#back-button {
+    background-color: #e74c3c;
+    color: white;
+}
+
+#back-button:hover {
+    background-color: #c0392b;
+}
+
+button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
