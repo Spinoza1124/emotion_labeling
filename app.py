@@ -99,6 +99,7 @@ def save_label():
     v_value = data.get("v_value")
     a_value = data.get("a_value")
     is_neutral = data.get("is_neutral", False)
+    discrete_emotion = data.get("discrete_emotion")
 
     if not all([speaker, audio_file, v_value is not None, a_value is not None]):
         return jsonify({"error": "缺少必要参数"}), 400
@@ -123,6 +124,7 @@ def save_label():
         "v_value": v_value,
         "a_value": a_value,
         "is_neutral": is_neutral,
+        "discrete_emotion": discrete_emotion
     }
 
     if existing_index is not None:
