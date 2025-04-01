@@ -37,6 +37,9 @@
                                 <input type="checkbox" id="loop-checkbox">
                                 <label for="loop-checkbox">循环播放</label>
                             </div>
+                            <div class="space-tip">
+                                <span>提示: 按<kbd>空格键</kbd>可暂停/播放音频</span>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -44,11 +47,6 @@
                 <div class="emotion-labeling" id="va-labeling">
                     <h2>连续情感标注 (VA值)</h2>
                     <div class="emotion-container">
-                        <div class="neutral-checkbox">
-                            <input type="checkbox" id="neutral-checkbox">
-                            <label for="neutral-checkbox">平静</label>
-                        </div>
-                        
                         <div class="slider-container">
                             <div class="slider-group">
                                 <label for="v-slider">V值 (愉悦度):</label>
@@ -74,49 +72,36 @@
                                         <label for="v-p2">2</label>
                                     </div>
                                 </div>
-                                <input type="range" id="v-slider" min="-100" max="100" value="0" step="1">
-                                <span id="v-value">0</span>
+                                <input type="range" id="v-slider" min="-2" max="2" value="0" step="0.05">
+                                <span id="v-value">0.00</span>
                             </div>
                             
                             <div class="slider-group">
                                 <label for="a-slider">A值 (激活度):</label>
                                 <div class="standard-values">
                                     <div class="radio-group">
-                                        <input type="radio" name="a-standard" id="a-m2" value="-2">
-                                        <label for="a-m2">-2</label>
+                                        <input type="radio" name="a-standard" id="a-1" value="1">
+                                        <label for="a-1">1</label>
                                     </div>
                                     <div class="radio-group">
-                                        <input type="radio" name="a-standard" id="a-m1" value="-1">
-                                        <label for="a-m1">-1</label>
+                                        <input type="radio" name="a-standard" id="a-2" value="2">
+                                        <label for="a-2">2</label>
                                     </div>
                                     <div class="radio-group">
-                                        <input type="radio" name="a-standard" id="a-0" value="0">
-                                        <label for="a-0">0</label>
+                                        <input type="radio" name="a-standard" id="a-3" value="3">
+                                        <label for="a-3">3</label>
                                     </div>
                                     <div class="radio-group">
-                                        <input type="radio" name="a-standard" id="a-p1" value="1">
-                                        <label for="a-p1">1</label>
+                                        <input type="radio" name="a-standard" id="a-4" value="4">
+                                        <label for="a-4">4</label>
                                     </div>
                                     <div class="radio-group">
-                                        <input type="radio" name="a-standard" id="a-p2" value="2">
-                                        <label for="a-p2">2</label>
+                                        <input type="radio" name="a-standard" id="a-5" value="5">
+                                        <label for="a-5">5</label>
                                     </div>
                                 </div>
-                                <input type="range" id="a-slider" min="-100" max="100" value="0" step="1">
-                                <span id="a-value">0</span>
-                            </div>
-                        </div>
-                        
-                        <div class="emotion-description">
-                            <div class="v-description">
-                                <span>负面情绪 (-100)</span>
-                                <span>平静 (0)</span>
-                                <span>正面情绪 (100)</span>
-                            </div>
-                            <div class="a-description">
-                                <span>低能量 (-100)</span>
-                                <span>中等能量 (0)</span>
-                                <span>高能量 (100)</span>
+                                <input type="range" id="a-slider" min="1" max="5" value="3" step="0.05">
+                                <span id="a-value">3.00</span>
                             </div>
                         </div>
                     </div>
@@ -128,6 +113,10 @@
                         <div class="discrete-emotions">
                             <h3>请选择一种情感标签:</h3>
                             <div class="emotion-options">
+                                <div class="emotion-option">
+                                    <input type="radio" name="discrete-emotion" id="emotion-neutral" value="neutral">
+                                    <label for="emotion-neutral">中性</label>
+                                </div>
                                 <div class="emotion-option">
                                     <input type="radio" name="discrete-emotion" id="emotion-happy" value="happy">
                                     <label for="emotion-happy">高兴</label>
@@ -153,24 +142,20 @@
                                     <label for="emotion-surprise">惊讶</label>
                                 </div>
                                 <div class="emotion-option">
-                                    <input type="radio" name="discrete-emotion" id="emotion-neutral" value="neutral">
-                                    <label for="emotion-neutral">平静</label>
+                                    <input type="radio" name="discrete-emotion" id="emotion-frustrated" value="frustrated">
+                                    <label for="emotion-frustrated">挫败</label>
                                 </div>
                                 <div class="emotion-option">
                                     <input type="radio" name="discrete-emotion" id="emotion-excited" value="excited">
                                     <label for="emotion-excited">兴奋</label>
                                 </div>
                                 <div class="emotion-option">
-                                    <input type="radio" name="discrete-emotion" id="emotion-bored" value="bored">
-                                    <label for="emotion-bored">无聊</label>
+                                    <input type="radio" name="discrete-emotion" id="emotion-depressed" value="depressed">
+                                    <label for="emotion-depressed">低落</label>
                                 </div>
                                 <div class="emotion-option">
-                                    <input type="radio" name="discrete-emotion" id="emotion-anxious" value="anxious">
-                                    <label for="emotion-anxious">焦虑</label>
-                                </div>
-                                <div class="emotion-option">
-                                    <input type="radio" name="discrete-emotion" id="emotion-confused" value="confused">
-                                    <label for="emotion-confused">困惑</label>
+                                    <input type="radio" name="discrete-emotion" id="emotion-other" value="other">
+                                    <label for="emotion-other">其他</label>
                                 </div>
                             </div>
                         </div>
@@ -178,10 +163,11 @@
                 </div>
                 
                 <div class="action-buttons">
-                    <button id="continue-button" disabled>继续</button>
-                    <button id="back-button" style="display: none;">返回</button>
-                    <button id="save-button" disabled>保存</button>
-                    <button id="next-button" disabled>下一条</button>
+                    <button id="continue-button" disabled>继续 [Q]</button>
+                    <button id="back-button" style="display: none;">返回 [Q]</button>
+                    <button id="save-button" disabled>保存 [W]</button>
+                    <button id="prev-button" disabled>上一条 [E]</button>
+                    <button id="next-button" disabled>下一条 [R]</button>
                 </div>
             </div>
         </div>
