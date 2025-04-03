@@ -43,4 +43,8 @@ python app.py
 
 第三步：
 
+<<<<<<< HEAD
 点击Running on http://10.10.1.213:5000/ (Press CTRL+C to quit)，这个地址，自动弹出网页界面。
+=======
+点击Running on http://10.10.1.213:5000/ (Press CTRL+C to quit)，这个地址，自动弹出网页界面。
+>>>>>>> d7dffd95576b37dbbd796b68299b5d78cdf4e70c
