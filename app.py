@@ -8,8 +8,7 @@ app = Flask(__name__)
 
 # 配置
 AUDIO_FOLDER = os.getenv(
-    "AUDIO_FOLDER",
-    "/mnt/shareEEx/liuyang/code/funasr/emotion_labeling/emotion_annotation",
+    "AUDIO_FOLDER", "/mnt/shareEEx/liuyang/code/funasr/emotion_labeling/emotion_annotation"
 )
 LABEL_FOLDER = os.getenv(
     "LABEL_FOLDER", "/mnt/shareEEx/liuyang/code/funasr/emotion_labeling/labels"
@@ -99,7 +98,7 @@ def save_label():
     audio_file = data.get("audio_file")
     v_value = data.get("v_value")
     a_value = data.get("a_value")
-    # 删除is_neutral参数
+    is_neutral = data.get("is_neutral", False)
     discrete_emotion = data.get("discrete_emotion")
 
     if not all([speaker, audio_file, v_value is not None, a_value is not None]):
@@ -124,8 +123,8 @@ def save_label():
         "audio_file": audio_file,
         "v_value": v_value,
         "a_value": a_value,
-        # 删除is_neutral字段
-        "discrete_emotion": discrete_emotion,
+        "is_neutral": is_neutral,
+        "discrete_emotion": discrete_emotion
     }
 
     if existing_index is not None:
