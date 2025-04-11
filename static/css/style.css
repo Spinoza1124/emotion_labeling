@@ -273,3 +273,26 @@ button:disabled {
     background-color: #ccc;
     cursor: not-allowed;
 }
+
+/* 播放/暂停按钮样式 */
+#play-pause-button {
+    background-color: #3498db;
+    color: white;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-right: 10px;
+    font-size: 14px;
+}
+
+#play-pause-button:hover {
+    background-color: #2980b9;
+}
+
+.player-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+}

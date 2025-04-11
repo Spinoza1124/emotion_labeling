@@ -71,6 +71,30 @@ document.addEventListener('DOMContentLoaded', function() {
             isModified = true;
         });
     });
+    
+    // 添加键盘事件监听，用于空格键控制播放/暂停
+    document.addEventListener('keydown', function(event) {
+        // 如果按下的是空格键且不是在输入框内
+        if (event.code === 'Space' && 
+            document.activeElement.tagName !== 'INPUT' && 
+            document.activeElement.tagName !== 'TEXTAREA' && 
+            document.activeElement.tagName !== 'SELECT') {
+            
+            event.preventDefault(); // 阻止默认行为（如页面滚动）
+            togglePlayPause();
+        }
+    });
+
+    // 添加播放/暂停控制函数
+    function togglePlayPause() {
+        if (audioPlayer.src) {
+            if (audioPlayer.paused) {
+                audioPlayer.play();
+            } else {
+                audioPlayer.pause();
+            }
+        }
+    }
 
     // 初始化数值点
     generateSliderTicks('a-slider', 'a-slider-ticks', 1, 5, 0.25);
@@ -170,6 +194,34 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
     
+        // 为音频播放器添加专门的播放/暂停按钮（可选）
+        function setupPlayerControls() {
+            const playerControls = document.querySelector('.player-controls');
+            
+            // 如果播放控制区域已存在但没有播放/暂停按钮，则添加
+            if (playerControls && !document.getElementById('play-pause-button')) {
+                const playPauseButton = document.createElement('button');
+                playPauseButton.id = 'play-pause-button';
+                playPauseButton.className = 'play-button'; // 初始状态为播放按钮样式
+                playPauseButton.textContent = '暂停 (空格)';
+                playPauseButton.addEventListener('click', togglePlayPause);
+                
+                // 将按钮插入到循环控制前面
+                playerControls.insertBefore(playPauseButton, playerControls.firstChild);
+                
+                // 监听音频播放状态变化，更新按钮文本
+                audioPlayer.addEventListener('play', function() {
+                    playPauseButton.textContent = '暂停 (空格)';
+                    playPauseButton.className = 'pause-button';
+                });
+                
+                audioPlayer.addEventListener('pause', function() {
+                    playPauseButton.textContent = '播放 (空格)';
+                    playPauseButton.className = 'play-button';
+                });
+            }
+        }
+    
     // 选择音频
     function selectAudio(index) {
         // 更新UI
@@ -191,6 +243,9 @@ document.addEventListener('DOMContentLoaded', function() {
         audioPlayer.src = audioFile.path;
         audioPlayer.load();
         audioPlayer.play();
+
+        // 设置播放控制
+        // setupPlayControls();
         
         // 启用按钮
         continueButton.disabled = false;
@@ -203,6 +258,9 @@ document.addEventListener('DOMContentLoaded', function() {
         isModified = false;
     }
     
+    // 初始化播放控制
+    // setupPlayControls();
+
     // 处理循环播放变化
     function handleLoopChange() {
         audioPlayer.loop = loopCheckbox.checked;
