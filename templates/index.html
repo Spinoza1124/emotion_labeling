@@ -44,81 +44,23 @@
                 <div class="emotion-labeling" id="va-labeling">
                     <h2>连续情感标注 (VA值)</h2>
                     <div class="emotion-container">
-                        <div class="neutral-checkbox">
-                            <input type="checkbox" id="neutral-checkbox">
-                            <label for="neutral-checkbox">平静</label>
-                        </div>
                         
                         <div class="slider-container">
                             <div class="slider-group">
-                                <label for="v-slider">V值 (愉悦度):</label>
-                                <div class="standard-values">
-                                    <div class="radio-group">
-                                        <input type="radio" name="v-standard" id="v-m2" value="-2">
-                                        <label for="v-m2">-2</label>
-                                    </div>
-                                    <div class="radio-group">
-                                        <input type="radio" name="v-standard" id="v-m1" value="-1">
-                                        <label for="v-m1">-1</label>
-                                    </div>
-                                    <div class="radio-group">
-                                        <input type="radio" name="v-standard" id="v-0" value="0">
-                                        <label for="v-0">0</label>
-                                    </div>
-                                    <div class="radio-group">
-                                        <input type="radio" name="v-standard" id="v-p1" value="1">
-                                        <label for="v-p1">1</label>
-                                    </div>
-                                    <div class="radio-group">
-                                        <input type="radio" name="v-standard" id="v-p2" value="2">
-                                        <label for="v-p2">2</label>
-                                    </div>
-                                </div>
-                                <input type="range" id="v-slider" min="-100" max="100" value="0" step="1">
-                                <span id="v-value">0</span>
+                                <label for="a-slider">A值:</label>
+                                <input type="range" id="a-slider" min="1" max="5" value="1" step="0.25">
+                                <div class="slider-ticks" id="a-slider-ticks"></div> <!-- 添加数值点容器 -->
+                                <span id="a-value">1</span>
                             </div>
                             
                             <div class="slider-group">
-                                <label for="a-slider">A值 (激活度):</label>
-                                <div class="standard-values">
-                                    <div class="radio-group">
-                                        <input type="radio" name="a-standard" id="a-m2" value="-2">
-                                        <label for="a-m2">-2</label>
-                                    </div>
-                                    <div class="radio-group">
-                                        <input type="radio" name="a-standard" id="a-m1" value="-1">
-                                        <label for="a-m1">-1</label>
-                                    </div>
-                                    <div class="radio-group">
-                                        <input type="radio" name="a-standard" id="a-0" value="0">
-                                        <label for="a-0">0</label>
-                                    </div>
-                                    <div class="radio-group">
-                                        <input type="radio" name="a-standard" id="a-p1" value="1">
-                                        <label for="a-p1">1</label>
-                                    </div>
-                                    <div class="radio-group">
-                                        <input type="radio" name="a-standard" id="a-p2" value="2">
-                                        <label for="a-p2">2</label>
-                                    </div>
-                                </div>
-                                <input type="range" id="a-slider" min="-100" max="100" value="0" step="1">
-                                <span id="a-value">0</span>
+                                <label for="v-slider">V值:</label>
+                                <input type="range" id="v-slider" min="-2" max="2" value="0" step="0.25">
+                                <div class="slider-ticks" id="v-slider-ticks"></div> <!-- 添加数值点容器 -->
+                                <span id="v-value">0</span>
                             </div>
                         </div>
                         
-                        <div class="emotion-description">
-                            <div class="v-description">
-                                <span>负面情绪 (-100)</span>
-                                <span>平静 (0)</span>
-                                <span>正面情绪 (100)</span>
-                            </div>
-                            <div class="a-description">
-                                <span>低能量 (-100)</span>
-                                <span>中等能量 (0)</span>
-                                <span>高能量 (100)</span>
-                            </div>
-                        </div>
                     </div>
                 </div>
                 

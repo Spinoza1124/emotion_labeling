@@ -133,12 +133,10 @@ audio {
     margin-top: 15px;
 }
 
-.neutral-checkbox {
-    margin-bottom: 15px;
-}
-
 .slider-container {
     margin-bottom: 20px;
+    display: flex;
+    flex-direction: column; /* 改为从上到下排列 */
 }
 
 .slider-group {
@@ -156,23 +154,42 @@ audio {
 
 .slider-group span {
     display: inline-block;
-    margin-left: 10px;
+    margin-left: 0px;
     font-weight: bold;
 }
 
-.standard-values {
+.slider-ticks {
     display: flex;
-    justify-content: space-between;
-    margin-bottom: 10px;
-    padding: 0 10px;
+    justify-content: center;
+    margin-top: -10px;
+    font-size: 0.8em;
+    color: #777;
+}
+
+.slider-ticks span {
+    text-align: center;
+    flex: 1;
+}
+
+/* 添加首尾对齐的样式 */
+.slider-ticks span:first-child {
+    text-align: left;
+}
+
+.slider-ticks span:last-child {
+    text-align: right;
+}
+
+.standard-values {
+    display: none; /* 隐藏标准值单选按钮的样式 */
 }
 
 .radio-group {
-    text-align: center;
+    text-align: left;
 }
 
 .radio-group input[type="radio"] {
-    margin-bottom: 5px;
+    margin-bottom: 0px;
 }
 
 .emotion-description {

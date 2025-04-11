@@ -98,7 +98,6 @@ def save_label():
     audio_file = data.get("audio_file")
     v_value = data.get("v_value")
     a_value = data.get("a_value")
-    is_neutral = data.get("is_neutral", False)
     discrete_emotion = data.get("discrete_emotion")
 
     if not all([speaker, audio_file, v_value is not None, a_value is not None]):
@@ -123,7 +122,6 @@ def save_label():
         "audio_file": audio_file,
         "v_value": v_value,
         "a_value": a_value,
-        "is_neutral": is_neutral,
         "discrete_emotion": discrete_emotion
     }
 
@@ -141,4 +139,4 @@ def save_label():
 
 if __name__ == "__main__":
     app.run(debug=True, host="0.0.0.0", port=5000)
-    
+

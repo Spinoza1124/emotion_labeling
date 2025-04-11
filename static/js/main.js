@@ -4,7 +4,6 @@ document.addEventListener('DOMContentLoaded', function() {
     const audioListContainer = document.getElementById('audio-list-container');
     const audioPlayer = document.getElementById('audio-player');
     const loopCheckbox = document.getElementById('loop-checkbox');
-    const neutralCheckbox = document.getElementById('neutral-checkbox');
     const vSlider = document.getElementById('v-slider');
     const aSlider = document.getElementById('a-slider');
     const vValue = document.getElementById('v-value');
@@ -15,10 +14,6 @@ document.addEventListener('DOMContentLoaded', function() {
     const backButton = document.getElementById('back-button');
     const vaLabeling = document.getElementById('va-labeling');
     const discreteLabeling = document.getElementById('discrete-labeling');
-    
-    // 获取V和A的标准值单选按钮
-    const vStandardRadios = document.querySelectorAll('input[name="v-standard"]');
-    const aStandardRadios = document.querySelectorAll('input[name="a-standard"]');
     
     // 获取离散情感选项
     const discreteEmotionRadios = document.querySelectorAll('input[name="discrete-emotion"]');
@@ -46,42 +41,28 @@ document.addEventListener('DOMContentLoaded', function() {
     // 事件监听器
     speakerSelect.addEventListener('change', handleSpeakerChange);
     loopCheckbox.addEventListener('change', handleLoopChange);
-    neutralCheckbox.addEventListener('change', handleNeutralChange);
     vSlider.addEventListener('input', handleSliderChange);
     aSlider.addEventListener('input', handleSliderChange);
+
+    // 初始化滑动条的默认值
+    vSlider.min = -2;
+    vSlider.max = 2;
+    vSlider.step = 0.25;
+    vSlider.value = 0;
+
+    aSlider.min = 1;
+    aSlider.max = 5;
+    aSlider.step = 0.25;
+    aSlider.value = 1;
+
+    // 更新滑动条值显示
+    vValue.textContent = Number(vSlider.value).toFixed(2);
+    aValue.textContent = Number(aSlider.value).toFixed(2);
+
     saveButton.addEventListener('click', handleSave);
     nextButton.addEventListener('click', handleNext);
     continueButton.addEventListener('click', handleContinue);
     backButton.addEventListener('click', handleBack);
-    
-    // 标准值单选按钮的事件监听
-    vStandardRadios.forEach(radio => {
-        radio.addEventListener('change', function() {
-            const value = standardToSliderMap[this.value];
-            vSlider.value = value;
-            vValue.textContent = value;
-            if (value !== 0) {
-                neutralCheckbox.checked = false;
-            } else if (aSlider.value === '0') {
-                neutralCheckbox.checked = true;
-            }
-            isModified = true;
-        });
-    });
-    
-    aStandardRadios.forEach(radio => {
-        radio.addEventListener('change', function() {
-            const value = standardToSliderMap[this.value];
-            aSlider.value = value;
-            aValue.textContent = value;
-            if (value !== 0) {
-                neutralCheckbox.checked = false;
-            } else if (vSlider.value === '0') {
-                neutralCheckbox.checked = true;
-            }
-            isModified = true;
-        });
-    });
     
     // 离散情感选项的事件监听
     discreteEmotionRadios.forEach(radio => {
@@ -90,6 +71,23 @@ document.addEventListener('DOMContentLoaded', function() {
             isModified = true;
         });
     });
+
+    // 初始化数值点
+    generateSliderTicks('a-slider', 'a-slider-ticks', 1, 5, 0.25);
+    generateSliderTicks('v-slider', 'v-slider-ticks', -2, 2, 0.25);
+
+    // 生成滑动条数值点
+    function generateSliderTicks(sliderId, ticksContainerId, min, max, step) {
+        const ticksContainer = document.getElementById(ticksContainerId);
+        const range = max - min;
+        const steps = range / step;
+        for (let i = 0; i <= steps; i++) {
+            const value = (min + i * step).toFixed(2);
+            const tick = document.createElement('span');
+            tick.textContent = value;
+            ticksContainer.appendChild(tick);
+        }
+    }
     
     // 初始化说话人下拉列表
     function initSpeakers() {
@@ -210,62 +208,13 @@ document.addEventListener('DOMContentLoaded', function() {
         audioPlayer.loop = loopCheckbox.checked;
     }
     
-    // 处理"平静"复选框变化
-    function handleNeutralChange() {
-        if (neutralCheckbox.checked) {
-            vSlider.value = 0;
-            aSlider.value = 0;
-            vValue.textContent = '0';
-            aValue.textContent = '0';
-            // 重置标准值单选按钮
-            document.getElementById('v-0').checked = true;
-            document.getElementById('a-0').checked = true;
-        }
-        isModified = true;
-    }
-    
     // 处理滑动条变化
     function handleSliderChange(event) {
         const slider = event.target;
         const valueElement = slider.id === 'v-slider' ? vValue : aValue;
-        valueElement.textContent = slider.value;
-        
-        // 根据滑动条值选择最接近的标准值单选按钮
-        if (slider.id === 'v-slider') {
-            updateStandardRadio(vStandardRadios, slider.value);
-        } else {
-            updateStandardRadio(aStandardRadios, slider.value);
-        }
-        
-        // 如果滑动条不是0，取消"平静"复选框
-        if (slider.value !== '0') {
-            neutralCheckbox.checked = false;
-        } else if (vSlider.value === '0' && aSlider.value === '0') {
-            neutralCheckbox.checked = true;
-        }
+        valueElement.textContent = Number(slider.value).toFixed(2);
         
         isModified = true;
-    }
-    
-    // 更新标准值单选按钮选择
-    function updateStandardRadio(radios, sliderValue) {
-        const value = parseInt(sliderValue);
-        let closestRadio = null;
-        let minDiff = Infinity;
-        
-        // 查找最接近的标准值
-        for (const radio of radios) {
-            const standardValue = standardToSliderMap[radio.value];
-            const diff = Math.abs(value - standardValue);
-            if (diff < minDiff) {
-                minDiff = diff;
-                closestRadio = radio;
-            }
-        }
-        
-        if (closestRadio) {
-            closestRadio.checked = true;
-        }
     }
     
     // 处理"继续"按钮点击，从VA标注切换到离散标注
@@ -324,7 +273,6 @@ document.addEventListener('DOMContentLoaded', function() {
             audio_file: audioFile.file_name,
             v_value: parseInt(vSlider.value),
             a_value: parseInt(aSlider.value),
-            is_neutral: neutralCheckbox.checked,
             discrete_emotion: selectedDiscreteEmotion
         };
         
@@ -385,16 +333,10 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // 重置标注
     function resetLabeling() {
-        // 重置VA标注
         vSlider.value = 0;
-        aSlider.value = 0;
-        vValue.textContent = '0';
-        aValue.textContent = '0';
-        neutralCheckbox.checked = true;
-        
-        // 重置标准值单选按钮
-        document.getElementById('v-0').checked = true;
-        document.getElementById('a-0').checked = true;
+        aSlider.value = 1;
+        vValue.textContent = '0.00';
+        aValue.textContent = '1.00';
         
         // 重置离散情感选择
         discreteEmotionRadios.forEach(radio => {
