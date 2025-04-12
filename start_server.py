@@ -41,26 +41,14 @@ def setup_logging():
     
     return root_logger
 
-# 动态检测是否存在app_db.py，如果存在则优先使用数据库版本
+# 导入标准版本应用
 def import_app():
-    """智能导入应用，优先使用数据库版本"""
-    app_db_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'app_db.py')
-    
+    """导入应用"""
     sys.path.append(os.path.dirname(os.path.abspath(__file__)))
     
-    if os.path.exists(app_db_path):
-        try:
-            # 尝试导入数据库版本
-            from app_db import app
-            return app, "数据库版本 (app_db.py)"
-        except ImportError:
-            # 如果导入失败，使用标准版本
-            from app import app
-            return app, "标准版本 (app.py)"
-    else:
-        # 默认使用标准版本
-        from app import app
-        return app, "标准版本 (app.py)"
+    # 只使用标准版本
+    from app import app
+    return app, "标准版本 (app.py)"
 
 def get_local_ip():
     """获取本机非回环IP地址"""
@@ -81,7 +69,7 @@ if __name__ == "__main__":
     logger = setup_logging()
     logger.info("正在启动情感标注系统...")
     
-    # 导入应用
+    # 导入应用（只使用标准版本）
     app, version_info = import_app()
     logger.info(f"已加载应用: {version_info}")
     
