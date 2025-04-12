@@ -7,9 +7,22 @@
     <link rel="stylesheet" href="/static/css/style.css">
 </head>
 <body>
-    <div class="container">
+
+    <!-- 登陆模态框-->
+    <div id ="login-modal" class="modal">
+        <div class="modal-content">
+            <h2>用户登陆</h2>
+            <div class="form-group">
+                <label for="username">请输入您的姓名</label>
+                <input type="text" id="username" placeholder="请输入姓名" required>
+            </div>
+            <button id="login-button">登陆</button>
+        </div>
+    </div>
+
+    <div class="container" style="display: none;" id="main-container">
         <h1>音频情感标注系统</h1>
-        
+        <div class="user-info">当前用户: <span id="current-user"></span></div>
         <div class="main-content">
             <div class="sidebar">
                 <div class="speaker-selection">

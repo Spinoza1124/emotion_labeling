@@ -1,6 +1,7 @@
 import glob
 import json
 import os
+from datetime import datetime
 
 from flask import Flask, jsonify, render_template, request, send_from_directory
 
@@ -99,6 +100,7 @@ def save_label():
     v_value = data.get("v_value")
     a_value = data.get("a_value")
     discrete_emotion = data.get("discrete_emotion")
+    username = data.get("username")  # 添加获取用户名
 
     if not all([speaker, audio_file, v_value is not None, a_value is not None]):
         return jsonify({"error": "缺少必要参数"}), 400
@@ -122,7 +124,9 @@ def save_label():
         "audio_file": audio_file,
         "v_value": v_value,
         "a_value": a_value,
-        "discrete_emotion": discrete_emotion
+        "discrete_emotion": discrete_emotion,
+        "username": username, # 添加用户名字段
+        "timestamp": datetime.now().strftime("%Y-%m-%d %H:%M:%S") # 可选：添加时间戳
     }
 
     if existing_index is not None:

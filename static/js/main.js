@@ -1,4 +1,14 @@
 document.addEventListener('DOMContentLoaded', function() {
+    // 登陆相关元素
+    const loginModal = document.getElementById('login-modal');
+    const usernameInput = document.getElementById('username');
+    const loginButton = document.getElementById('login-button');
+    const mainContainer = document.getElementById('main-container');
+    const currentUserSpan = document.getElementById('current-user');
+    
+    // 用户名变量
+    let currentUsername = '';
+
     // 获取DOM元素
     const speakerSelect = document.getElementById('speaker-select');
     const audioListContainer = document.getElementById('audio-list-container');
@@ -84,6 +94,47 @@ document.addEventListener('DOMContentLoaded', function() {
             togglePlayPause();
         }
     });
+
+     // 检查是否已登录（从localStorage获取）
+     function checkLogin() {
+        const savedUsername = localStorage.getItem('emotion_labeling_username');
+        if (savedUsername) {
+            currentUsername = savedUsername;
+            currentUserSpan.textContent = currentUsername;
+            loginModal.style.display = 'none';
+            mainContainer.style.display = 'block';
+            
+            // 初始化应用
+            initSpeakers();
+        }
+    }
+    
+    // 处理登录按钮点击
+    loginButton.addEventListener('click', function() {
+        const username = usernameInput.value.trim();
+        if (username) {
+            currentUsername = username;
+            localStorage.setItem('emotion_labeling_username', username);
+            currentUserSpan.textContent = username;
+            loginModal.style.display = 'none';
+            mainContainer.style.display = 'block';
+            
+            // 初始化应用
+            initSpeakers();
+        } else {
+            alert('请输入您的姓名！');
+        }
+    });
+    
+    // 键盘事件：回车键登录
+    usernameInput.addEventListener('keydown', function(event) {
+        if (event.key === 'Enter') {
+            loginButton.click();
+        }
+    });
+
+    // 初始化检查登陆状态
+    checkLogin();
 
     // 添加播放/暂停控制函数
     function togglePlayPause() {
@@ -329,9 +380,10 @@ document.addEventListener('DOMContentLoaded', function() {
         const labelData = {
             speaker: currentSpeaker,
             audio_file: audioFile.file_name,
-            v_value: parseInt(vSlider.value),
-            a_value: parseInt(aSlider.value),
-            discrete_emotion: selectedDiscreteEmotion
+            v_value: parseFloat(vSlider.value),
+            a_value: parseFloat(aSlider.value),
+            discrete_emotion: selectedDiscreteEmotion,
+            username:currentUsername, // 添加用户名
         };
         
         saveButton.disabled = true;
