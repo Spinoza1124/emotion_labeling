@@ -227,5 +227,26 @@ def update_username():
     
     return jsonify({"success": True, "moved_files": 0})
 
+@app.route("/clear_login", methods=["GET"])
+def clear_login():
+    """清除登录状态，用于测试"""
+    html = """
+    <html>
+    <head>
+        <title>清除登录状态</title>
+        <script>
+            localStorage.removeItem('emotion_labeling_username');
+            setTimeout(function() {
+                window.location.href = '/';
+            }, 1000);
+        </script>
+    </head>
+    <body>
+        <p>登录状态已清除，正在跳转...</p>
+    </body>
+    </html>
+    """
+    return html
+
 if __name__ == "__main__":
     app.run(debug=True, host="0.0.0.0", port=5000)

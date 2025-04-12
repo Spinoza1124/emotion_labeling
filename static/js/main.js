@@ -11,6 +11,9 @@ document.addEventListener('DOMContentLoaded', function() {
     let currentUsername = '';
     let previousUsername = ''; // 添加变量记录之前的用户名
 
+    // 优先检查登录状态
+    checkLogin();
+
     // 获取DOM元素
     const speakerSelect = document.getElementById('speaker-select');
     const audioListContainer = document.getElementById('audio-list-container');
@@ -27,6 +30,35 @@ document.addEventListener('DOMContentLoaded', function() {
     const vaLabeling = document.getElementById('va-labeling');
     const discreteLabeling = document.getElementById('discrete-labeling');
     const prevButton = document.getElementById('prev-button');
+
+    // 修改检查登录函数
+    function checkLogin() {
+        const savedUsername = localStorage.getItem('emotion_labeling_username');
+        
+        // 检查URL是否有强制登录参数
+        const urlParams = new URLSearchParams(window.location.search);
+        const forceLogin = !urlParams.has('keep_login'); // 除非有keep_login参数，否则都强制登录
+        
+        if (savedUsername && !forceLogin) {
+            previousUsername = currentUsername; // 保存之前的用户名
+            currentUsername = savedUsername;
+            currentUserSpan.textContent = currentUsername;
+            loginModal.style.display = 'none';
+            mainContainer.style.display = 'block';
+            
+            // 初始化应用
+            initSpeakers();
+        } else {
+            // 如果没有登录或需要强制登录，确保正确显示登录框
+            loginModal.style.display = 'flex'; 
+            mainContainer.style.display = 'none';
+            
+            // 给用户名输入框设置焦点
+            setTimeout(() => {
+                usernameInput.focus();
+            }, 100);
+        }
+    }
 
     // 获取患者状态单选按钮
     const patientRadios = document.querySelectorAll('input[name="patient-status"]');
@@ -53,7 +85,7 @@ document.addEventListener('DOMContentLoaded', function() {
     let patientStatus = 'patient'; // 默认为患者
     
     // 初始化
-    initSpeakers();
+    // initSpeakers();
     
     // 事件监听器
     speakerSelect.addEventListener('change', handleSpeakerChange);
@@ -161,20 +193,6 @@ document.addEventListener('DOMContentLoaded', function() {
         // 将焦点设置到主容器，确保快捷键可用
         document.getElementById('main-container').focus();
     }
-
-     // 检查是否已登录（从localStorage获取）
-    function checkLogin() {
-        const savedUsername = localStorage.getItem('emotion_labeling_username');
-        if (savedUsername) {
-            currentUsername = savedUsername;
-            currentUserSpan.textContent = currentUsername;
-            loginModal.style.display = 'none';
-            mainContainer.style.display = 'block';
-            
-            // 初始化应用
-            initSpeakers();
-        }
-    }
     
     // 处理退出登录
     logoutButton.addEventListener('click', function() {
@@ -250,25 +268,6 @@ document.addEventListener('DOMContentLoaded', function() {
             console.error('更新用户名请求失败:', error);
         });
     }
-
-    // 修改检查登录函数
-    function checkLogin() {
-        const savedUsername = localStorage.getItem('emotion_labeling_username');
-        if (savedUsername) {
-            previousUsername = currentUsername; // 保存之前的用户名
-            currentUsername = savedUsername;
-            currentUserSpan.textContent = currentUsername;
-            loginModal.style.display = 'none';
-            mainContainer.style.display = 'block';
-            
-            // 初始化应用
-            initSpeakers();
-        } else {
-            // 如果没有登录，确保正确显示登录框
-            loginModal.style.display = 'flex';
-            mainContainer.style.display = 'none';
-        }
-    }
     
     // 键盘事件：回车键登录
     usernameInput.addEventListener('keydown', function(event) {
@@ -276,9 +275,6 @@ document.addEventListener('DOMContentLoaded', function() {
             loginButton.click();
         }
     });
-
-    // 初始化检查登陆状态
-    checkLogin();
 
     // 添加播放/暂停控制函数
     function togglePlayPause() {
@@ -488,20 +484,18 @@ document.addEventListener('DOMContentLoaded', function() {
         
         // 如果VA标注已修改但未保存，提示用户
         if (isModified && isVaLabelingMode) {
-            // 切换到离散情感标注模式
-            switchToDiscreteMode();
+            if(confirm('VA标注已修改但未保存，是否继续？')) {
+                switchToDiscreteMode();
+            }
         } else {
             // 直接切换到离散情感标注模式
             switchToDiscreteMode();
         }
-
-        // 切换到离散情感标注模式
-        switchToDiscreteMode();
-    
+        
         // 重置焦点确保快捷键可用
         resetFocus();
     }
-    
+
     // 处理"返回"按钮点击，从离散标注返回到VA标注
     function handleBack() {
         if (isModified && !isVaLabelingMode) {
@@ -511,8 +505,7 @@ document.addEventListener('DOMContentLoaded', function() {
         } else {
             switchToVaMode();
         }
-        switchToVaMode();
-
+        
         // 重置焦点确保快捷键可用
         resetFocus();
     }
@@ -617,7 +610,7 @@ document.addEventListener('DOMContentLoaded', function() {
         } else {
             selectAudio(currentAudioIndex + 1);
         }
-        
+
         // 在函数末尾添加重置焦点
         resetFocus();
     }

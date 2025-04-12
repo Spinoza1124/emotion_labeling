@@ -1,15 +1,27 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>音频情感标注系统</title>
-    <link rel="stylesheet" href="/static/css/style.css">
-</head>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>音频情感标注系统</title>
+        <link rel="stylesheet" href="/static/css/style.css">
+        <!-- 强制清除登录状态，确保每次都显示登录界面 -->
+        <script>
+            // 强制清除登录状态
+            localStorage.removeItem('emotion_labeling_username');
+            
+            // 保留原先的URL参数检查功能
+            const urlParams = new URLSearchParams(window.location.search);
+            if (urlParams.has('keep_login')) {
+                // 只有明确指定keep_login参数时，才不会清除登录状态
+                localStorage.getItem('emotion_labeling_username');
+            }
+        </script>
+    </head>
 <body>
 
     <!-- 登陆模态框-->
-    <div id ="login-modal" class="modal">
+    <div id="login-modal" class="modal" style="display: flex;">
         <div class="modal-content">
             <h2>用户登陆</h2>
             <div class="form-group">
