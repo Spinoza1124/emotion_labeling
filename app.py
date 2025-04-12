@@ -45,19 +45,19 @@ def index():
 def get_audio_list(speaker):
     """获取指定说话人的所有音频文件列表"""
     speaker_folder = os.path.join(AUDIO_FOLDER, speaker)
-    print(f"正在查找说话人文件夹: {speaker_folder}")
+    # print(f"正在查找说话人文件夹: {speaker_folder}")
 
     if not os.path.exists(speaker_folder):
-        print(f"找不到说话人文件夹: {speaker_folder}")
+        # print(f"找不到说话人文件夹: {speaker_folder}")
         return jsonify({"error": f"找不到说话人 {speaker} 的文件夹"}), 404
 
     audio_files = []
-    for ext in ["wav", "mp3", "ogg"]:
+    for ext in ["wav"]:
         found_files = glob.glob(os.path.join(speaker_folder, f"*.{ext}"))
-        print(f"找到 {ext} 文件: {len(found_files)} 个")
+        # print(f"找到 {ext} 文件: {len(found_files)} 个")
         audio_files.extend(found_files)
 
-    print(f"总共找到音频文件: {len(audio_files)} 个")
+    # print(f"总共找到音频文件: {len(audio_files)} 个")
 
     # 获取已标注的文件列表
     username = request.args.get('username', '')
@@ -94,7 +94,7 @@ def get_audio_list(speaker):
 def get_speakers():
     """获取所有说话人列表"""
     if not os.path.exists(AUDIO_FOLDER):
-        print(f"音频文件夹不存在: {AUDIO_FOLDER}")
+        # print(f"音频文件夹不存在: {AUDIO_FOLDER}")
         return jsonify({"error": f"音频文件夹不存在: {AUDIO_FOLDER}"}), 404
 
     speakers = [
@@ -102,7 +102,7 @@ def get_speakers():
         for d in os.listdir(AUDIO_FOLDER)
         if os.path.isdir(os.path.join(AUDIO_FOLDER, d))
     ]
-    print(f"找到的说话人: {speakers}")
+    # print(f"找到的说话人: {speakers}")
     return jsonify(speakers)
 
 
@@ -281,4 +281,4 @@ def get_label(username, speaker, filename):
         return jsonify({"error": f"读取标注数据时出错: {str(e)}"}), 500
 
 if __name__ == "__main__":
-    app.run(debug=True, host="0.0.0.0", port=5000)
+    app.run(debug=False, host="0.0.0.0", port=5000)

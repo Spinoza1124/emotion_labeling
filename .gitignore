@@ -5,5 +5,11 @@ labels/
 # 虚拟环境
 .venv/
 
+# python相关
+__pycache__/
+
+# 日志相关
+logs/
+
 
 
