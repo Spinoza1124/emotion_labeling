@@ -5,9 +5,11 @@ document.addEventListener('DOMContentLoaded', function() {
     const loginButton = document.getElementById('login-button');
     const mainContainer = document.getElementById('main-container');
     const currentUserSpan = document.getElementById('current-user');
-    
+    const logoutButton = document.getElementById('logout-button'); // 添加退出按钮引用
+
     // 用户名变量
     let currentUsername = '';
+    let previousUsername = ''; // 添加变量记录之前的用户名
 
     // 获取DOM元素
     const speakerSelect = document.getElementById('speaker-select');
@@ -109,11 +111,29 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
     
-    // 处理登录按钮点击
+    // 处理退出登录
+    logoutButton.addEventListener('click', function() {
+        if(confirm('确定要退出登录吗？')) {
+            localStorage.removeItem('emotion_labeling_username');
+            loginModal.style.display = 'block';
+            mainContainer.style.display = 'none';
+            currentUsername = '';
+            resetPlayer();
+        }
+    });
+    
+    // 修改登录按钮点击处理函数
     loginButton.addEventListener('click', function() {
         const username = usernameInput.value.trim();
         if (username) {
+            previousUsername = currentUsername; // 保存之前的用户名
             currentUsername = username;
+            
+            // 如果之前有登录过且用户名变了，则更新所有标签中的用户名
+            if (previousUsername && previousUsername !== currentUsername) {
+                updateUsernameInLabels(previousUsername, currentUsername);
+            }
+            
             localStorage.setItem('emotion_labeling_username', username);
             currentUserSpan.textContent = username;
             loginModal.style.display = 'none';
@@ -121,10 +141,62 @@ document.addEventListener('DOMContentLoaded', function() {
             
             // 初始化应用
             initSpeakers();
+            
+            // 如果已经选择了speaker，重新加载音频列表
+            if (currentSpeaker) {
+                loadAudioList(currentSpeaker);
+            }
         } else {
             alert('请输入您的姓名！');
         }
     });
+    
+    // 修改 updateUsernameInLabels 函数，移动文件夹
+    function updateUsernameInLabels(oldUsername, newUsername) {
+        if (!oldUsername || !newUsername) return;
+        
+        fetch('/api/update_username', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                old_username: oldUsername,
+                new_username: newUsername
+            })
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                console.log(`已移动 ${data.moved_files} 个文件到新用户目录`);
+                
+                // 如果当前有选择的speaker，则刷新音频列表
+                if (currentSpeaker) {
+                    loadAudioList(currentSpeaker);
+                }
+            } else {
+                console.error('更新用户名失败:', data.error);
+            }
+        })
+        .catch(error => {
+            console.error('更新用户名请求失败:', error);
+        });
+    }
+
+    // 修改检查登录函数
+    function checkLogin() {
+        const savedUsername = localStorage.getItem('emotion_labeling_username');
+        if (savedUsername) {
+            previousUsername = currentUsername; // 保存之前的用户名
+            currentUsername = savedUsername;
+            currentUserSpan.textContent = currentUsername;
+            loginModal.style.display = 'none';
+            mainContainer.style.display = 'block';
+            
+            // 初始化应用
+            initSpeakers();
+        }
+    }
     
     // 键盘事件：回车键登录
     usernameInput.addEventListener('keydown', function(event) {
@@ -183,10 +255,10 @@ document.addEventListener('DOMContentLoaded', function() {
             });
     }
     
-    // 处理说话人选择变化
+    // 修改 handleSpeakerChange 函数，确保用户已登录
     function handleSpeakerChange() {
         currentSpeaker = speakerSelect.value;
-        if (currentSpeaker) {
+        if (currentSpeaker && currentUsername) {
             loadAudioList(currentSpeaker);
         } else {
             audioListContainer.innerHTML = '<p>请先选择说话人</p>';
@@ -195,9 +267,9 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
     
-    // 加载音频列表
+    // 修改 loadAudioList 函数，添加用户名参数
     function loadAudioList(speaker) {
-        fetch(`/api/audio_list/${speaker}`)
+        fetch(`/api/audio_list/${speaker}?username=${encodeURIComponent(currentUsername)}`)
             .then(response => response.json())
             .then(data => {
                 audioList = data;

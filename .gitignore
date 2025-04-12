@@ -2,6 +2,7 @@
 emotion_annotation/
 labels/
 
+
 # Python 相关
 __pycache__/
 *.py[cod]
@@ -29,6 +30,7 @@ MANIFEST
 venv/
 env/
 ENV/
+.venv/
 
 # IDE 相关文件
 .idea/
