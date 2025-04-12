@@ -453,7 +453,7 @@ document.addEventListener('DOMContentLoaded', function() {
         
         // 启用按钮
         continueButton.disabled = false;
-        saveButton.disabled = !isVaLabelingMode; // 只有在VA模式时才启用保存按钮
+        saveButton.disabled = false; // 只有在VA模式时才启用保存按钮
         prevButton.disabled = index <= 0; // 如果是第一条，则禁用"上一条"按钮
         nextButton.disabled = index >= audioList.length - 1; // 如果是最后一条，则禁用"下一条"按钮
         
@@ -469,13 +469,14 @@ document.addEventListener('DOMContentLoaded', function() {
         audioPlayer.loop = loopCheckbox.checked;
     }
     
-    // 处理滑动条变化
+    // 在 handleSliderChange 函数后添加启用保存按钮的逻辑
     function handleSliderChange(event) {
         const slider = event.target;
         const valueElement = slider.id === 'v-slider' ? vValue : aValue;
         valueElement.textContent = Number(slider.value).toFixed(2);
         
         isModified = true;
+        saveButton.disabled = false; // 确保滑动条变化后保存按钮被启用
     }
     
     // 处理"继续"按钮点击，从VA标注切换到离散标注
@@ -517,7 +518,7 @@ document.addEventListener('DOMContentLoaded', function() {
         discreteLabeling.style.display = 'none';
         continueButton.style.display = 'inline-block';
         backButton.style.display = 'none';
-        saveButton.disabled = true;
+        saveButton.disabled = false; // 在VA模式下启用保存按钮
     }
     
     // 切换到离散情感标注模式
