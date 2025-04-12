@@ -115,10 +115,13 @@ document.addEventListener('DOMContentLoaded', function() {
     logoutButton.addEventListener('click', function() {
         if(confirm('确定要退出登录吗？')) {
             localStorage.removeItem('emotion_labeling_username');
-            loginModal.style.display = 'block';
+            loginModal.style.display = 'flex';
             mainContainer.style.display = 'none';
             currentUsername = '';
             resetPlayer();
+
+            // 重置滚动位置
+            window.scrollTo(0, 0);
         }
     });
     
@@ -195,6 +198,10 @@ document.addEventListener('DOMContentLoaded', function() {
             
             // 初始化应用
             initSpeakers();
+        } else {
+            // 如果没有登录，确保正确显示登录框
+            loginModal.style.display = 'flex';
+            mainContainer.style.display = 'none';
         }
     }
     
