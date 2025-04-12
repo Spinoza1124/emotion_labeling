@@ -224,6 +224,8 @@ audio {
 }
 
 .emotion-option input[type="radio"] {
+    width: 40px;
+    height: 40px;
     margin-right: 5px;
 }
 
@@ -430,4 +432,45 @@ button:disabled {
 /* 确保按钮点击后不保持焦点 */
 button:focus {
     outline: none;
+}
+
+/* 情感类型选择样式 */
+.emotion-type-selection {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    margin: 20px 0;
+    padding: 15px;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+}
+
+.emotion-type {
+    display: flex;
+    align-items: center;
+}
+
+.emotion-type input[type="radio"] {
+    width: 40px;
+    height: 40px;
+    margin-right: 10px;
+}
+
+.emotion-type label {
+    font-size: 18px;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+#specific-emotions {
+    margin-top: 20px;
+    padding: 15px;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    background-color: #fafafa;
+}
+
+#specific-emotions h3 {
+    margin-top: 0;
+    color: #3498db;
 }

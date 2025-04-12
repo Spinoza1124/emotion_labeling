@@ -121,9 +121,10 @@ def save_label():
     audio_file = data.get("audio_file")
     v_value = data.get("v_value")
     a_value = data.get("a_value")
+    emotion_type = data.get("emotion_type", "non-neutral")  # 获取情感类型
     discrete_emotion = data.get("discrete_emotion")
-    username = data.get("username")  # 获取用户名
-    patient_status = data.get("patient_status", "patient")  # 获取患者状态，默认为"患者"
+    username = data.get("username")
+    patient_status = data.get("patient_status", "patient")
 
     if not all([speaker, audio_file, v_value is not None, a_value is not None, username]):
         return jsonify({"error": "缺少必要参数"}), 400
@@ -157,11 +158,12 @@ def save_label():
         "audio_file": audio_file,
         "v_value": v_value,
         "a_value": a_value,
+        "emotion_type": emotion_type,  # 添加情感类型字段
         "discrete_emotion": discrete_emotion,
-        "username": username, # 添加用户名字段
-        "patient_status": patient_status,  # 添加患者状态
-        "audio_duration": audio_duration,  # 添加音频时长
-        "timestamp": datetime.now().strftime("%Y-%m-%d %H:%M:%S") # 添加时间戳
+        "username": username,
+        "patient_status": patient_status,
+        "audio_duration": audio_duration,
+        "timestamp": datetime.now().strftime("%Y-%m-%d %H:%M:%S")
     }
 
     if existing_index is not None:

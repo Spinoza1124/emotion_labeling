@@ -109,51 +109,48 @@
                     <h2>离散情感标注</h2>
                     <div class="emotion-container">
                         <div class="discrete-emotions">
-                            <h3>请选择一种情感标签:</h3>
-                            <div class="emotion-options">
-                                <div class="emotion-option">
-                                    <input type="radio" name="discrete-emotion" id="emotion-happy" value="happy">
-                                    <label for="emotion-happy">高兴</label>
+                            <h3>请选择情感类型:</h3>
+                            
+                            <!-- 主要情感类型选择 -->
+                            <div class="emotion-type-selection">
+                                <div class="emotion-type">
+                                    <input type="radio" name="emotion-type" id="neutral-type" value="neutral" checked>
+                                    <label for="neutral-type">中性</label>
                                 </div>
-                                <div class="emotion-option">
-                                    <input type="radio" name="discrete-emotion" id="emotion-sad" value="sad">
-                                    <label for="emotion-sad">悲伤</label>
+                                <div class="emotion-type">
+                                    <input type="radio" name="emotion-type" id="non-neutral-type" value="non-neutral">
+                                    <label for="non-neutral-type">非中性</label>
                                 </div>
-                                <div class="emotion-option">
-                                    <input type="radio" name="discrete-emotion" id="emotion-angry" value="angry">
-                                    <label for="emotion-angry">愤怒</label>
-                                </div>
-                                <div class="emotion-option">
-                                    <input type="radio" name="discrete-emotion" id="emotion-fear" value="fear">
-                                    <label for="emotion-fear">恐惧</label>
-                                </div>
-                                <div class="emotion-option">
-                                    <input type="radio" name="discrete-emotion" id="emotion-disgust" value="disgust">
-                                    <label for="emotion-disgust">厌恶</label>
-                                </div>
-                                <div class="emotion-option">
-                                    <input type="radio" name="discrete-emotion" id="emotion-surprise" value="surprise">
-                                    <label for="emotion-surprise">惊讶</label>
-                                </div>
-                                <div class="emotion-option">
-                                    <input type="radio" name="discrete-emotion" id="emotion-neutral" value="neutral">
-                                    <label for="emotion-neutral">平静</label>
-                                </div>
-                                <div class="emotion-option">
-                                    <input type="radio" name="discrete-emotion" id="emotion-excited" value="excited">
-                                    <label for="emotion-excited">兴奋</label>
-                                </div>
-                                <div class="emotion-option">
-                                    <input type="radio" name="discrete-emotion" id="emotion-bored" value="bored">
-                                    <label for="emotion-bored">无聊</label>
-                                </div>
-                                <div class="emotion-option">
-                                    <input type="radio" name="discrete-emotion" id="emotion-anxious" value="anxious">
-                                    <label for="emotion-anxious">焦虑</label>
-                                </div>
-                                <div class="emotion-option">
-                                    <input type="radio" name="discrete-emotion" id="emotion-confused" value="confused">
-                                    <label for="emotion-confused">困惑</label>
+                            </div>
+                            
+                            <!-- 具体情感选择(默认隐藏) -->
+                            <div id="specific-emotions" style="display: none;">
+                                <h3>请选择具体情感标签:</h3>
+                                <div class="emotion-options">
+                                    <div class="emotion-option">
+                                        <input type="radio" name="discrete-emotion" id="emotion-happy" value="happy">
+                                        <label for="emotion-happy">快乐</label>
+                                    </div>
+                                    <div class="emotion-option">
+                                        <input type="radio" name="discrete-emotion" id="emotion-angry" value="angry">
+                                        <label for="emotion-angry">愤怒</label>
+                                    </div>
+                                    <div class="emotion-option">
+                                        <input type="radio" name="discrete-emotion" id="emotion-sad" value="sad">
+                                        <label for="emotion-sad">悲伤</label>
+                                    </div>
+                                    <div class="emotion-option">
+                                        <input type="radio" name="discrete-emotion" id="emotion-fear" value="fear">
+                                        <label for="emotion-fear">恐惧</label>
+                                    </div>
+                                    <div class="emotion-option">
+                                        <input type="radio" name="discrete-emotion" id="emotion-disgust" value="disgust">
+                                        <label for="emotion-disgust">厌恶</label>
+                                    </div>
+                                    <div class="emotion-option">
+                                        <input type="radio" name="discrete-emotion" id="emotion-surprise" value="surprise">
+                                        <label for="emotion-surprise">惊讶</label>
+                                    </div>
                                 </div>
                             </div>
                         </div>

@@ -6,10 +6,14 @@ document.addEventListener('DOMContentLoaded', function() {
     const mainContainer = document.getElementById('main-container');
     const currentUserSpan = document.getElementById('current-user');
     const logoutButton = document.getElementById('logout-button'); // 添加退出按钮引用
+    const neutralType = document.getElementById('neutral-type');
+    const nonNeutralType = document.getElementById('non-neutral-type');
+    const specificEmotions = document.getElementById('specific-emotions');
 
     // 用户名变量
     let currentUsername = '';
     let previousUsername = ''; // 添加变量记录之前的用户名
+    let emotionType = 'neutral'; // 默认情感类型为中性
 
     // 优先检查登录状态
     checkLogin();
@@ -59,6 +63,7 @@ document.addEventListener('DOMContentLoaded', function() {
             }, 100);
         }
     }
+
 
     // 获取患者状态单选按钮
     const patientRadios = document.querySelectorAll('input[name="patient-status"]');
@@ -472,8 +477,8 @@ document.addEventListener('DOMContentLoaded', function() {
         resetFocus();
     }
 
-    // 添加加载已保存标注数据的函数
-    function loadSavedLabel(speaker, filename) {
+       // 修改加载已保存标注数据的函数
+       function loadSavedLabel(speaker, filename) {
         if (!currentUsername || !speaker || !filename) return;
         
         fetch(`/api/get_label/${encodeURIComponent(currentUsername)}/${encodeURIComponent(speaker)}/${encodeURIComponent(filename)}`)
@@ -506,8 +511,34 @@ document.addEventListener('DOMContentLoaded', function() {
                         }
                     }
                     
-                    // 设置离散情感
-                    if (label.discrete_emotion) {
+                    // 设置情感类型和具体情感标签
+                    if (label.emotion_type) {
+                        emotionType = label.emotion_type;
+                        if (emotionType === 'neutral') {
+                            neutralType.checked = true;
+                            nonNeutralType.checked = false;
+                            specificEmotions.style.display = 'none';
+                        } else if (emotionType === 'non-neutral') {
+                            neutralType.checked = false;
+                            nonNeutralType.checked = true;
+                            specificEmotions.style.display = 'block';
+                            
+                            // 设置具体情感
+                            if (label.discrete_emotion) {
+                                selectedDiscreteEmotion = label.discrete_emotion;
+                                const radioElement = document.getElementById(`emotion-${label.discrete_emotion}`);
+                                if (radioElement) {
+                                    radioElement.checked = true;
+                                }
+                            }
+                        }
+                    } else if (label.discrete_emotion) {
+                        // 兼容旧数据
+                        neutralType.checked = false;
+                        nonNeutralType.checked = true;
+                        emotionType = 'non-neutral';
+                        specificEmotions.style.display = 'block';
+                        
                         selectedDiscreteEmotion = label.discrete_emotion;
                         const radioElement = document.getElementById(`emotion-${label.discrete_emotion}`);
                         if (radioElement) {
@@ -581,7 +612,7 @@ document.addEventListener('DOMContentLoaded', function() {
         saveButton.disabled = false; // 在VA模式下启用保存按钮
     }
     
-    // 切换到离散情感标注模式
+    // 切换到离散情感标注模式时的额外处理
     function switchToDiscreteMode() {
         isVaLabelingMode = false;
         vaLabeling.style.display = 'none';
@@ -589,9 +620,52 @@ document.addEventListener('DOMContentLoaded', function() {
         continueButton.style.display = 'none';
         backButton.style.display = 'inline-block';
         saveButton.disabled = false;
+        
+        // 根据情感类型控制界面显示
+        if (emotionType === 'non-neutral' && !selectedDiscreteEmotion) {
+            saveButton.disabled = true; // 如果是非中性但没选具体情感，禁用保存按钮
+        }
+        
         isModified = false;
     }
     
+        // 监听情感类型变化
+        document.querySelectorAll('input[name="emotion-type"]').forEach(radio => {
+            radio.addEventListener('change', function() {
+                emotionType = this.value;
+                isModified = true;
+                
+                // 显示/隐藏具体情感选择区域
+                if (emotionType === 'non-neutral') {
+                    specificEmotions.style.display = 'block';
+                    // 如果之前没有选择过具体情感，则需要选择
+                    if (!selectedDiscreteEmotion) {
+                        saveButton.disabled = true;
+                    } else {
+                        saveButton.disabled = false;
+                    }
+                } else {
+                    specificEmotions.style.display = 'none';
+                    selectedDiscreteEmotion = null;
+                    // 中性情感可以直接保存
+                    saveButton.disabled = false;
+                    // 清除所有具体情感的选择
+                    discreteEmotionRadios.forEach(radio => {
+                        radio.checked = false;
+                    });
+                }
+            });
+        });
+        
+        // 监听具体情感选择变化
+        discreteEmotionRadios.forEach(radio => {
+            radio.addEventListener('change', function() {
+                selectedDiscreteEmotion = this.value;
+                isModified = true;
+                saveButton.disabled = false;
+            });
+        });
+
     // 保存标注
     function handleSave() {
         if (currentAudioIndex === -1) return;
@@ -602,7 +676,8 @@ document.addEventListener('DOMContentLoaded', function() {
             audio_file: audioFile.file_name,
             v_value: parseFloat(vSlider.value),
             a_value: parseFloat(aSlider.value),
-            discrete_emotion: selectedDiscreteEmotion,
+            emotion_type: emotionType,  // 添加情感类型字段
+            discrete_emotion: emotionType === 'neutral' ? null : selectedDiscreteEmotion,
             username:currentUsername, // 添加用户名
             patient_status: patientStatus // 添加患者状态
         };
@@ -686,19 +761,24 @@ document.addEventListener('DOMContentLoaded', function() {
         prevButton.disabled = true;
     }
     
-    // 重置标注
+    // 修改重置标注函数
     function resetLabeling() {
         vSlider.value = 0;
         aSlider.value = 1;
         vValue.textContent = '0.00';
         aValue.textContent = '1.00';
         
-
         // 重置患者状态为默认值（患者）
         document.getElementById('is-patient').checked = true;
         document.getElementById('not-patient').checked = false;
         patientStatus = 'patient';
-
+        
+        // 重置情感类型为中性
+        neutralType.checked = true;
+        nonNeutralType.checked = false;
+        emotionType = 'neutral';
+        specificEmotions.style.display = 'none';
+        
         // 重置离散情感选择
         discreteEmotionRadios.forEach(radio => {
             radio.checked = false;
