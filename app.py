@@ -248,5 +248,35 @@ def clear_login():
     """
     return html
 
+@app.route("/api/get_label/<username>/<speaker>/<filename>")
+def get_label(username, speaker, filename):
+    """获取特定音频的标注数据"""
+    if not username or not speaker or not filename:
+        return jsonify({"error": "缺少必要参数"}), 400
+        
+    user_label_dir = os.path.join(LABEL_FOLDER, username)
+    
+    if not os.path.exists(user_label_dir):
+        return jsonify({"error": "未找到用户标注目录"}), 404
+        
+    label_path = os.path.join(user_label_dir, f"{speaker}_labels.json")
+    
+    if not os.path.exists(label_path):
+        return jsonify({"error": "未找到标注文件"}), 404
+        
+    try:
+        with open(label_path, "r", encoding="utf-8") as f:
+            labels = json.load(f)
+            
+            # 查找特定音频文件的标注
+            for label in labels:
+                if label.get("audio_file") == filename:
+                    return jsonify({"success": True, "data": label})
+                    
+            return jsonify({"error": "未找到该音频的标注数据"}), 404
+            
+    except Exception as e:
+        return jsonify({"error": f"读取标注数据时出错: {str(e)}"}), 500
+
 if __name__ == "__main__":
     app.run(debug=True, host="0.0.0.0", port=5000)

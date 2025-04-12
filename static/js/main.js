@@ -460,8 +460,68 @@ document.addEventListener('DOMContentLoaded', function() {
         // 重置标注并设置为VA模式
         resetLabeling();
         switchToVaMode();
-        isModified = false;
+
+        // 如果该音频有之前的标注数据，则加载显示
+        if (audioFile.labeled) {
+            console.log("加载已保存的标注数据...");
+            loadSavedLabel(currentSpeaker, audioFile.file_name);
+        } else {
+            isModified = false;
+        }
+        
         resetFocus();
+    }
+
+    // 添加加载已保存标注数据的函数
+    function loadSavedLabel(speaker, filename) {
+        if (!currentUsername || !speaker || !filename) return;
+        
+        fetch(`/api/get_label/${encodeURIComponent(currentUsername)}/${encodeURIComponent(speaker)}/${encodeURIComponent(filename)}`)
+            .then(response => response.json())
+            .then(data => {
+                if (data.success && data.data) {
+                    const label = data.data;
+                    
+                    // 设置VA值
+                    if (label.v_value !== undefined) {
+                        vSlider.value = label.v_value;
+                        vValue.textContent = Number(label.v_value).toFixed(2);
+                    }
+                    
+                    if (label.a_value !== undefined) {
+                        aSlider.value = label.a_value;
+                        aValue.textContent = Number(label.a_value).toFixed(2);
+                    }
+                    
+                    // 设置患者状态
+                    if (label.patient_status) {
+                        if (label.patient_status === 'patient') {
+                            document.getElementById('is-patient').checked = true;
+                            document.getElementById('not-patient').checked = false;
+                            patientStatus = 'patient';
+                        } else {
+                            document.getElementById('is-patient').checked = false;
+                            document.getElementById('not-patient').checked = true;
+                            patientStatus = 'non-patient';
+                        }
+                    }
+                    
+                    // 设置离散情感
+                    if (label.discrete_emotion) {
+                        selectedDiscreteEmotion = label.discrete_emotion;
+                        const radioElement = document.getElementById(`emotion-${label.discrete_emotion}`);
+                        if (radioElement) {
+                            radioElement.checked = true;
+                        }
+                    }
+                    
+                    console.log("已加载之前的标注数据");
+                    isModified = false; // 重置修改标志
+                }
+            })
+            .catch(error => {
+                console.error('获取标注数据失败:', error);
+            });
     }
 
     // 处理循环播放变化
@@ -485,7 +545,7 @@ document.addEventListener('DOMContentLoaded', function() {
         
         // 如果VA标注已修改但未保存，提示用户
         if (isModified && isVaLabelingMode) {
-            if(confirm('VA标注已修改但未保存，是否继续？')) {
+            if(confirm('VA标注已修改但未保存，是否继续？可以先点保存，再继续')) {
                 switchToDiscreteMode();
             }
         } else {
