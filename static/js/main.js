@@ -27,6 +27,9 @@ document.addEventListener('DOMContentLoaded', function() {
     const vaLabeling = document.getElementById('va-labeling');
     const discreteLabeling = document.getElementById('discrete-labeling');
     
+    // 获取患者状态单选按钮
+    const patientRadios = document.querySelectorAll('input[name="patient-status"]');
+
     // 获取离散情感选项
     const discreteEmotionRadios = document.querySelectorAll('input[name="discrete-emotion"]');
     
@@ -46,6 +49,7 @@ document.addEventListener('DOMContentLoaded', function() {
     let isModified = false;
     let isVaLabelingMode = true; // 当前是否处于VA标注模式
     let selectedDiscreteEmotion = null;
+    let patientStatus = 'patient'; // 默认为患者
     
     // 初始化
     initSpeakers();
@@ -55,6 +59,14 @@ document.addEventListener('DOMContentLoaded', function() {
     loopCheckbox.addEventListener('change', handleLoopChange);
     vSlider.addEventListener('input', handleSliderChange);
     aSlider.addEventListener('input', handleSliderChange);
+
+    // 监听患者状态变化
+    patientRadios.forEach(radio => {
+        radio.addEventListener('change', function() {
+            patientStatus = this.value;
+            isModified = true;
+        });
+    });
 
     // 初始化滑动条的默认值
     vSlider.min = -2;
@@ -463,6 +475,7 @@ document.addEventListener('DOMContentLoaded', function() {
             a_value: parseFloat(aSlider.value),
             discrete_emotion: selectedDiscreteEmotion,
             username:currentUsername, // 添加用户名
+            patient_status: patientStatus // 添加患者状态
         };
         
         saveButton.disabled = true;
@@ -527,6 +540,12 @@ document.addEventListener('DOMContentLoaded', function() {
         vValue.textContent = '0.00';
         aValue.textContent = '1.00';
         
+
+        // 重置患者状态为默认值（患者）
+        document.getElementById('is-patient').checked = true;
+        document.getElementById('not-patient').checked = false;
+        patientStatus = 'patient';
+
         // 重置离散情感选择
         discreteEmotionRadios.forEach(radio => {
             radio.checked = false;

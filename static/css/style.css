@@ -386,3 +386,28 @@ button:disabled {
 .small-button:hover {
     background-color: #c0392b;
 }
+
+/* 患者选项样式 */
+.patient-option {
+    margin-top: 20px;
+    border-top: 1px solid #eee;
+    padding-top: 15px;
+}
+
+.option-group {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.option-group input[type="radio"] {
+    width: 20px;  /* 增大宽度 */
+    height: 20px;  /* 增大高度 */
+    margin-right: 5px;
+}
+
+.option-group label {
+    display: inline-flex;
+    align-items: center;
+    cursor: pointer;
+}

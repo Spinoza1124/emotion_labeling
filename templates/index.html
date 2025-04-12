@@ -62,6 +62,17 @@
                     <h2>连续情感标注 (VA值)</h2>
                     <div class="emotion-container">
                         
+                        <!-- 添加患者/非患者选项 -->
+                        <div class="patient-option">
+                            <div class="option-group">
+                                <input type="radio" id="is-patient" name="patient-status" value="patient" checked>
+                                <label for="is-patient">患者</label>
+                                
+                                <input type="radio" id="not-patient" name="patient-status" value="non-patient">
+                                <label for="not-patient">非患者</label>
+                            </div>
+                        </div>
+
                         <div class="slider-container">
                             <div class="slider-group">
                                 <label for="a-slider">A值:</label>
@@ -76,6 +87,7 @@
                                 <div class="slider-ticks" id="v-slider-ticks"></div> <!-- 添加数值点容器 -->
                                 <span id="v-value">0</span>
                             </div>
+
                         </div>
                         
                     </div>

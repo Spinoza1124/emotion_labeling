@@ -107,6 +107,7 @@ def save_label():
     a_value = data.get("a_value")
     discrete_emotion = data.get("discrete_emotion")
     username = data.get("username")  # 获取用户名
+    patient_status = data.get("patient_status", "patient")  # 获取患者状态，默认为"患者"
 
     if not all([speaker, audio_file, v_value is not None, a_value is not None, username]):
         return jsonify({"error": "缺少必要参数"}), 400
@@ -136,6 +137,7 @@ def save_label():
         "a_value": a_value,
         "discrete_emotion": discrete_emotion,
         "username": username, # 添加用户名字段
+        "patient_status": patient_status,  # 添加患者状态
         "timestamp": datetime.now().strftime("%Y-%m-%d %H:%M:%S") # 添加时间戳
     }
 
