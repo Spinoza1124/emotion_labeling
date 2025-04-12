@@ -5,6 +5,8 @@ import shutil
 from datetime import datetime
 
 from flask import Flask, jsonify, render_template, request, send_from_directory
+from pydub import AudioSegment  # 导入音频处理库
+import pydub.exceptions
 
 app = Flask(__name__)
 
@@ -18,6 +20,20 @@ LABEL_FOLDER = os.getenv(
 
 # 确保标签保存目录存在
 os.makedirs(LABEL_FOLDER, exist_ok=True)
+
+
+# 获取音频文件长度的函数
+def get_audio_duration(file_path):
+    """获取音频文件的时长（秒）"""
+    try:
+        audio = AudioSegment.from_file(file_path)
+        return len(audio) / 1000.0  # 毫秒转换为秒
+    except pydub.exceptions.CouldntDecodeError:
+        print(f"无法解码音频文件: {file_path}")
+        return 0.0
+    except Exception as e:
+        print(f"获取音频时长时出错: {e}")
+        return 0.0
 
 
 @app.route("/")
@@ -112,6 +128,12 @@ def save_label():
     if not all([speaker, audio_file, v_value is not None, a_value is not None, username]):
         return jsonify({"error": "缺少必要参数"}), 400
 
+    # 获取音频文件完整路径
+    audio_path = os.path.join(AUDIO_FOLDER, speaker, audio_file)
+    
+    # 获取音频时长
+    audio_duration = get_audio_duration(audio_path)
+
     # 创建用户专属目录
     user_label_dir = os.path.join(LABEL_FOLDER, username)
     os.makedirs(user_label_dir, exist_ok=True)
@@ -138,6 +160,7 @@ def save_label():
         "discrete_emotion": discrete_emotion,
         "username": username, # 添加用户名字段
         "patient_status": patient_status,  # 添加患者状态
+        "audio_duration": audio_duration,  # 添加音频时长
         "timestamp": datetime.now().strftime("%Y-%m-%d %H:%M:%S") # 添加时间戳
     }
 

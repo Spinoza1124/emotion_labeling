@@ -386,7 +386,13 @@ document.addEventListener('DOMContentLoaded', function() {
         audioPlayer.load();
         audioPlayer.play();
 
-        // 设置播放控制
+        // 音频加载完成后，可以获取时长
+        audioPlayer.addEventListener('loadedmetadata', function() {
+            const duration = audioPlayer.duration;
+            console.log(`音频时长: ${duration.toFixed(2)}秒`);
+        });
+        
+        //设置播放控制
         // setupPlayControls();
         
         // 启用按钮
