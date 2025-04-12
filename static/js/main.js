@@ -26,7 +26,8 @@ document.addEventListener('DOMContentLoaded', function() {
     const backButton = document.getElementById('back-button');
     const vaLabeling = document.getElementById('va-labeling');
     const discreteLabeling = document.getElementById('discrete-labeling');
-    
+    const prevButton = document.getElementById('prev-button');
+
     // 获取患者状态单选按钮
     const patientRadios = document.querySelectorAll('input[name="patient-status"]');
 
@@ -59,6 +60,7 @@ document.addEventListener('DOMContentLoaded', function() {
     loopCheckbox.addEventListener('change', handleLoopChange);
     vSlider.addEventListener('input', handleSliderChange);
     aSlider.addEventListener('input', handleSliderChange);
+    prevButton.addEventListener('click', handlePrevious);
 
     // 监听患者状态变化
     patientRadios.forEach(radio => {
@@ -96,21 +98,72 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
     
-    // 添加键盘事件监听，用于空格键控制播放/暂停
+    // 添加键盘事件监听，用于快捷键操作
     document.addEventListener('keydown', function(event) {
-        // 如果按下的是空格键且不是在输入框内
-        if (event.code === 'Space' && 
-            document.activeElement.tagName !== 'INPUT' && 
-            document.activeElement.tagName !== 'TEXTAREA' && 
-            document.activeElement.tagName !== 'SELECT') {
+
+        // 只有在真正需要输入的元素上时才禁用快捷键
+        // 包括文本框、文本区域、下拉选择框以及有contentEditable属性的元素
+        const isInputElement = 
+        document.activeElement.tagName === 'INPUT' && 
+        (document.activeElement.type === 'text' || 
+         document.activeElement.type === 'password' || 
+         document.activeElement.type === 'email' ||
+         document.activeElement.type === 'search') ||
+        document.activeElement.tagName === 'TEXTAREA' || 
+        (document.activeElement.tagName === 'SELECT') ||
+        document.activeElement.isContentEditable;
+
+        if (!isInputElement) {
+            // 空格控制播放/暂停
+            if (event.code === 'Space') {
+                event.preventDefault(); // 阻止默认行为（如页面滚动）
+                togglePlayPause();
+            }
             
-            event.preventDefault(); // 阻止默认行为（如页面滚动）
-            togglePlayPause();
+            // E键 - 上一条
+            if (event.key === 'e' || event.key === 'E') {
+                event.preventDefault();
+                if (!prevButton.disabled) {
+                    handlePrevious();
+                }
+            }
+            
+            // R键 - 下一条
+            if (event.key === 'r' || event.key === 'R') {
+                event.preventDefault();
+                if (!nextButton.disabled) {
+                    handleNext();
+                }
+            }
+            
+            // W键 - 保存
+            if (event.key === 'w' || event.key === 'W') {
+                event.preventDefault();
+                if (!saveButton.disabled) {
+                    handleSave();
+                }
+            }
+            
+            // Q键 - 继续/返回
+            if (event.key === 'q' || event.key === 'Q') {
+                event.preventDefault();
+                if (isVaLabelingMode && !continueButton.disabled) {
+                    handleContinue();
+                } else if (!isVaLabelingMode) {
+                    handleBack();
+                }
+            }
         }
     });
 
+    // 在各个操作后重置焦点到主容器
+    function resetFocus() {
+        // 将焦点设置到主容器，确保快捷键可用
+        document.getElementById('main-container').focus();
+    }
+
      // 检查是否已登录（从localStorage获取）
-     function checkLogin() {
+    function checkLogin() {
         const savedUsername = localStorage.getItem('emotion_labeling_username');
         if (savedUsername) {
             currentUsername = savedUsername;
@@ -334,6 +387,15 @@ document.addEventListener('DOMContentLoaded', function() {
             
             audioListContainer.appendChild(audioItem);
         });
+
+        // 更新按钮状态
+        if (currentAudioIndex !== -1) {
+            prevButton.disabled = currentAudioIndex <= 0;
+            nextButton.disabled = currentAudioIndex >= audioList.length - 1;
+        } else {
+            prevButton.disabled = true;
+            nextButton.disabled = true;
+        }
     }
     
         // 为音频播放器添加专门的播放/暂停按钮（可选）
@@ -392,22 +454,19 @@ document.addEventListener('DOMContentLoaded', function() {
             console.log(`音频时长: ${duration.toFixed(2)}秒`);
         });
         
-        //设置播放控制
-        // setupPlayControls();
         
         // 启用按钮
         continueButton.disabled = false;
-        saveButton.disabled = !isVaLabelingMode; // 只有在离散模式时才启用保存按钮
-        nextButton.disabled = index >= audioList.length - 1;
+        saveButton.disabled = !isVaLabelingMode; // 只有在VA模式时才启用保存按钮
+        prevButton.disabled = index <= 0; // 如果是第一条，则禁用"上一条"按钮
+        nextButton.disabled = index >= audioList.length - 1; // 如果是最后一条，则禁用"下一条"按钮
         
         // 重置标注并设置为VA模式
         resetLabeling();
         switchToVaMode();
         isModified = false;
+        resetFocus();
     }
-    
-    // 初始化播放控制
-    // setupPlayControls();
 
     // 处理循环播放变化
     function handleLoopChange() {
@@ -435,6 +494,12 @@ document.addEventListener('DOMContentLoaded', function() {
             // 直接切换到离散情感标注模式
             switchToDiscreteMode();
         }
+
+        // 切换到离散情感标注模式
+        switchToDiscreteMode();
+    
+        // 重置焦点确保快捷键可用
+        resetFocus();
     }
     
     // 处理"返回"按钮点击，从离散标注返回到VA标注
@@ -446,6 +511,10 @@ document.addEventListener('DOMContentLoaded', function() {
         } else {
             switchToVaMode();
         }
+        switchToVaMode();
+
+        // 重置焦点确保快捷键可用
+        resetFocus();
     }
     
     // 切换到VA标注模式
@@ -508,15 +577,35 @@ document.addEventListener('DOMContentLoaded', function() {
             } else {
                 throw new Error(data.error || '保存失败');
             }
+
+            // 重置焦点确保快捷键可用
+            resetFocus();
         })
         .catch(error => {
             console.error('保存标注失败:', error);
             alert('保存标注失败，请重试');
             saveButton.textContent = '保存';
             saveButton.disabled = false;
+            // 即使出错也重置焦点
+            resetFocus();
         });
     }
-    
+
+    // 处理"上一条"功能
+    function handlePrevious() {
+        if (currentAudioIndex <= 0) return; // 如果已经是第一条，不执行操作
+        
+        if (isModified) {
+            if (confirm('当前标注未保存，是否继续？')) {
+                selectAudio(currentAudioIndex - 1);
+            }
+        } else {
+            selectAudio(currentAudioIndex - 1);
+        }
+        // 在函数末尾添加重置焦点
+        resetFocus();
+    }
+
     // 处理下一条
     function handleNext() {
         if (currentAudioIndex >= audioList.length - 1) return;
@@ -528,6 +617,9 @@ document.addEventListener('DOMContentLoaded', function() {
         } else {
             selectAudio(currentAudioIndex + 1);
         }
+        
+        // 在函数末尾添加重置焦点
+        resetFocus();
     }
     
     // 重置播放器
@@ -537,6 +629,7 @@ document.addEventListener('DOMContentLoaded', function() {
         continueButton.disabled = true;
         saveButton.disabled = true;
         nextButton.disabled = true;
+        prevButton.disabled = true;
     }
     
     // 重置标注

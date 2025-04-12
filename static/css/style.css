@@ -411,3 +411,23 @@ button:disabled {
     align-items: center;
     cursor: pointer;
 }
+
+/* "上一条"按钮样式*/
+#prev-button {
+    background-color: #f39c12;
+    color: white;
+}
+
+#prev-button:hover {
+    background-color: #d35400;
+}
+
+/* 移除主容器获得焦点时的轮廓 */
+#main-container:focus {
+    outline: none;
+}
+
+/* 确保按钮点击后不保持焦点 */
+button:focus {
+    outline: none;
+}
