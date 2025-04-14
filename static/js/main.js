@@ -327,21 +327,21 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     // 初始化数值点
-    generateSliderTicks('a-slider', 'a-slider-ticks', 1, 5, 0.25);
-    generateSliderTicks('v-slider', 'v-slider-ticks', -2, 2, 0.25);
+    // generateSliderTicks('a-slider', 'a-slider-ticks', 1, 5, 0.25);
+    // generateSliderTicks('v-slider', 'v-slider-ticks', -2, 2, 0.25);
 
-    // 生成滑动条数值点
-    function generateSliderTicks(sliderId, ticksContainerId, min, max, step) {
-        const ticksContainer = document.getElementById(ticksContainerId);
-        const range = max - min;
-        const steps = range / step;
-        for (let i = 0; i <= steps; i++) {
-            const value = (min + i * step).toFixed(2);
-            const tick = document.createElement('span');
-            tick.textContent = value;
-            ticksContainer.appendChild(tick);
-        }
-    }
+    // // 生成滑动条数值点
+    // function generateSliderTicks(sliderId, ticksContainerId, min, max, step) {
+    //     const ticksContainer = document.getElementById(ticksContainerId);
+    //     const range = max - min;
+    //     const steps = range / step;
+    //     for (let i = 0; i <= steps; i++) {
+    //         const value = (min + i * step).toFixed(2);
+    //         const tick = document.createElement('span');
+    //         tick.textContent = value;
+    //         ticksContainer.appendChild(tick);
+    //     }
+    // }
     
     // 初始化说话人下拉列表
     function initSpeakers() {

@@ -12,10 +12,10 @@ app = Flask(__name__)
 
 # 配置
 AUDIO_FOLDER = os.getenv(
-    "AUDIO_FOLDER", "/mnt/shareEEx/liuyang/code/funasr/emotion_labeling/emotion_annotation"
+    "AUDIO_FOLDER", "/home/spinoza/code/projects/my_python_project/emotion_labeling/emotion_annotation"
 )
 LABEL_FOLDER = os.getenv(
-    "LABEL_FOLDER", "/mnt/shareEEx/liuyang/code/funasr/emotion_labeling/labels"
+    "LABEL_FOLDER", "/home/spinoza/code/projects/my_python_project/emotion_labeling/labels"
 )
 
 # 确保标签保存目录存在
