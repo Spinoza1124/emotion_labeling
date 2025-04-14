@@ -385,19 +385,35 @@ audio {
     width: 20%;
 }
 
-/* 添加低唤醒和高唤醒的特殊定位 */
-.slider-descriptions span.low-arousal {
+/* 添加极低唤醒的特殊定位 */
+.slider-descriptions span.very-low-arousal {
     position: absolute;
-    left: 25%; /* 对应数值2的位置 (25%) */
+    left: 10%; /* 对应数值0的位置 (10%) */
     width: auto;
     transform: translateX(-50%); /* 居中对齐文字 */
 }
 
-.slider-descriptions span.high-arousal {
+/* 添加低唤醒的特殊定位 */
+.slider-descriptions span.low-arousal {
     position: absolute;
-    left: 75%; /* 对应数值4的位置 (75%) */
+    left: 26%; /* 对应数值2的位置 (25%) */
     width: auto;
     transform: translateX(-50%); /* 居中对齐文字 */
+}
+/* 添加高唤醒的特殊定位 */
+.slider-descriptions span.high-arousal {
+    position: absolute;
+    left: 74%; /* 对应数值4的位置 (75%) */
+    width: auto;
+    transform: translateX(-50%); /* 居中对齐文字 */
+}
+
+/* 修改极高唤醒的特殊定位 */
+.slider-descriptions span.very-high-arousal {
+    position: absolute;
+    left: 90%; /* 对应数值5的位置 (90%) */
+    width: auto;
+    transform: translateX(-50%);
 }
 
 /* 保持第一个和最后一个描述词的对齐方式 */
@@ -408,18 +424,39 @@ audio {
 .slider-descriptions span:last-child {
     text-align: right;
 }
+/* 修改V值效价描述的样式 */
+.v-descriptions span.negative {
+    position: absolute;
+    left: 10%; /* 对应数值-2的位置 (10%) */
+    width: auto;
+    transform: translateX(-50%); /* 居中对齐文字 */
+}
 
-/* V值效价描述的样式 */
+/* 修改V值效价描述的样式 */
 .v-descriptions span.mild-negative {
     position: absolute;
-    left: 25%; /* 对应数值-1的位置 (25%) */
+    left: 27%; /* 对应数值-1的位置 (25%) */
+    width: auto;
+    transform: translateX(-50%); /* 居中对齐文字 */
+}
+
+.v-descriptions span.neutral {
+    position: absolute;
+    left: 50%; /* 对应数值0的位置 (50%) */
     width: auto;
     transform: translateX(-50%); /* 居中对齐文字 */
 }
 
 .v-descriptions span.mild-positive {
     position: absolute;
-    left: 75%; /* 对应数值1的位置 (75%) */
+    left: 73.5%; /* 对应数值1的位置 (75%) */
+    width: auto;
+    transform: translateX(-50%); /* 居中对齐文字 */
+}
+
+.v-descriptions span.positive {
+    position: absolute;
+    left: 90%; /* 对应数值2的位置 (90%) */
     width: auto;
     transform: translateX(-50%); /* 居中对齐文字 */
 }
