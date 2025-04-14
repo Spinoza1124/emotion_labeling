@@ -45,19 +45,15 @@ def index():
 def get_audio_list(speaker):
     """获取指定说话人的所有音频文件列表"""
     speaker_folder = os.path.join(AUDIO_FOLDER, speaker)
-    # print(f"正在查找说话人文件夹: {speaker_folder}")
 
     if not os.path.exists(speaker_folder):
-        # print(f"找不到说话人文件夹: {speaker_folder}")
         return jsonify({"error": f"找不到说话人 {speaker} 的文件夹"}), 404
 
     audio_files = []
     for ext in ["wav"]:
         found_files = glob.glob(os.path.join(speaker_folder, f"*.{ext}"))
-        # print(f"找到 {ext} 文件: {len(found_files)} 个")
         audio_files.extend(found_files)
 
-    # print(f"总共找到音频文件: {len(audio_files)} 个")
 
     # 获取已标注的文件列表
     username = request.args.get('username', '')
@@ -74,10 +70,44 @@ def get_audio_list(speaker):
                         labeled_files = {item["audio_file"] for item in labels}
                     except json.JSONDecodeError:
                         pass
+    
+    def natural_sort_key(s):
+        import re
+        # 提取音频文件名 (不包括扩展名)
+        filename = os.path.basename(s).split('.')[0]
+        
+        # 特殊处理类似 spk2-4-1-12.wav 的格式 (第四部分为数字)
+        pattern = r'(spk\d+-\d+-\d+)-(\d+)'
+        match = re.match(pattern, filename)
+        if match:
+            prefix, number = match.groups()
+            return (prefix, int(number))  # 先按前缀排序，再按数字大小排序
+        
+        # 解析标准格式: spk<id>-<part>-<section>
+        spk_match = re.match(r'(spk)(\d+)-(\d+)-(\d+)', filename)
+        if spk_match:
+            prefix, spk_id, part, section = spk_match.groups()
+            # 返回整数元组以便正确排序
+            return (int(spk_id), int(part), int(section))
+        
+        # 如果不是标准格式，提取文件名中的最后一个连字符后的数字
+        number_match = re.search(r'-(\d+)[^-\d]*$', filename)
+        if number_match:
+            # 提取最后一个连字符后的数字并返回数字值
+            last_number = int(number_match.group(1))
+            # 先按照前缀排序，如果前缀相同再按数字排序
+            prefix = filename[:number_match.start()]
+            return (prefix, last_number)
+        
+        # 如果没有找到数字，直接返回文件名
+        return filename
 
+    # 使用自然排序对文件进行排序
+    sorted_audio_files = sorted(audio_files, key=natural_sort_key)
+    
     # 格式化返回数据
     result = []
-    for audio_file in sorted(audio_files):
+    for audio_file in sorted_audio_files:
         file_name = os.path.basename(audio_file)
         result.append(
             {
@@ -97,13 +127,31 @@ def get_speakers():
         # print(f"音频文件夹不存在: {AUDIO_FOLDER}")
         return jsonify({"error": f"音频文件夹不存在: {AUDIO_FOLDER}"}), 404
 
+    # 获取所有说话人目录
     speakers = [
         d
         for d in os.listdir(AUDIO_FOLDER)
         if os.path.isdir(os.path.join(AUDIO_FOLDER, d))
     ]
-    # print(f"找到的说话人: {speakers}")
-    return jsonify(speakers)
+    
+    # 自然排序函数
+    def speaker_sort_key(s):
+        import re
+        # 解析格式: spk<id>-<part>-<section>
+        match = re.match(r'(spk)(\d+)-(\d+)-(\d+)', s)
+        if match:
+            prefix, spk_id, part, section = match.groups()
+            # 返回整数元组以便正确排序
+            return (int(spk_id), int(part), int(section))
+        else:
+            # 默认排序方式
+            return s
+    
+    # 对说话人列表进行自然排序
+    sorted_speakers = sorted(speakers, key=speaker_sort_key)
+    
+    # print(f"找到的说话人: {sorted_speakers}")
+    return jsonify(sorted_speakers)
 
 
 @app.route("/api/audio/<speaker>/<filename>")
