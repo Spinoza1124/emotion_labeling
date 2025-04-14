@@ -184,25 +184,31 @@ audio {
     margin-top: 20px;
     border-top: 1px solid #eee;
     padding-top: 15px;
+    text-align: center; /* 居中对齐 */
 }
 
 .option-group {
     display: flex;
     align-items: center;
     gap: 5px;
+    justify-content: center; /* 居中对齐 */
 }
 
 /* 较大的单选按钮 */
 .option-group input[type="radio"] {
-    width: 40px;  /* 增大宽度 */
-    height: 40px;  /* 增大高度 */
-    margin-right: 5px;
+    width: 40px; /* 保持宽度 */
+    height: 40px; /* 保持高度 */
+    margin-right: 10px; /* 调整右侧间距 */
+    cursor: pointer;
 }
 
 .option-group label {
     display: inline-flex;
     align-items: center;
     cursor: pointer;
+    font-size: 16px; /* 增大字体 */
+    font-weight: 500; /* 加粗字体 */
+    margin-right: 20px; /* 右侧间距 */
 }
 
 /*===================================================
