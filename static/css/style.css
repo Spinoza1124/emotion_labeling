@@ -369,26 +369,24 @@ audio {
 
 /* 修改唤醒程度描述的样式 */
 .slider-descriptions {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 0px;
-    font-size: 0.8em;
-    color: #0d0a0af0;
-    width: 100%;
-    padding: 0 0px;
-    position: relative; /* 添加相对定位 */
+    margin-top: 5px;
+    margin-bottom: 30px; /* 增加与下方元素的距离 */
+    height: 20px; /* 固定高度 */
+    position: relative;
 }
 
 /* 修改默认对齐方式，保证极低和极高唤醒位置正确 */
 .slider-descriptions span {
     text-align: center;
     width: 20%;
+    white-space: nowrap; /* 确保文字不换行 */
+    transform: translateX(-50%); /* 居中对齐文字 */
 }
 
 /* 添加极低唤醒的特殊定位 */
 .slider-descriptions span.very-low-arousal {
     position: absolute;
-    left: 10%; /* 对应数值0的位置 (10%) */
+    left: 1%; /* 对应数值0的位置 (10%) */
     width: auto;
     transform: translateX(-50%); /* 居中对齐文字 */
 }
@@ -400,6 +398,15 @@ audio {
     width: auto;
     transform: translateX(-50%); /* 居中对齐文字 */
 }
+
+/* 添加中等唤醒的特殊定位 */
+.slider-descriptions span.medium-arousal {
+    position: absolute;
+    left: 50%; /* 对应数值3的位置 (50%) */
+    width: auto;
+    transform: translateX(-50%); /* 居中对齐文字 */
+}
+
 /* 添加高唤醒的特殊定位 */
 .slider-descriptions span.high-arousal {
     position: absolute;
@@ -411,69 +418,55 @@ audio {
 /* 修改极高唤醒的特殊定位 */
 .slider-descriptions span.very-high-arousal {
     position: absolute;
-    left: 90%; /* 对应数值5的位置 (90%) */
+    left: 99%; /* 对应数值5的位置 (90%) */
     width: auto;
     transform: translateX(-50%);
 }
 
-/* 保持第一个和最后一个描述词的对齐方式 */
-.slider-descriptions span:first-child {
-    text-align: left;
-}
-
-.slider-descriptions span:last-child {
-    text-align: right;
-}
 /* 修改V值效价描述的样式 */
-.v-descriptions span.negative {
+.slider-descriptions span.negative {
     position: absolute;
-    left: 10%; /* 对应数值-2的位置 (10%) */
+    left: 1%; /* 对应数值-2的位置 (10%) */
     width: auto;
     transform: translateX(-50%); /* 居中对齐文字 */
 }
 
 /* 修改V值效价描述的样式 */
-.v-descriptions span.mild-negative {
+.slider-descriptions span.mild-negative {
     position: absolute;
-    left: 27%; /* 对应数值-1的位置 (25%) */
+    left: 26%; /* 对应数值-1的位置 (25%) */
     width: auto;
     transform: translateX(-50%); /* 居中对齐文字 */
 }
 
-.v-descriptions span.neutral {
+.slider-descriptions span.neutral {
     position: absolute;
     left: 50%; /* 对应数值0的位置 (50%) */
     width: auto;
     transform: translateX(-50%); /* 居中对齐文字 */
 }
 
-.v-descriptions span.mild-positive {
+.slider-descriptions span.mild-positive {
     position: absolute;
-    left: 73.5%; /* 对应数值1的位置 (75%) */
+    left: 74%; /* 对应数值1的位置 (75%) */
     width: auto;
     transform: translateX(-50%); /* 居中对齐文字 */
 }
 
-.v-descriptions span.positive {
+.slider-descriptions span.positive {
     position: absolute;
-    left: 90%; /* 对应数值2的位置 (90%) */
+    left: 99%; /* 对应数值2的位置 (90%) */
     width: auto;
     transform: translateX(-50%); /* 居中对齐文字 */
 }
 
-/* 特别调整v-descriptions的位置，以确保与数值对齐 */
-.v-descriptions {
+/* 特别调整slider-descriptions的位置，以确保与数值对齐 */
+.slider-descriptions {
     margin-top: 5px;  /* 增加与上方刻度的间距 */
-    margin-bottom: 15px; /* 增加与下方内容的间距 */
+    margin-bottom: 25px; /* 增加与下方内容的间距 */
 }
 
-.v-descriptions span:nth-child(3) {
-    /* 中性文字居中对齐 */
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    width: auto;
-}
+
 /*===================================================
     8. 离散情感标注区域样式
 ===================================================*/
