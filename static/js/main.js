@@ -150,7 +150,7 @@ document.addEventListener('DOMContentLoaded', function() {
     aSlider.min = 1;
     aSlider.max = 5;
     aSlider.step = 0.25;
-    aSlider.value = 1;
+    aSlider.value = 3;
 
     // 更新滑动条值显示
     vValue.textContent = Number(vSlider.value).toFixed(2);
@@ -819,9 +819,9 @@ document.addEventListener('DOMContentLoaded', function() {
     // 修改重置标注函数
     function resetLabeling() {
         vSlider.value = 0;
-        aSlider.value = 1;
+        aSlider.value = 3;
         vValue.textContent = '0.00';
-        aValue.textContent = '1.00';
+        aValue.textContent = '3.00';
         
         // 重置患者状态为默认值（患者）
         document.getElementById('is-patient').checked = true;
