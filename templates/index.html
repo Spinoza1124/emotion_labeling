@@ -1,45 +1,51 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>音频情感标注系统</title>
-        <link rel="stylesheet" href="/static/css/style.css">
-        <!-- 强制清除登录状态，确保每次都显示登录界面 -->
-        <script>
-            // 强制清除登录状态
-            localStorage.removeItem('emotion_labeling_username');
-            
-            // 保留原先的URL参数检查功能
-            const urlParams = new URLSearchParams(window.location.search);
-            if (urlParams.has('keep_login')) {
-                // 只有明确指定keep_login参数时，才不会清除登录状态
-                localStorage.getItem('emotion_labeling_username');
-            }
-        </script>
-    </head>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>音频情感标注系统</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+    
+    <!-- URL参数处理脚本 - 控制登录状态 -->
+    <script>
+        // 默认情况下清除登录状态，除非有keep_login参数
+        localStorage.removeItem('emotion_labeling_username');
+        
+        const urlParams = new URLSearchParams(window.location.search);
+        if (urlParams.has('keep_login')) {
+            // 保留登录状态
+            localStorage.getItem('emotion_labeling_username');
+        }
+    </script>
+</head>
 <body>
 
-    <!-- 登陆模态框-->
+    <!-- ===================== 登录界面 ===================== -->
     <div id="login-modal" class="modal" style="display: flex;">
         <div class="modal-content">
-            <h2>用户登陆</h2>
+            <h2>用户登录</h2>
             <div class="form-group">
                 <label for="username">请输入您的姓名</label>
                 <input type="text" id="username" placeholder="请输入姓名" required>
             </div>
-            <button id="login-button">登陆</button>
+            <button id="login-button">登录</button>
         </div>
     </div>
 
+    <!-- ===================== 主界面 ===================== -->
     <div class="container" style="display: none;" id="main-container" tabindex="-1">
         <h1>音频情感标注系统</h1>
+        
+        <!-- 用户信息区 -->
         <div class="user-info">
             当前用户: <span id="current-user"></span>
-            <button id="logout-button" class="small-button">退出登陆</button>
+            <button id="logout-button" class="small-button">退出登录</button>
         </div>
+        
         <div class="main-content">
+            <!-- ========== 左侧边栏 ========== -->
             <div class="sidebar">
+                <!-- 说话人选择区域 -->
                 <div class="speaker-selection">
                     <label for="speaker-select">选择说话人:</label>
                     <select id="speaker-select">
@@ -47,6 +53,7 @@
                     </select>
                 </div>
                 
+                <!-- 音频列表区域 -->
                 <div class="audio-list">
                     <h2>音频列表</h2>
                     <div class="list-container" id="audio-list-container">
@@ -55,26 +62,28 @@
                 </div>
             </div>
             
+            <!-- ========== 右侧内容区 ========== -->
             <div class="content">
+                <!-- 音频播放器区域 -->
                 <div class="audio-player">
                     <h2>音频播放</h2>
                     <div class="player-container">
                         <audio id="audio-player" controls></audio>
                         <div class="player-controls">
-                            <button id="play-pause-button" class="play-button"> 暂停播放（空格键） </button>
+                            <button id="play-pause-button" class="play-button">暂停播放（空格键）</button>
                             <div class="loop-control">
-                                <input type="checkbox" id="loop-checkbox">
+                                <input type="checkbox" id="loop-checkbox" checked>
                                 <label for="loop-checkbox">循环播放</label>
                             </div>
                         </div>
                     </div>
                 </div>
                 
+                <!-- VA值情感标注区域 -->
                 <div class="emotion-labeling" id="va-labeling">
                     <h2>连续情感标注 (VA值)</h2>
                     <div class="emotion-container">
-                        
-                        <!-- 添加患者/非患者选项 -->
+                        <!-- 患者/非患者选择 -->
                         <div class="patient-option">
                             <div class="option-group">
                                 <input type="radio" id="is-patient" name="patient-status" value="patient" checked>
@@ -85,33 +94,35 @@
                             </div>
                         </div>
 
+                        <!-- VA值滑动条 -->
                         <div class="slider-container">
+                            <!-- A值滑动条 -->
                             <div class="slider-group">
                                 <label for="a-slider">A值:</label>
                                 <input type="range" id="a-slider" min="1" max="5" value="1" step="0.25">
-                                <div class="slider-ticks" id="a-slider-ticks"></div> <!-- 添加数值点容器 -->
+                                <div class="slider-ticks" id="a-slider-ticks"></div>
                                 <span id="a-value">1</span>
                             </div>
                             
+                            <!-- V值滑动条 -->
                             <div class="slider-group">
                                 <label for="v-slider">V值:</label>
                                 <input type="range" id="v-slider" min="-2" max="2" value="0" step="0.25">
-                                <div class="slider-ticks" id="v-slider-ticks"></div> <!-- 添加数值点容器 -->
+                                <div class="slider-ticks" id="v-slider-ticks"></div>
                                 <span id="v-value">0</span>
                             </div>
-
                         </div>
-                        
                     </div>
                 </div>
                 
+                <!-- 离散情感标注区域 -->
                 <div class="emotion-labeling" id="discrete-labeling" style="display: none;">
                     <h2>离散情感标注</h2>
                     <div class="emotion-container">
                         <div class="discrete-emotions">
                             <h3>请选择情感类型:</h3>
                             
-                            <!-- 主要情感类型选择 -->
+                            <!-- 中性/非中性选择 -->
                             <div class="emotion-type-selection">
                                 <div class="emotion-type">
                                     <input type="radio" name="emotion-type" id="neutral-type" value="neutral" checked>
@@ -123,7 +134,7 @@
                                 </div>
                             </div>
                             
-                            <!-- 具体情感选择(默认隐藏) -->
+                            <!-- 具体情感选择 -->
                             <div id="specific-emotions" style="display: none;">
                                 <h3>请选择具体情感标签:</h3>
                                 <div class="emotion-options">
@@ -157,6 +168,7 @@
                     </div>
                 </div>
                 
+                <!-- 操作按钮区域 -->
                 <div class="action-buttons">
                     <button id="continue-button" disabled>继续(Q)</button>
                     <button id="back-button" style="display: none;">返回(Q)</button>
@@ -168,6 +180,7 @@
         </div>
     </div>
     
+    <!-- 引入JavaScript文件 -->
     <script src="/static/js/main.js"></script>
 </body>
 </html>

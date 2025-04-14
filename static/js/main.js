@@ -1,4 +1,18 @@
+/**
+ * 音频情感标注系统前端脚本
+ * 主要功能:
+ * 1. 用户登录/退出管理
+ * 2. 音频列表加载与播放控制
+ * 3. 情感标注功能 (VA值和离散情感)
+ * 4. 标注结果保存与加载
+ */
+
 document.addEventListener('DOMContentLoaded', function() {
+
+    //==============================================
+    // 1. DOM元素获取与变量初始化
+    //==============================================
+
     // 登陆相关元素
     const loginModal = document.getElementById('login-modal');
     const usernameInput = document.getElementById('username');
@@ -6,34 +20,76 @@ document.addEventListener('DOMContentLoaded', function() {
     const mainContainer = document.getElementById('main-container');
     const currentUserSpan = document.getElementById('current-user');
     const logoutButton = document.getElementById('logout-button'); // 添加退出按钮引用
-    const neutralType = document.getElementById('neutral-type');
-    const nonNeutralType = document.getElementById('non-neutral-type');
-    const specificEmotions = document.getElementById('specific-emotions');
 
-    // 用户名变量
-    let currentUsername = '';
-    let previousUsername = ''; // 添加变量记录之前的用户名
-    let emotionType = 'neutral'; // 默认情感类型为中性
 
-    // 优先检查登录状态
-    checkLogin();
-
-    // 获取DOM元素
+    // 说话人与音频列表元素
     const speakerSelect = document.getElementById('speaker-select');
     const audioListContainer = document.getElementById('audio-list-container');
+
+    // 音乐播放器元素
     const audioPlayer = document.getElementById('audio-player');
     const loopCheckbox = document.getElementById('loop-checkbox');
+
+    // VA值标注元素
     const vSlider = document.getElementById('v-slider');
     const aSlider = document.getElementById('a-slider');
     const vValue = document.getElementById('v-value');
     const aValue = document.getElementById('a-value');
+
+    // 情感类型选择元素
+    const neutralType = document.getElementById('neutral-type');
+    const nonNeutralType = document.getElementById('non-neutral-type');
+    const specificEmotions = document.getElementById('specific-emotions');
+
+    // 获取患者状态单选按钮
+    const patientRadios = document.querySelectorAll('input[name="patient-status"]');
+
+    // 获取离散情感选项
+    const discreteEmotionRadios = document.querySelectorAll('input[name="discrete-emotion"]');
+
+    // 操作按钮元素
     const saveButton = document.getElementById('save-button');
     const nextButton = document.getElementById('next-button');
     const continueButton = document.getElementById('continue-button');
     const backButton = document.getElementById('back-button');
+    const prevButton = document.getElementById('prev-button');
+
+    // 标注模式区域元素
     const vaLabeling = document.getElementById('va-labeling');
     const discreteLabeling = document.getElementById('discrete-labeling');
-    const prevButton = document.getElementById('prev-button');
+
+    // 状态变量
+    let currentUsername = '';    // 当前用户名
+    let previousUsername = '';   // 添加变量记录之前的用户名
+    let emotionType = 'neutral'; // 默认情感类型为中性
+    let currentSpeaker = '';     // 当前选中的说话人
+    let audioList = [];          // 音频列表数据
+    let currentAudioIndex = -1;  // 当前选中音频的索引
+    let isModified = false;      // 标注是否已修改但未保存
+    let isVaLabelingMode = true; // 当前是否处于VA标注模式
+    let selectedDiscreteEmotion = null;  // 选中的离散情感类型
+    let patientStatus = 'patient'; // 默认为患者
+
+    // 标准值到滑动条值的映射
+    const standardToSliderMap = {
+        '-2': -80,
+        '-1': -40,
+        '0': 0,
+        '1': 40,
+        '2': 80
+    };
+
+    //==============================================
+    // 2. 用户登录与认证
+    //==============================================
+    
+    /**
+     * 检查用户登录状态
+     * 从localStorage获取保存的用户名，决定显示登录框还是主界面
+     */
+
+    // 优先检查登录状态
+    checkLogin();
 
     // 修改检查登录函数
     function checkLogin() {
@@ -63,34 +119,6 @@ document.addEventListener('DOMContentLoaded', function() {
             }, 100);
         }
     }
-
-
-    // 获取患者状态单选按钮
-    const patientRadios = document.querySelectorAll('input[name="patient-status"]');
-
-    // 获取离散情感选项
-    const discreteEmotionRadios = document.querySelectorAll('input[name="discrete-emotion"]');
-    
-    // 标准值到滑动条值的映射
-    const standardToSliderMap = {
-        '-2': -80,
-        '-1': -40,
-        '0': 0,
-        '1': 40,
-        '2': 80
-    };
-    
-    // 状态变量
-    let currentSpeaker = '';
-    let audioList = [];
-    let currentAudioIndex = -1;
-    let isModified = false;
-    let isVaLabelingMode = true; // 当前是否处于VA标注模式
-    let selectedDiscreteEmotion = null;
-    let patientStatus = 'patient'; // 默认为患者
-    
-    // 初始化
-    // initSpeakers();
     
     // 事件监听器
     speakerSelect.addEventListener('change', handleSpeakerChange);
