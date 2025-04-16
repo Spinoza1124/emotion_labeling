@@ -490,7 +490,7 @@ document.addEventListener('DOMContentLoaded', function() {
         
         // 启用按钮
         continueButton.disabled = false;
-        saveButton.textContent = '保存'; // 先重置保存按钮文本
+        saveButton.textContent = '保存(W)'; // 先重置保存按钮文本
         saveButton.disabled = false;
         prevButton.disabled = index <= 0;
         nextButton.disabled = index >= audioList.length - 1;
@@ -506,7 +506,7 @@ document.addEventListener('DOMContentLoaded', function() {
         } else {
             isModified = false;
             // 对于新标注的音频，保持保存按钮为"保存"状态
-            saveButton.textContent = '保存';
+            saveButton.textContent = '保存(W)';
             saveButton.disabled = false;
         }
         
@@ -586,7 +586,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     isModified = false; // 重置修改标志
 
                     // 设置保存按钮为"已保存"状态并禁用
-                    saveButton.textContent = '已保存';
+                    saveButton.textContent = '已保存(W)';
                     saveButton.disabled = true;
                 }
             })
@@ -608,8 +608,8 @@ document.addEventListener('DOMContentLoaded', function() {
         
         isModified = true;
         // 如果按钮显示"已保存"，则将其更改为"保存"
-        if (saveButton.textContent === '已保存') {
-            saveButton.textContent = '保存';
+        if (saveButton.textContent === '已保存(W)') {
+            saveButton.textContent = '保存(W)';
         }
         saveButton.disabled = false;
     }
@@ -688,8 +688,8 @@ document.addEventListener('DOMContentLoaded', function() {
                     } else {
                         saveButton.disabled = false;
                         // 如果按钮显示"已保存"，则将其更改为"保存"
-                        if (saveButton.textContent === '已保存') {
-                            saveButton.textContent = '保存';
+                        if (saveButton.textContent === '已保存(W') {
+                            saveButton.textContent = '保存(W)';
                         }
                     }
                 } else {
@@ -698,8 +698,8 @@ document.addEventListener('DOMContentLoaded', function() {
                     // 中性情感可以直接保存
                     saveButton.disabled = false;
                     // 如果按钮显示"已保存"，则将其更改为"保存"
-                    if (saveButton.textContent === '已保存') {
-                        saveButton.textContent = '保存';
+                    if (saveButton.textContent === '已保存(W)') {
+                        saveButton.textContent = '保存(W)';
                     }
                     // 清除所有具体情感的选择
                     discreteEmotionRadios.forEach(radio => {
@@ -715,9 +715,9 @@ document.addEventListener('DOMContentLoaded', function() {
                     selectedDiscreteEmotion = this.value;
                     isModified = true;
                     
-                    // 如果按钮显示"已保存"，则将其更改为"保存"
-                    if (saveButton.textContent === '已保存') {
-                        saveButton.textContent = '保存';
+                    // 如果按钮显示"已保存(W)"，则将其更改为"保存"
+                    if (saveButton.textContent === '已保存(W)') {
+                        saveButton.textContent = '保存(W)';
                     }
                     saveButton.disabled = false;
                 });
@@ -755,7 +755,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 audioList[currentAudioIndex].labeled = true;
                 renderAudioList();
                 isModified = false;
-                saveButton.textContent = '已保存';
+                saveButton.textContent = '已保存(W)';
                 saveButton.disabled = true; // 保存成功后禁用按钮
                 // 不再设置自动恢复为"保存"的定时器
             } else {
@@ -768,7 +768,7 @@ document.addEventListener('DOMContentLoaded', function() {
         .catch(error => {
             console.error('保存标注失败:', error);
             alert('保存标注失败，请重试');
-            saveButton.textContent = '保存';
+            saveButton.textContent = '保存(W)';
             saveButton.disabled = false;
             // 即使出错也重置焦点
             resetFocus();
