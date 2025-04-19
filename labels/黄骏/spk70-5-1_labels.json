@@ -1,0 +1,79 @@
+[
+  {
+    "audio_file": "spk70-5-1-5.wav",
+    "v_value": 0,
+    "a_value": 3,
+    "emotion_type": "neutral",
+    "discrete_emotion": null,
+    "username": "黄骏",
+    "patient_status": "non-patient",
+    "audio_duration": 10.4,
+    "timestamp": "2025-04-18 09:24:06"
+  },
+  {
+    "audio_file": "spk70-5-1-6.wav",
+    "v_value": 0,
+    "a_value": 3.5,
+    "emotion_type": "neutral",
+    "discrete_emotion": null,
+    "username": "黄骏",
+    "patient_status": "patient",
+    "audio_duration": 7.18,
+    "timestamp": "2025-04-18 09:24:41"
+  },
+  {
+    "audio_file": "spk70-5-1-7.wav",
+    "v_value": -0.5,
+    "a_value": 3,
+    "emotion_type": "neutral",
+    "discrete_emotion": null,
+    "username": "黄骏",
+    "patient_status": "patient",
+    "audio_duration": 8.09,
+    "timestamp": "2025-04-18 09:25:26"
+  },
+  {
+    "audio_file": "spk70-5-1-8.wav",
+    "v_value": 0,
+    "a_value": 3,
+    "emotion_type": "neutral",
+    "discrete_emotion": null,
+    "username": "黄骏",
+    "patient_status": "patient",
+    "audio_duration": 9.74,
+    "timestamp": "2025-04-18 09:26:20"
+  },
+  {
+    "audio_file": "spk70-5-1-9.wav",
+    "v_value": -1,
+    "a_value": 3,
+    "emotion_type": "neutral",
+    "discrete_emotion": null,
+    "username": "黄骏",
+    "patient_status": "patient",
+    "audio_duration": 5.52,
+    "timestamp": "2025-04-18 09:27:22"
+  },
+  {
+    "audio_file": "spk70-5-1-10.wav",
+    "v_value": -0.25,
+    "a_value": 3,
+    "emotion_type": "neutral",
+    "discrete_emotion": null,
+    "username": "黄骏",
+    "patient_status": "patient",
+    "audio_duration": 9.79,
+    "timestamp": "2025-04-18 09:28:51"
+  },
+  {
+    "audio_file": "spk70-5-1-11.wav",
+    "v_value": -1.5,
+    "a_value": 2.5,
+    "emotion_type": "neutral",
+    "discrete_emotion": null,
+    "username": "黄骏",
+    "patient_status": "patient",
+    "audio_duration": 8.18,
+    "timestamp": "2025-04-18 09:30:46"
+  }
+]

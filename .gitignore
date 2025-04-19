@@ -1,6 +1,5 @@
 # 忽略音频和标签数据文件夹
 emotion_annotation/
-labels/
 
 # 虚拟环境
 .venv/
