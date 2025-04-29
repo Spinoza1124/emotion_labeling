@@ -4299,5 +4299,16 @@
     "patient_status": "patient",
     "audio_duration": 1.58,
     "timestamp": "2025-04-22 02:03:14"
+  },
+  {
+    "audio_file": "spk77-3-1-378.wav",
+    "v_value": 0,
+    "a_value": 3.5,
+    "emotion_type": "neutral",
+    "discrete_emotion": null,
+    "username": "俞航镔",
+    "patient_status": "patient",
+    "audio_duration": 7.16,
+    "timestamp": "2025-04-27 12:30:38"
   }
 ]
