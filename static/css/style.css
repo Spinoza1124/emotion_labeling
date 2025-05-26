@@ -324,12 +324,11 @@ audio {
     font-weight: bold;
 }
 
-/* 滑动条刻度 */
+/* 滑动条刻度调整 */
 .slider-ticks {
     position: relative;
-    display: grid !important;
-    grid-auto-flow: column;
-    grid-auto-columns: 1fr;
+    display: flex !important; /* 改用flex而不是grid */
+    justify-content: space-between; /* 均匀分布各刻度点 */
     width: 100%;
     height: 20px;
     margin-top: 5px;
@@ -340,8 +339,7 @@ audio {
 .slider-ticks span {
     display: block;
     text-align: center;
-    width: 100% !important;
-    transform: translateX(0) !important;
+    width: auto !important; /* 允许自然宽度 */
     position: relative;
 }
 
@@ -373,12 +371,15 @@ audio {
     color: #777;
 }
 
-/* 修改唤醒程度描述的样式 */
+/* 修改描述文字的定位方式 */
 .slider-descriptions {
     margin-top: 5px;
-    margin-bottom: 30px; /* 增加与下方元素的距离 */
-    height: 20px; /* 固定高度 */
+    margin-bottom: 30px;
+    height: 20px;
     position: relative;
+    display: flex;
+    justify-content: space-between; /* 与刻度保持一致的分布 */
+    width: 100%;
 }
 
 /* 修改默认对齐方式，保证极低和极高唤醒位置正确 */
@@ -400,7 +401,7 @@ audio {
 /* 添加低唤醒的特殊定位 */
 .slider-descriptions span.low-arousal {
     position: absolute;
-    left: 26%; /* 对应数值2的位置 (25%) */
+    left: 25%; /* 对应数值2的位置 (25%) */
     width: auto;
     transform: translateX(-50%); /* 居中对齐文字 */
 }
@@ -416,7 +417,7 @@ audio {
 /* 添加高唤醒的特殊定位 */
 .slider-descriptions span.high-arousal {
     position: absolute;
-    left: 74%; /* 对应数值4的位置 (75%) */
+    left: 75%; /* 对应数值4的位置 (75%) */
     width: auto;
     transform: translateX(-50%); /* 居中对齐文字 */
 }
@@ -440,7 +441,7 @@ audio {
 /* 修改V值效价描述的样式 */
 .slider-descriptions span.mild-negative {
     position: absolute;
-    left: 26%; /* 对应数值-1的位置 (25%) */
+    left: 25%; /* 对应数值-1的位置 (25%) */
     width: auto;
     transform: translateX(-50%); /* 居中对齐文字 */
 }
@@ -454,7 +455,7 @@ audio {
 
 .slider-descriptions span.mild-positive {
     position: absolute;
-    left: 74%; /* 对应数值1的位置 (75%) */
+    left: 75%; /* 对应数值1的位置 (75%) */
     width: auto;
     transform: translateX(-50%); /* 居中对齐文字 */
 }

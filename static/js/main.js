@@ -144,12 +144,12 @@ document.addEventListener('DOMContentLoaded', function() {
     // 初始化滑动条的默认值
     vSlider.min = -2;
     vSlider.max = 2;
-    vSlider.step = 0.25;
+    vSlider.step = 0.5;
     vSlider.value = 0;
 
     aSlider.min = 1;
     aSlider.max = 5;
-    aSlider.step = 0.25;
+    aSlider.step = 0.5;
     aSlider.value = 3;
 
     // 更新滑动条值显示
