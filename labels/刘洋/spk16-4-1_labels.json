@@ -5,10 +5,10 @@
     "a_value": 3,
     "emotion_type": "neutral",
     "discrete_emotion": null,
-    "username": "俞航镔",
+    "username": "刘洋",
     "patient_status": "non-patient",
     "audio_duration": 0.86,
-    "timestamp": "2025-05-22 08:01:18"
+    "timestamp": "2025-05-28 04:48:02"
   },
   {
     "audio_file": "spk16-4-1-2.wav",
@@ -16,10 +16,10 @@
     "a_value": 3,
     "emotion_type": "neutral",
     "discrete_emotion": null,
-    "username": "俞航镔",
+    "username": "刘洋",
     "patient_status": "patient",
     "audio_duration": 1.6,
-    "timestamp": "2025-05-22 08:01:21"
+    "timestamp": "2025-05-28 04:48:04"
   },
   {
     "audio_file": "spk16-4-1-3.wav",
@@ -27,10 +27,10 @@
     "a_value": 3,
     "emotion_type": "neutral",
     "discrete_emotion": null,
-    "username": "俞航镔",
+    "username": "刘洋",
     "patient_status": "patient",
     "audio_duration": 1.3,
-    "timestamp": "2025-05-22 08:01:24"
+    "timestamp": "2025-05-28 05:52:19"
   },
   {
     "audio_file": "spk16-4-1-4.wav",
@@ -38,10 +38,10 @@
     "a_value": 3,
     "emotion_type": "neutral",
     "discrete_emotion": null,
-    "username": "俞航镔",
+    "username": "刘洋",
     "patient_status": "patient",
     "audio_duration": 1.28,
-    "timestamp": "2025-05-22 08:01:27"
+    "timestamp": "2025-05-28 05:54:49"
   },
   {
     "audio_file": "spk16-4-1-5.wav",
@@ -49,10 +49,10 @@
     "a_value": 3,
     "emotion_type": "neutral",
     "discrete_emotion": null,
-    "username": "俞航镔",
+    "username": "刘洋",
     "patient_status": "patient",
     "audio_duration": 4.24,
-    "timestamp": "2025-05-22 08:01:32"
+    "timestamp": "2025-05-28 05:54:54"
   },
   {
     "audio_file": "spk16-4-1-6.wav",
@@ -60,10 +60,10 @@
     "a_value": 3,
     "emotion_type": "neutral",
     "discrete_emotion": null,
-    "username": "俞航镔",
+    "username": "刘洋",
     "patient_status": "patient",
     "audio_duration": 1.84,
-    "timestamp": "2025-05-22 08:01:36"
+    "timestamp": "2025-05-28 05:55:28"
   },
   {
     "audio_file": "spk16-4-1-7.wav",
@@ -71,10 +71,10 @@
     "a_value": 3,
     "emotion_type": "neutral",
     "discrete_emotion": null,
-    "username": "俞航镔",
-    "patient_status": "non-patient",
+    "username": "刘洋",
+    "patient_status": "patient",
     "audio_duration": 0.74,
-    "timestamp": "2025-05-22 08:01:39"
+    "timestamp": "2025-05-28 05:57:21"
   },
   {
     "audio_file": "spk16-4-1-8.wav",
@@ -82,10 +82,10 @@
     "a_value": 2,
     "emotion_type": "neutral",
     "discrete_emotion": null,
-    "username": "俞航镔",
+    "username": "刘洋",
     "patient_status": "patient",
     "audio_duration": 10.64,
-    "timestamp": "2025-05-22 08:01:53"
+    "timestamp": "2025-05-28 05:57:38"
   },
   {
     "audio_file": "spk16-4-1-9.wav",
@@ -93,10 +93,10 @@
     "a_value": 3,
     "emotion_type": "neutral",
     "discrete_emotion": null,
-    "username": "俞航镔",
+    "username": "刘洋",
     "patient_status": "patient",
     "audio_duration": 2.16,
-    "timestamp": "2025-05-22 08:01:57"
+    "timestamp": "2025-05-28 05:57:42"
   },
   {
     "audio_file": "spk16-4-1-10.wav",
@@ -104,10 +104,10 @@
     "a_value": 3,
     "emotion_type": "neutral",
     "discrete_emotion": null,
-    "username": "俞航镔",
+    "username": "刘洋",
     "patient_status": "patient",
     "audio_duration": 2.445,
-    "timestamp": "2025-05-22 08:02:00"
+    "timestamp": "2025-05-28 05:57:56"
   },
   {
     "audio_file": "spk16-4-1-11.wav",
@@ -115,10 +115,10 @@
     "a_value": 3,
     "emotion_type": "neutral",
     "discrete_emotion": null,
-    "username": "俞航镔",
+    "username": "刘洋",
     "patient_status": "patient",
     "audio_duration": 3.28,
-    "timestamp": "2025-05-22 08:02:05"
+    "timestamp": "2025-05-28 05:58:05"
   },
   {
     "audio_file": "spk16-4-1-12.wav",
@@ -126,10 +126,10 @@
     "a_value": 3,
     "emotion_type": "neutral",
     "discrete_emotion": null,
-    "username": "俞航镔",
+    "username": "刘洋",
     "patient_status": "patient",
     "audio_duration": 9.2,
-    "timestamp": "2025-05-22 08:02:16"
+    "timestamp": "2025-05-28 05:58:15"
   },
   {
     "audio_file": "spk16-4-1-13.wav",
@@ -137,10 +137,10 @@
     "a_value": 3,
     "emotion_type": "neutral",
     "discrete_emotion": null,
-    "username": "俞航镔",
+    "username": "刘洋",
     "patient_status": "patient",
     "audio_duration": 2.68,
-    "timestamp": "2025-05-22 08:02:20"
+    "timestamp": "2025-05-28 05:58:18"
   },
   {
     "audio_file": "spk16-4-1-14.wav",
@@ -148,10 +148,10 @@
     "a_value": 3,
     "emotion_type": "neutral",
     "discrete_emotion": null,
-    "username": "俞航镔",
+    "username": "刘洋",
     "patient_status": "patient",
     "audio_duration": 1.78,
-    "timestamp": "2025-05-22 08:02:23"
+    "timestamp": "2025-05-28 05:58:21"
   },
   {
     "audio_file": "spk16-4-1-15.wav",
@@ -159,21 +159,21 @@
     "a_value": 3,
     "emotion_type": "neutral",
     "discrete_emotion": null,
-    "username": "俞航镔",
+    "username": "刘洋",
     "patient_status": "patient",
     "audio_duration": 1.98,
-    "timestamp": "2025-05-22 08:06:03"
+    "timestamp": "2025-05-28 05:59:12"
   },
   {
     "audio_file": "spk16-4-1-16.wav",
-    "v_value": 0.5,
-    "a_value": 3.5,
+    "v_value": 0,
+    "a_value": 3,
     "emotion_type": "neutral",
     "discrete_emotion": null,
-    "username": "俞航镔",
+    "username": "刘洋",
     "patient_status": "patient",
     "audio_duration": 4.1,
-    "timestamp": "2025-05-22 08:06:10"
+    "timestamp": "2025-05-28 05:59:20"
   },
   {
     "audio_file": "spk16-4-1-17.wav",
@@ -181,10 +181,10 @@
     "a_value": 3,
     "emotion_type": "neutral",
     "discrete_emotion": null,
-    "username": "俞航镔",
+    "username": "刘洋",
     "patient_status": "patient",
     "audio_duration": 1.24,
-    "timestamp": "2025-05-22 08:06:13"
+    "timestamp": "2025-05-28 05:59:24"
   },
   {
     "audio_file": "spk16-4-1-18.wav",
@@ -192,10 +192,10 @@
     "a_value": 3,
     "emotion_type": "neutral",
     "discrete_emotion": null,
-    "username": "俞航镔",
+    "username": "刘洋",
     "patient_status": "patient",
     "audio_duration": 3.12,
-    "timestamp": "2025-05-22 08:06:18"
+    "timestamp": "2025-05-28 05:59:28"
   },
   {
     "audio_file": "spk16-4-1-19.wav",
@@ -203,21 +203,21 @@
     "a_value": 3,
     "emotion_type": "neutral",
     "discrete_emotion": null,
-    "username": "俞航镔",
+    "username": "刘洋",
     "patient_status": "patient",
     "audio_duration": 5.52,
-    "timestamp": "2025-05-22 08:06:25"
+    "timestamp": "2025-05-28 05:59:37"
   },
   {
     "audio_file": "spk16-4-1-20.wav",
     "v_value": 0,
-    "a_value": 2.5,
+    "a_value": 3,
     "emotion_type": "neutral",
     "discrete_emotion": null,
-    "username": "俞航镔",
+    "username": "刘洋",
     "patient_status": "patient",
     "audio_duration": 7.4,
-    "timestamp": "2025-05-27 07:14:37"
+    "timestamp": "2025-05-28 05:59:45"
   },
   {
     "audio_file": "spk16-4-1-21.wav",
@@ -225,10 +225,10 @@
     "a_value": 3,
     "emotion_type": "neutral",
     "discrete_emotion": null,
-    "username": "俞航镔",
+    "username": "刘洋",
     "patient_status": "patient",
     "audio_duration": 3.81,
-    "timestamp": "2025-05-27 07:14:44"
+    "timestamp": "2025-05-28 05:59:53"
   },
   {
     "audio_file": "spk16-4-1-22.wav",
@@ -236,10 +236,10 @@
     "a_value": 3,
     "emotion_type": "neutral",
     "discrete_emotion": null,
-    "username": "俞航镔",
+    "username": "刘洋",
     "patient_status": "patient",
     "audio_duration": 6.765,
-    "timestamp": "2025-05-27 07:14:58"
+    "timestamp": "2025-05-28 05:59:59"
   },
   {
     "audio_file": "spk16-4-1-23.wav",
@@ -247,10 +247,10 @@
     "a_value": 3,
     "emotion_type": "neutral",
     "discrete_emotion": null,
-    "username": "俞航镔",
-    "patient_status": "patient",
+    "username": "刘洋",
+    "patient_status": "non-patient",
     "audio_duration": 2.92,
-    "timestamp": "2025-05-27 07:15:08"
+    "timestamp": "2025-05-28 06:00:10"
   },
   {
     "audio_file": "spk16-4-1-24.wav",
@@ -258,10 +258,10 @@
     "a_value": 3,
     "emotion_type": "neutral",
     "discrete_emotion": null,
-    "username": "俞航镔",
+    "username": "刘洋",
     "patient_status": "patient",
     "audio_duration": 1.38,
-    "timestamp": "2025-05-27 07:15:14"
+    "timestamp": "2025-05-28 06:00:31"
   },
   {
     "audio_file": "spk16-4-1-25.wav",
@@ -269,10 +269,10 @@
     "a_value": 3,
     "emotion_type": "neutral",
     "discrete_emotion": null,
-    "username": "俞航镔",
+    "username": "刘洋",
     "patient_status": "patient",
     "audio_duration": 1.32,
-    "timestamp": "2025-05-27 07:15:20"
+    "timestamp": "2025-05-28 06:00:37"
   },
   {
     "audio_file": "spk16-4-1-26.wav",
@@ -280,10 +280,10 @@
     "a_value": 3,
     "emotion_type": "neutral",
     "discrete_emotion": null,
-    "username": "俞航镔",
+    "username": "刘洋",
     "patient_status": "patient",
     "audio_duration": 1.14,
-    "timestamp": "2025-05-27 07:15:27"
+    "timestamp": "2025-05-28 06:00:41"
   },
   {
     "audio_file": "spk16-4-1-27.wav",
@@ -291,10 +291,10 @@
     "a_value": 3,
     "emotion_type": "neutral",
     "discrete_emotion": null,
-    "username": "俞航镔",
+    "username": "刘洋",
     "patient_status": "patient",
     "audio_duration": 5.96,
-    "timestamp": "2025-05-27 07:15:37"
+    "timestamp": "2025-05-28 06:00:45"
   },
   {
     "audio_file": "spk16-4-1-28.wav",
@@ -302,10 +302,10 @@
     "a_value": 3,
     "emotion_type": "neutral",
     "discrete_emotion": null,
-    "username": "俞航镔",
+    "username": "刘洋",
     "patient_status": "patient",
     "audio_duration": 5.12,
-    "timestamp": "2025-05-27 07:15:49"
+    "timestamp": "2025-05-28 06:00:53"
   },
   {
     "audio_file": "spk16-4-1-29.wav",
@@ -313,10 +313,10 @@
     "a_value": 3,
     "emotion_type": "neutral",
     "discrete_emotion": null,
-    "username": "俞航镔",
+    "username": "刘洋",
     "patient_status": "patient",
     "audio_duration": 5.92,
-    "timestamp": "2025-05-27 07:15:59"
+    "timestamp": "2025-05-28 06:01:01"
   },
   {
     "audio_file": "spk16-4-1-30.wav",
@@ -324,10 +324,10 @@
     "a_value": 3,
     "emotion_type": "neutral",
     "discrete_emotion": null,
-    "username": "俞航镔",
+    "username": "刘洋",
     "patient_status": "patient",
     "audio_duration": 1.42,
-    "timestamp": "2025-05-27 07:16:04"
+    "timestamp": "2025-05-28 06:01:03"
   },
   {
     "audio_file": "spk16-4-1-31.wav",
@@ -335,21 +335,21 @@
     "a_value": 3,
     "emotion_type": "neutral",
     "discrete_emotion": null,
-    "username": "俞航镔",
+    "username": "刘洋",
     "patient_status": "patient",
     "audio_duration": 6.26,
-    "timestamp": "2025-05-27 07:16:16"
+    "timestamp": "2025-05-28 06:01:10"
   },
   {
     "audio_file": "spk16-4-1-32.wav",
-    "v_value": -0.5,
+    "v_value": 0,
     "a_value": 3,
-    "emotion_type": "non-neutral",
-    "discrete_emotion": "fear",
-    "username": "俞航镔",
+    "emotion_type": "neutral",
+    "discrete_emotion": null,
+    "username": "刘洋",
     "patient_status": "patient",
     "audio_duration": 6.76,
-    "timestamp": "2025-05-27 07:16:49"
+    "timestamp": "2025-05-28 06:01:20"
   },
   {
     "audio_file": "spk16-4-1-33.wav",
@@ -357,10 +357,10 @@
     "a_value": 3,
     "emotion_type": "neutral",
     "discrete_emotion": null,
-    "username": "俞航镔",
+    "username": "刘洋",
     "patient_status": "patient",
     "audio_duration": 7.8,
-    "timestamp": "2025-05-27 07:17:05"
+    "timestamp": "2025-05-28 06:01:28"
   },
   {
     "audio_file": "spk16-4-1-34.wav",
@@ -368,43 +368,43 @@
     "a_value": 3,
     "emotion_type": "neutral",
     "discrete_emotion": null,
-    "username": "俞航镔",
+    "username": "刘洋",
     "patient_status": "patient",
     "audio_duration": 5.6,
-    "timestamp": "2025-05-27 07:17:14"
+    "timestamp": "2025-05-28 06:01:32"
   },
   {
     "audio_file": "spk16-4-1-35.wav",
-    "v_value": -1,
+    "v_value": 0,
     "a_value": 3,
-    "emotion_type": "non-neutral",
-    "discrete_emotion": "disgust",
-    "username": "俞航镔",
+    "emotion_type": "neutral",
+    "discrete_emotion": null,
+    "username": "刘洋",
     "patient_status": "patient",
     "audio_duration": 5.5,
-    "timestamp": "2025-05-27 07:17:30"
+    "timestamp": "2025-05-28 06:01:47"
   },
   {
     "audio_file": "spk16-4-1-36.wav",
-    "v_value": -0.5,
+    "v_value": 0,
     "a_value": 3,
-    "emotion_type": "non-neutral",
-    "discrete_emotion": "disgust",
-    "username": "俞航镔",
+    "emotion_type": "neutral",
+    "discrete_emotion": null,
+    "username": "刘洋",
     "patient_status": "patient",
     "audio_duration": 5.56,
-    "timestamp": "2025-05-27 07:17:52"
+    "timestamp": "2025-05-28 06:02:23"
   },
   {
     "audio_file": "spk16-4-1-37.wav",
-    "v_value": -0.5,
+    "v_value": 0,
     "a_value": 3,
-    "emotion_type": "non-neutral",
-    "discrete_emotion": "disgust",
-    "username": "俞航镔",
+    "emotion_type": "neutral",
+    "discrete_emotion": null,
+    "username": "刘洋",
     "patient_status": "patient",
     "audio_duration": 10.22,
-    "timestamp": "2025-05-27 07:18:13"
+    "timestamp": "2025-05-28 06:02:35"
   },
   {
     "audio_file": "spk16-4-1-38.wav",
@@ -412,10 +412,10 @@
     "a_value": 3,
     "emotion_type": "neutral",
     "discrete_emotion": null,
-    "username": "俞航镔",
+    "username": "刘洋",
     "patient_status": "patient",
     "audio_duration": 6.24,
-    "timestamp": "2025-05-27 07:18:24"
+    "timestamp": "2025-05-28 06:02:40"
   },
   {
     "audio_file": "spk16-4-1-39.wav",
@@ -423,10 +423,10 @@
     "a_value": 3,
     "emotion_type": "neutral",
     "discrete_emotion": null,
-    "username": "俞航镔",
+    "username": "刘洋",
     "patient_status": "patient",
     "audio_duration": 1.22,
-    "timestamp": "2025-05-27 07:18:29"
+    "timestamp": "2025-05-28 06:02:42"
   },
   {
     "audio_file": "spk16-4-1-40.wav",
@@ -434,10 +434,10 @@
     "a_value": 3,
     "emotion_type": "neutral",
     "discrete_emotion": null,
-    "username": "俞航镔",
+    "username": "刘洋",
     "patient_status": "patient",
     "audio_duration": 5.92,
-    "timestamp": "2025-05-27 07:18:40"
+    "timestamp": "2025-05-28 06:02:47"
   },
   {
     "audio_file": "spk16-4-1-41.wav",
@@ -445,10 +445,10 @@
     "a_value": 3,
     "emotion_type": "neutral",
     "discrete_emotion": null,
-    "username": "俞航镔",
+    "username": "刘洋",
     "patient_status": "patient",
     "audio_duration": 1.99,
-    "timestamp": "2025-05-27 07:18:56"
+    "timestamp": "2025-05-28 06:02:52"
   },
   {
     "audio_file": "spk16-4-1-42.wav",
@@ -456,10 +456,10 @@
     "a_value": 3,
     "emotion_type": "neutral",
     "discrete_emotion": null,
-    "username": "俞航镔",
+    "username": "刘洋",
     "patient_status": "patient",
     "audio_duration": 6.52,
-    "timestamp": "2025-05-27 07:19:09"
+    "timestamp": "2025-05-28 06:03:00"
   },
   {
     "audio_file": "spk16-4-1-43.wav",
@@ -467,10 +467,10 @@
     "a_value": 3,
     "emotion_type": "neutral",
     "discrete_emotion": null,
-    "username": "俞航镔",
+    "username": "刘洋",
     "patient_status": "patient",
     "audio_duration": 6.72,
-    "timestamp": "2025-05-27 07:19:24"
+    "timestamp": "2025-05-28 06:03:10"
   },
   {
     "audio_file": "spk16-4-1-44.wav",
@@ -478,10 +478,10 @@
     "a_value": 3,
     "emotion_type": "neutral",
     "discrete_emotion": null,
-    "username": "俞航镔",
+    "username": "刘洋",
     "patient_status": "patient",
     "audio_duration": 5.075,
-    "timestamp": "2025-05-27 07:19:30"
+    "timestamp": "2025-05-28 06:03:17"
   },
   {
     "audio_file": "spk16-4-1-45.wav",
@@ -489,10 +489,10 @@
     "a_value": 3,
     "emotion_type": "neutral",
     "discrete_emotion": null,
-    "username": "俞航镔",
+    "username": "刘洋",
     "patient_status": "patient",
     "audio_duration": 1.58,
-    "timestamp": "2025-05-27 07:19:36"
+    "timestamp": "2025-05-28 06:03:19"
   },
   {
     "audio_file": "spk16-4-1-46.wav",
@@ -500,10 +500,10 @@
     "a_value": 3,
     "emotion_type": "neutral",
     "discrete_emotion": null,
-    "username": "俞航镔",
+    "username": "刘洋",
     "patient_status": "patient",
     "audio_duration": 1.2,
-    "timestamp": "2025-05-27 07:19:43"
+    "timestamp": "2025-05-28 06:03:21"
   },
   {
     "audio_file": "spk16-4-1-47.wav",
@@ -511,10 +511,10 @@
     "a_value": 3,
     "emotion_type": "neutral",
     "discrete_emotion": null,
-    "username": "俞航镔",
+    "username": "刘洋",
     "patient_status": "patient",
     "audio_duration": 2.26,
-    "timestamp": "2025-05-27 07:19:48"
+    "timestamp": "2025-05-28 06:03:27"
   },
   {
     "audio_file": "spk16-4-1-48.wav",
@@ -522,10 +522,10 @@
     "a_value": 3,
     "emotion_type": "neutral",
     "discrete_emotion": null,
-    "username": "俞航镔",
+    "username": "刘洋",
     "patient_status": "patient",
     "audio_duration": 6.999,
-    "timestamp": "2025-05-27 07:20:00"
+    "timestamp": "2025-05-28 06:03:35"
   },
   {
     "audio_file": "spk16-4-1-49.wav",
@@ -533,10 +533,10 @@
     "a_value": 3,
     "emotion_type": "neutral",
     "discrete_emotion": null,
-    "username": "俞航镔",
+    "username": "刘洋",
     "patient_status": "patient",
     "audio_duration": 6.12,
-    "timestamp": "2025-05-27 07:20:08"
+    "timestamp": "2025-05-28 06:03:44"
   },
   {
     "audio_file": "spk16-4-1-50.wav",
@@ -544,10 +544,10 @@
     "a_value": 3,
     "emotion_type": "neutral",
     "discrete_emotion": null,
-    "username": "俞航镔",
+    "username": "刘洋",
     "patient_status": "patient",
     "audio_duration": 7.555,
-    "timestamp": "2025-05-27 07:20:17"
+    "timestamp": "2025-05-28 06:03:51"
   },
   {
     "audio_file": "spk16-4-1-51.wav",
@@ -555,10 +555,10 @@
     "a_value": 3,
     "emotion_type": "neutral",
     "discrete_emotion": null,
-    "username": "俞航镔",
+    "username": "刘洋",
     "patient_status": "patient",
     "audio_duration": 6.0,
-    "timestamp": "2025-05-27 07:20:25"
+    "timestamp": "2025-05-28 06:03:58"
   },
   {
     "audio_file": "spk16-4-1-52.wav",
@@ -566,10 +566,10 @@
     "a_value": 3,
     "emotion_type": "neutral",
     "discrete_emotion": null,
-    "username": "俞航镔",
+    "username": "刘洋",
     "patient_status": "patient",
     "audio_duration": 4.25,
-    "timestamp": "2025-05-27 07:20:31"
+    "timestamp": "2025-05-28 06:04:04"
   },
   {
     "audio_file": "spk16-4-1-53.wav",
@@ -577,10 +577,10 @@
     "a_value": 3,
     "emotion_type": "neutral",
     "discrete_emotion": null,
-    "username": "俞航镔",
+    "username": "刘洋",
     "patient_status": "patient",
     "audio_duration": 1.54,
-    "timestamp": "2025-05-27 07:20:34"
+    "timestamp": "2025-05-28 06:04:06"
   },
   {
     "audio_file": "spk16-4-1-54.wav",
@@ -588,10 +588,10 @@
     "a_value": 3,
     "emotion_type": "neutral",
     "discrete_emotion": null,
-    "username": "俞航镔",
+    "username": "刘洋",
     "patient_status": "patient",
     "audio_duration": 0.58,
-    "timestamp": "2025-05-27 07:20:40"
+    "timestamp": "2025-05-28 06:04:09"
   },
   {
     "audio_file": "spk16-4-1-55.wav",
@@ -599,10 +599,10 @@
     "a_value": 3,
     "emotion_type": "neutral",
     "discrete_emotion": null,
-    "username": "俞航镔",
+    "username": "刘洋",
     "patient_status": "patient",
     "audio_duration": 6.16,
-    "timestamp": "2025-05-27 07:20:48"
+    "timestamp": "2025-05-28 06:04:16"
   },
   {
     "audio_file": "spk16-4-1-56.wav",
@@ -610,10 +610,10 @@
     "a_value": 3,
     "emotion_type": "neutral",
     "discrete_emotion": null,
-    "username": "俞航镔",
+    "username": "刘洋",
     "patient_status": "patient",
     "audio_duration": 2.02,
-    "timestamp": "2025-05-27 07:20:57"
+    "timestamp": "2025-05-28 06:04:19"
   },
   {
     "audio_file": "spk16-4-1-57.wav",
@@ -621,10 +621,10 @@
     "a_value": 3,
     "emotion_type": "neutral",
     "discrete_emotion": null,
-    "username": "俞航镔",
+    "username": "刘洋",
     "patient_status": "patient",
     "audio_duration": 5.58,
-    "timestamp": "2025-05-27 07:21:05"
+    "timestamp": "2025-05-28 06:04:29"
   },
   {
     "audio_file": "spk16-4-1-58.wav",
@@ -632,10 +632,10 @@
     "a_value": 3,
     "emotion_type": "neutral",
     "discrete_emotion": null,
-    "username": "俞航镔",
+    "username": "刘洋",
     "patient_status": "patient",
     "audio_duration": 5.16,
-    "timestamp": "2025-05-27 07:21:16"
+    "timestamp": "2025-05-28 06:04:41"
   },
   {
     "audio_file": "spk16-4-1-59.wav",
@@ -643,10 +643,10 @@
     "a_value": 3,
     "emotion_type": "neutral",
     "discrete_emotion": null,
-    "username": "俞航镔",
+    "username": "刘洋",
     "patient_status": "patient",
     "audio_duration": 2.74,
-    "timestamp": "2025-05-27 07:21:20"
+    "timestamp": "2025-05-28 06:04:44"
   },
   {
     "audio_file": "spk16-4-1-60.wav",
@@ -654,10 +654,10 @@
     "a_value": 3,
     "emotion_type": "neutral",
     "discrete_emotion": null,
-    "username": "俞航镔",
+    "username": "刘洋",
     "patient_status": "patient",
     "audio_duration": 0.961,
-    "timestamp": "2025-05-27 07:21:23"
+    "timestamp": "2025-05-28 06:04:48"
   },
   {
     "audio_file": "spk16-4-1-61.wav",
@@ -665,21 +665,21 @@
     "a_value": 3,
     "emotion_type": "neutral",
     "discrete_emotion": null,
-    "username": "俞航镔",
+    "username": "刘洋",
     "patient_status": "patient",
     "audio_duration": 5.54,
-    "timestamp": "2025-05-27 07:21:32"
+    "timestamp": "2025-05-28 06:04:52"
   },
   {
     "audio_file": "spk16-4-1-62.wav",
     "v_value": 0,
-    "a_value": 3.5,
+    "a_value": 3,
     "emotion_type": "neutral",
     "discrete_emotion": null,
-    "username": "俞航镔",
+    "username": "刘洋",
     "patient_status": "patient",
     "audio_duration": 6.68,
-    "timestamp": "2025-05-27 07:21:40"
+    "timestamp": "2025-05-28 06:05:02"
   },
   {
     "audio_file": "spk16-4-1-63.wav",
@@ -687,10 +687,10 @@
     "a_value": 3,
     "emotion_type": "neutral",
     "discrete_emotion": null,
-    "username": "俞航镔",
+    "username": "刘洋",
     "patient_status": "patient",
     "audio_duration": 6.24,
-    "timestamp": "2025-05-27 07:21:51"
+    "timestamp": "2025-05-28 06:05:10"
   },
   {
     "audio_file": "spk16-4-1-64.wav",
@@ -698,10 +698,10 @@
     "a_value": 3,
     "emotion_type": "neutral",
     "discrete_emotion": null,
-    "username": "俞航镔",
+    "username": "刘洋",
     "patient_status": "patient",
     "audio_duration": 5.0,
-    "timestamp": "2025-05-27 07:21:57"
+    "timestamp": "2025-05-28 06:05:13"
   },
   {
     "audio_file": "spk16-4-1-65.wav",
@@ -709,21 +709,10 @@
     "a_value": 3,
     "emotion_type": "neutral",
     "discrete_emotion": null,
-    "username": "俞航镔",
+    "username": "刘洋",
     "patient_status": "patient",
     "audio_duration": 3.2,
-    "timestamp": "2025-05-27 07:22:03"
-  },
-  {
-    "audio_file": "spk16-4-1-66.wav",
-    "v_value": 0,
-    "a_value": 3,
-    "emotion_type": "neutral",
-    "discrete_emotion": null,
-    "username": "俞航镔",
-    "patient_status": "patient",
-    "audio_duration": 7.26,
-    "timestamp": "2025-05-27 07:22:14"
+    "timestamp": "2025-05-28 06:05:20"
   },
   {
     "audio_file": "spk16-4-1-67.wav",
@@ -731,10 +720,10 @@
     "a_value": 3,
     "emotion_type": "neutral",
     "discrete_emotion": null,
-    "username": "俞航镔",
+    "username": "刘洋",
     "patient_status": "patient",
     "audio_duration": 6.26,
-    "timestamp": "2025-05-27 07:22:28"
+    "timestamp": "2025-05-28 06:05:27"
   },
   {
     "audio_file": "spk16-4-1-68.wav",
@@ -742,10 +731,10 @@
     "a_value": 3,
     "emotion_type": "neutral",
     "discrete_emotion": null,
-    "username": "俞航镔",
+    "username": "刘洋",
     "patient_status": "patient",
     "audio_duration": 10.04,
-    "timestamp": "2025-05-27 07:22:43"
+    "timestamp": "2025-05-28 06:05:36"
   },
   {
     "audio_file": "spk16-4-1-69.wav",
@@ -753,21 +742,21 @@
     "a_value": 3,
     "emotion_type": "neutral",
     "discrete_emotion": null,
-    "username": "俞航镔",
+    "username": "刘洋",
     "patient_status": "patient",
     "audio_duration": 5.36,
-    "timestamp": "2025-05-27 07:22:52"
+    "timestamp": "2025-05-28 06:05:41"
   },
   {
     "audio_file": "spk16-4-1-70.wav",
     "v_value": 0,
-    "a_value": 3,
+    "a_value": 2.5,
     "emotion_type": "neutral",
     "discrete_emotion": null,
-    "username": "俞航镔",
+    "username": "刘洋",
     "patient_status": "patient",
     "audio_duration": 2.63,
-    "timestamp": "2025-05-27 07:23:08"
+    "timestamp": "2025-05-28 06:07:30"
   },
   {
     "audio_file": "spk16-4-1-71.wav",
@@ -775,10 +764,10 @@
     "a_value": 3,
     "emotion_type": "neutral",
     "discrete_emotion": null,
-    "username": "俞航镔",
+    "username": "刘洋",
     "patient_status": "patient",
     "audio_duration": 1.18,
-    "timestamp": "2025-05-27 07:23:17"
+    "timestamp": "2025-05-28 06:07:38"
   },
   {
     "audio_file": "spk16-4-1-72.wav",
@@ -786,10 +775,10 @@
     "a_value": 3,
     "emotion_type": "neutral",
     "discrete_emotion": null,
-    "username": "俞航镔",
+    "username": "刘洋",
     "patient_status": "patient",
     "audio_duration": 5.75,
-    "timestamp": "2025-05-27 07:23:25"
+    "timestamp": "2025-05-28 06:07:44"
   },
   {
     "audio_file": "spk16-4-1-73.wav",
@@ -797,10 +786,10 @@
     "a_value": 3,
     "emotion_type": "neutral",
     "discrete_emotion": null,
-    "username": "俞航镔",
+    "username": "刘洋",
     "patient_status": "patient",
     "audio_duration": 6.56,
-    "timestamp": "2025-05-27 07:28:22"
+    "timestamp": "2025-05-28 06:07:54"
   },
   {
     "audio_file": "spk16-4-1-74.wav",
@@ -808,10 +797,10 @@
     "a_value": 3,
     "emotion_type": "neutral",
     "discrete_emotion": null,
-    "username": "俞航镔",
+    "username": "刘洋",
     "patient_status": "patient",
     "audio_duration": 5.58,
-    "timestamp": "2025-05-27 07:28:31"
+    "timestamp": "2025-05-28 06:08:03"
   },
   {
     "audio_file": "spk16-4-1-75.wav",
@@ -819,32 +808,32 @@
     "a_value": 3,
     "emotion_type": "neutral",
     "discrete_emotion": null,
-    "username": "俞航镔",
+    "username": "刘洋",
     "patient_status": "patient",
     "audio_duration": 6.54,
-    "timestamp": "2025-05-27 07:29:26"
+    "timestamp": "2025-05-28 06:08:13"
   },
   {
     "audio_file": "spk16-4-1-76.wav",
     "v_value": 0,
-    "a_value": 3.5,
+    "a_value": 3,
     "emotion_type": "neutral",
     "discrete_emotion": null,
-    "username": "俞航镔",
+    "username": "刘洋",
     "patient_status": "patient",
     "audio_duration": 7.7,
-    "timestamp": "2025-05-27 07:29:41"
+    "timestamp": "2025-05-28 06:08:20"
   },
   {
     "audio_file": "spk16-4-1-77.wav",
     "v_value": 0,
-    "a_value": 3.5,
+    "a_value": 3,
     "emotion_type": "neutral",
     "discrete_emotion": null,
-    "username": "俞航镔",
+    "username": "刘洋",
     "patient_status": "patient",
     "audio_duration": 5.54,
-    "timestamp": "2025-05-27 07:29:52"
+    "timestamp": "2025-05-28 06:08:26"
   },
   {
     "audio_file": "spk16-4-1-78.wav",
@@ -852,10 +841,10 @@
     "a_value": 3,
     "emotion_type": "neutral",
     "discrete_emotion": null,
-    "username": "俞航镔",
+    "username": "刘洋",
     "patient_status": "patient",
     "audio_duration": 6.12,
-    "timestamp": "2025-05-27 07:30:18"
+    "timestamp": "2025-05-28 06:08:31"
   },
   {
     "audio_file": "spk16-4-1-79.wav",
@@ -863,10 +852,10 @@
     "a_value": 3,
     "emotion_type": "neutral",
     "discrete_emotion": null,
-    "username": "俞航镔",
+    "username": "刘洋",
     "patient_status": "patient",
     "audio_duration": 5.2,
-    "timestamp": "2025-05-27 07:30:26"
+    "timestamp": "2025-05-28 06:08:38"
   },
   {
     "audio_file": "spk16-4-1-80.wav",
@@ -874,10 +863,10 @@
     "a_value": 3,
     "emotion_type": "neutral",
     "discrete_emotion": null,
-    "username": "俞航镔",
+    "username": "刘洋",
     "patient_status": "patient",
     "audio_duration": 5.16,
-    "timestamp": "2025-05-27 07:30:35"
+    "timestamp": "2025-05-28 06:08:45"
   },
   {
     "audio_file": "spk16-4-1-81.wav",
@@ -885,10 +874,10 @@
     "a_value": 3,
     "emotion_type": "neutral",
     "discrete_emotion": null,
-    "username": "俞航镔",
+    "username": "刘洋",
     "patient_status": "patient",
     "audio_duration": 5.7,
-    "timestamp": "2025-05-27 07:30:45"
+    "timestamp": "2025-05-28 06:08:52"
   },
   {
     "audio_file": "spk16-4-1-82.wav",
@@ -896,10 +885,10 @@
     "a_value": 3,
     "emotion_type": "neutral",
     "discrete_emotion": null,
-    "username": "俞航镔",
+    "username": "刘洋",
     "patient_status": "patient",
     "audio_duration": 2.79,
-    "timestamp": "2025-05-27 07:30:54"
+    "timestamp": "2025-05-28 06:08:55"
   },
   {
     "audio_file": "spk16-4-1-83.wav",
@@ -907,10 +896,10 @@
     "a_value": 3,
     "emotion_type": "neutral",
     "discrete_emotion": null,
-    "username": "俞航镔",
+    "username": "刘洋",
     "patient_status": "patient",
     "audio_duration": 0.62,
-    "timestamp": "2025-05-27 07:31:02"
+    "timestamp": "2025-05-28 06:08:57"
   },
   {
     "audio_file": "spk16-4-1-84.wav",
@@ -918,10 +907,10 @@
     "a_value": 3,
     "emotion_type": "neutral",
     "discrete_emotion": null,
-    "username": "俞航镔",
-    "patient_status": "non-patient",
+    "username": "刘洋",
+    "patient_status": "patient",
     "audio_duration": 0.87,
-    "timestamp": "2025-05-27 07:31:06"
+    "timestamp": "2025-05-28 06:08:59"
   },
   {
     "audio_file": "spk16-4-1-85.wav",
@@ -929,21 +918,21 @@
     "a_value": 3,
     "emotion_type": "neutral",
     "discrete_emotion": null,
-    "username": "俞航镔",
+    "username": "刘洋",
     "patient_status": "patient",
     "audio_duration": 8.29,
-    "timestamp": "2025-05-27 07:31:16"
+    "timestamp": "2025-05-28 06:09:08"
   },
   {
     "audio_file": "spk16-4-1-86.wav",
     "v_value": 0,
-    "a_value": 3.5,
+    "a_value": 3,
     "emotion_type": "neutral",
     "discrete_emotion": null,
-    "username": "俞航镔",
+    "username": "刘洋",
     "patient_status": "patient",
     "audio_duration": 5.475,
-    "timestamp": "2025-05-27 07:35:15"
+    "timestamp": "2025-05-28 06:09:24"
   },
   {
     "audio_file": "spk16-4-1-87.wav",
@@ -951,10 +940,10 @@
     "a_value": 3,
     "emotion_type": "neutral",
     "discrete_emotion": null,
-    "username": "俞航镔",
+    "username": "刘洋",
     "patient_status": "patient",
     "audio_duration": 7.94,
-    "timestamp": "2025-05-27 07:35:26"
+    "timestamp": "2025-05-28 06:09:34"
   },
   {
     "audio_file": "spk16-4-1-88.wav",
@@ -962,10 +951,10 @@
     "a_value": 3,
     "emotion_type": "neutral",
     "discrete_emotion": null,
-    "username": "俞航镔",
+    "username": "刘洋",
     "patient_status": "patient",
     "audio_duration": 5.28,
-    "timestamp": "2025-05-27 07:35:36"
+    "timestamp": "2025-05-28 06:09:40"
   },
   {
     "audio_file": "spk16-4-1-89.wav",
@@ -973,10 +962,10 @@
     "a_value": 3,
     "emotion_type": "neutral",
     "discrete_emotion": null,
-    "username": "俞航镔",
+    "username": "刘洋",
     "patient_status": "patient",
     "audio_duration": 10.8,
-    "timestamp": "2025-05-27 07:35:49"
+    "timestamp": "2025-05-28 06:09:47"
   },
   {
     "audio_file": "spk16-4-1-90.wav",
@@ -984,10 +973,10 @@
     "a_value": 3,
     "emotion_type": "neutral",
     "discrete_emotion": null,
-    "username": "俞航镔",
+    "username": "刘洋",
     "patient_status": "patient",
     "audio_duration": 6.39,
-    "timestamp": "2025-05-27 07:35:58"
+    "timestamp": "2025-05-28 06:09:55"
   },
   {
     "audio_file": "spk16-4-1-91.wav",
@@ -995,10 +984,10 @@
     "a_value": 3,
     "emotion_type": "neutral",
     "discrete_emotion": null,
-    "username": "俞航镔",
+    "username": "刘洋",
     "patient_status": "patient",
     "audio_duration": 7.3,
-    "timestamp": "2025-05-27 07:36:12"
+    "timestamp": "2025-05-28 06:10:05"
   },
   {
     "audio_file": "spk16-4-1-92.wav",
@@ -1006,10 +995,10 @@
     "a_value": 3,
     "emotion_type": "neutral",
     "discrete_emotion": null,
-    "username": "俞航镔",
+    "username": "刘洋",
     "patient_status": "patient",
     "audio_duration": 1.18,
-    "timestamp": "2025-05-27 07:36:15"
+    "timestamp": "2025-05-28 06:10:08"
   },
   {
     "audio_file": "spk16-4-1-93.wav",
@@ -1017,21 +1006,21 @@
     "a_value": 3,
     "emotion_type": "neutral",
     "discrete_emotion": null,
-    "username": "俞航镔",
+    "username": "刘洋",
     "patient_status": "patient",
     "audio_duration": 5.37,
-    "timestamp": "2025-05-27 07:36:33"
+    "timestamp": "2025-05-28 06:10:16"
   },
   {
     "audio_file": "spk16-4-1-94.wav",
     "v_value": 0,
-    "a_value": 3,
+    "a_value": 2.5,
     "emotion_type": "neutral",
     "discrete_emotion": null,
-    "username": "俞航镔",
+    "username": "刘洋",
     "patient_status": "patient",
     "audio_duration": 5.26,
-    "timestamp": "2025-05-27 07:36:49"
+    "timestamp": "2025-05-28 06:10:22"
   },
   {
     "audio_file": "spk16-4-1-95.wav",
@@ -1039,10 +1028,10 @@
     "a_value": 3,
     "emotion_type": "neutral",
     "discrete_emotion": null,
-    "username": "俞航镔",
+    "username": "刘洋",
     "patient_status": "patient",
     "audio_duration": 1.34,
-    "timestamp": "2025-05-27 07:36:57"
+    "timestamp": "2025-05-28 06:10:26"
   },
   {
     "audio_file": "spk16-4-1-96.wav",
@@ -1050,10 +1039,10 @@
     "a_value": 3,
     "emotion_type": "neutral",
     "discrete_emotion": null,
-    "username": "俞航镔",
+    "username": "刘洋",
     "patient_status": "non-patient",
     "audio_duration": 1.045,
-    "timestamp": "2025-05-27 07:51:22"
+    "timestamp": "2025-05-28 06:10:30"
   },
   {
     "audio_file": "spk16-4-1-97.wav",
@@ -1061,10 +1050,10 @@
     "a_value": 3,
     "emotion_type": "neutral",
     "discrete_emotion": null,
-    "username": "俞航镔",
+    "username": "刘洋",
     "patient_status": "patient",
     "audio_duration": 6.3,
-    "timestamp": "2025-05-27 07:51:31"
+    "timestamp": "2025-05-28 06:10:37"
   },
   {
     "audio_file": "spk16-4-1-98.wav",
@@ -1072,10 +1061,10 @@
     "a_value": 3,
     "emotion_type": "neutral",
     "discrete_emotion": null,
-    "username": "俞航镔",
+    "username": "刘洋",
     "patient_status": "patient",
     "audio_duration": 5.4,
-    "timestamp": "2025-05-27 07:51:41"
+    "timestamp": "2025-05-28 06:14:08"
   },
   {
     "audio_file": "spk16-4-1-99.wav",
@@ -1083,10 +1072,10 @@
     "a_value": 3,
     "emotion_type": "neutral",
     "discrete_emotion": null,
-    "username": "俞航镔",
+    "username": "刘洋",
     "patient_status": "patient",
     "audio_duration": 5.44,
-    "timestamp": "2025-05-27 07:51:49"
+    "timestamp": "2025-05-28 06:14:18"
   },
   {
     "audio_file": "spk16-4-1-100.wav",
@@ -1094,21 +1083,21 @@
     "a_value": 3,
     "emotion_type": "neutral",
     "discrete_emotion": null,
-    "username": "俞航镔",
-    "patient_status": "patient",
+    "username": "刘洋",
+    "patient_status": "non-patient",
     "audio_duration": 0.955,
-    "timestamp": "2025-05-27 07:51:53"
+    "timestamp": "2025-05-29 11:05:40"
   },
   {
     "audio_file": "spk16-4-1-101.wav",
-    "v_value": -0.5,
+    "v_value": 0,
     "a_value": 3,
-    "emotion_type": "non-neutral",
-    "discrete_emotion": "sad",
-    "username": "俞航镔",
+    "emotion_type": "neutral",
+    "discrete_emotion": null,
+    "username": "刘洋",
     "patient_status": "patient",
     "audio_duration": 5.22,
-    "timestamp": "2025-05-27 07:52:21"
+    "timestamp": "2025-05-28 06:14:39"
   },
   {
     "audio_file": "spk16-4-1-102.wav",
@@ -1116,10 +1105,10 @@
     "a_value": 3,
     "emotion_type": "neutral",
     "discrete_emotion": null,
-    "username": "俞航镔",
+    "username": "刘洋",
     "patient_status": "patient",
     "audio_duration": 6.46,
-    "timestamp": "2025-05-27 07:52:29"
+    "timestamp": "2025-05-28 06:14:49"
   },
   {
     "audio_file": "spk16-4-1-103.wav",
@@ -1127,10 +1116,10 @@
     "a_value": 3,
     "emotion_type": "neutral",
     "discrete_emotion": null,
-    "username": "俞航镔",
+    "username": "刘洋",
     "patient_status": "patient",
     "audio_duration": 8.48,
-    "timestamp": "2025-05-27 07:52:39"
+    "timestamp": "2025-05-28 06:14:57"
   },
   {
     "audio_file": "spk16-4-1-104.wav",
@@ -1138,10 +1127,10 @@
     "a_value": 3,
     "emotion_type": "neutral",
     "discrete_emotion": null,
-    "username": "俞航镔",
+    "username": "刘洋",
     "patient_status": "patient",
     "audio_duration": 7.46,
-    "timestamp": "2025-05-27 07:52:57"
+    "timestamp": "2025-05-28 06:18:00"
   },
   {
     "audio_file": "spk16-4-1-105.wav",
@@ -1149,10 +1138,10 @@
     "a_value": 3,
     "emotion_type": "neutral",
     "discrete_emotion": null,
-    "username": "俞航镔",
+    "username": "刘洋",
     "patient_status": "patient",
     "audio_duration": 5.16,
-    "timestamp": "2025-05-27 07:54:55"
+    "timestamp": "2025-05-28 06:18:09"
   },
   {
     "audio_file": "spk16-4-1-106.wav",
@@ -1160,10 +1149,10 @@
     "a_value": 3,
     "emotion_type": "neutral",
     "discrete_emotion": null,
-    "username": "俞航镔",
+    "username": "刘洋",
     "patient_status": "patient",
     "audio_duration": 4.48,
-    "timestamp": "2025-05-27 07:55:01"
+    "timestamp": "2025-05-28 06:18:17"
   },
   {
     "audio_file": "spk16-4-1-107.wav",
@@ -1171,10 +1160,10 @@
     "a_value": 3,
     "emotion_type": "neutral",
     "discrete_emotion": null,
-    "username": "俞航镔",
+    "username": "刘洋",
     "patient_status": "patient",
     "audio_duration": 6.84,
-    "timestamp": "2025-05-27 07:55:11"
+    "timestamp": "2025-05-28 06:19:04"
   },
   {
     "audio_file": "spk16-4-1-108.wav",
@@ -1182,10 +1171,10 @@
     "a_value": 3,
     "emotion_type": "neutral",
     "discrete_emotion": null,
-    "username": "俞航镔",
+    "username": "刘洋",
     "patient_status": "patient",
     "audio_duration": 7.27,
-    "timestamp": "2025-05-27 07:55:22"
+    "timestamp": "2025-05-28 06:19:12"
   },
   {
     "audio_file": "spk16-4-1-109.wav",
@@ -1193,10 +1182,10 @@
     "a_value": 3,
     "emotion_type": "neutral",
     "discrete_emotion": null,
-    "username": "俞航镔",
+    "username": "刘洋",
     "patient_status": "patient",
     "audio_duration": 7.76,
-    "timestamp": "2025-05-27 07:55:36"
+    "timestamp": "2025-05-28 06:19:24"
   },
   {
     "audio_file": "spk16-4-1-110.wav",
@@ -1204,10 +1193,10 @@
     "a_value": 3,
     "emotion_type": "neutral",
     "discrete_emotion": null,
-    "username": "俞航镔",
+    "username": "刘洋",
     "patient_status": "patient",
     "audio_duration": 5.78,
-    "timestamp": "2025-05-27 07:55:45"
+    "timestamp": "2025-05-28 06:19:33"
   },
   {
     "audio_file": "spk16-4-1-111.wav",
@@ -1215,10 +1204,10 @@
     "a_value": 3,
     "emotion_type": "neutral",
     "discrete_emotion": null,
-    "username": "俞航镔",
+    "username": "刘洋",
     "patient_status": "patient",
     "audio_duration": 8.4,
-    "timestamp": "2025-05-27 07:56:09"
+    "timestamp": "2025-05-28 06:19:46"
   },
   {
     "audio_file": "spk16-4-1-112.wav",
@@ -1226,10 +1215,10 @@
     "a_value": 3,
     "emotion_type": "neutral",
     "discrete_emotion": null,
-    "username": "俞航镔",
+    "username": "刘洋",
     "patient_status": "patient",
     "audio_duration": 1.995,
-    "timestamp": "2025-05-27 07:56:18"
+    "timestamp": "2025-05-28 06:19:49"
   },
   {
     "audio_file": "spk16-4-1-113.wav",
@@ -1237,21 +1226,21 @@
     "a_value": 3,
     "emotion_type": "neutral",
     "discrete_emotion": null,
-    "username": "俞航镔",
+    "username": "刘洋",
     "patient_status": "patient",
     "audio_duration": 1.82,
-    "timestamp": "2025-05-27 07:56:22"
+    "timestamp": "2025-05-28 06:19:54"
   },
   {
     "audio_file": "spk16-4-1-114.wav",
-    "v_value": -0.5,
-    "a_value": 2.5,
+    "v_value": 0,
+    "a_value": 3,
     "emotion_type": "neutral",
     "discrete_emotion": null,
-    "username": "俞航镔",
+    "username": "刘洋",
     "patient_status": "patient",
     "audio_duration": 3.565,
-    "timestamp": "2025-05-27 07:56:35"
+    "timestamp": "2025-05-28 06:20:03"
   },
   {
     "audio_file": "spk16-4-1-115.wav",
@@ -1259,10 +1248,10 @@
     "a_value": 3,
     "emotion_type": "neutral",
     "discrete_emotion": null,
-    "username": "俞航镔",
+    "username": "刘洋",
     "patient_status": "patient",
     "audio_duration": 7.405,
-    "timestamp": "2025-05-27 07:56:47"
+    "timestamp": "2025-05-28 06:20:20"
   },
   {
     "audio_file": "spk16-4-1-116.wav",
@@ -1270,10 +1259,10 @@
     "a_value": 3,
     "emotion_type": "neutral",
     "discrete_emotion": null,
-    "username": "俞航镔",
+    "username": "刘洋",
     "patient_status": "patient",
     "audio_duration": 11.0,
-    "timestamp": "2025-05-27 07:57:16"
+    "timestamp": "2025-05-28 06:20:26"
   },
   {
     "audio_file": "spk16-4-1-117.wav",
@@ -1281,10 +1270,10 @@
     "a_value": 3,
     "emotion_type": "neutral",
     "discrete_emotion": null,
-    "username": "俞航镔",
+    "username": "刘洋",
     "patient_status": "patient",
     "audio_duration": 3.28,
-    "timestamp": "2025-05-27 07:57:26"
+    "timestamp": "2025-05-28 06:20:49"
   },
   {
     "audio_file": "spk16-4-1-118.wav",
@@ -1292,10 +1281,10 @@
     "a_value": 3,
     "emotion_type": "neutral",
     "discrete_emotion": null,
-    "username": "俞航镔",
+    "username": "刘洋",
     "patient_status": "patient",
     "audio_duration": 7.06,
-    "timestamp": "2025-05-27 07:57:35"
+    "timestamp": "2025-05-28 06:20:55"
   },
   {
     "audio_file": "spk16-4-1-119.wav",
@@ -1303,10 +1292,10 @@
     "a_value": 3,
     "emotion_type": "neutral",
     "discrete_emotion": null,
-    "username": "俞航镔",
+    "username": "刘洋",
     "patient_status": "patient",
     "audio_duration": 9.645,
-    "timestamp": "2025-05-27 07:57:42"
+    "timestamp": "2025-05-28 06:20:58"
   },
   {
     "audio_file": "spk16-4-1-120.wav",
@@ -1314,10 +1303,10 @@
     "a_value": 3,
     "emotion_type": "neutral",
     "discrete_emotion": null,
-    "username": "俞航镔",
+    "username": "刘洋",
     "patient_status": "patient",
     "audio_duration": 2.7,
-    "timestamp": "2025-05-27 07:57:54"
+    "timestamp": "2025-05-28 06:21:03"
   },
   {
     "audio_file": "spk16-4-1-121.wav",
@@ -1325,10 +1314,10 @@
     "a_value": 3,
     "emotion_type": "neutral",
     "discrete_emotion": null,
-    "username": "俞航镔",
+    "username": "刘洋",
     "patient_status": "patient",
     "audio_duration": 6.52,
-    "timestamp": "2025-05-27 07:58:03"
+    "timestamp": "2025-05-28 06:21:09"
   },
   {
     "audio_file": "spk16-4-1-122.wav",
@@ -1336,10 +1325,10 @@
     "a_value": 3,
     "emotion_type": "neutral",
     "discrete_emotion": null,
-    "username": "俞航镔",
+    "username": "刘洋",
     "patient_status": "patient",
     "audio_duration": 6.5,
-    "timestamp": "2025-05-27 07:58:12"
+    "timestamp": "2025-05-28 06:21:13"
   },
   {
     "audio_file": "spk16-4-1-123.wav",
@@ -1347,10 +1336,10 @@
     "a_value": 3,
     "emotion_type": "neutral",
     "discrete_emotion": null,
-    "username": "俞航镔",
+    "username": "刘洋",
     "patient_status": "patient",
     "audio_duration": 1.485,
-    "timestamp": "2025-05-27 07:58:41"
+    "timestamp": "2025-05-28 06:21:15"
   },
   {
     "audio_file": "spk16-4-1-124.wav",
@@ -1358,10 +1347,10 @@
     "a_value": 3,
     "emotion_type": "neutral",
     "discrete_emotion": null,
-    "username": "俞航镔",
+    "username": "刘洋",
     "patient_status": "patient",
     "audio_duration": 6.9,
-    "timestamp": "2025-05-27 07:58:51"
+    "timestamp": "2025-05-28 06:21:24"
   },
   {
     "audio_file": "spk16-4-1-125.wav",
@@ -1369,10 +1358,10 @@
     "a_value": 3,
     "emotion_type": "neutral",
     "discrete_emotion": null,
-    "username": "俞航镔",
+    "username": "刘洋",
     "patient_status": "patient",
     "audio_duration": 6.12,
-    "timestamp": "2025-05-27 08:00:04"
+    "timestamp": "2025-05-28 06:21:32"
   },
   {
     "audio_file": "spk16-4-1-126.wav",
@@ -1380,10 +1369,10 @@
     "a_value": 3,
     "emotion_type": "neutral",
     "discrete_emotion": null,
-    "username": "俞航镔",
+    "username": "刘洋",
     "patient_status": "patient",
     "audio_duration": 2.69,
-    "timestamp": "2025-05-27 08:00:12"
+    "timestamp": "2025-05-28 06:21:35"
   },
   {
     "audio_file": "spk16-4-1-127.wav",
@@ -1391,10 +1380,10 @@
     "a_value": 3,
     "emotion_type": "neutral",
     "discrete_emotion": null,
-    "username": "俞航镔",
+    "username": "刘洋",
     "patient_status": "patient",
     "audio_duration": 7.36,
-    "timestamp": "2025-05-27 08:00:22"
+    "timestamp": "2025-05-28 06:21:43"
   },
   {
     "audio_file": "spk16-4-1-128.wav",
@@ -1402,10 +1391,10 @@
     "a_value": 3,
     "emotion_type": "neutral",
     "discrete_emotion": null,
-    "username": "俞航镔",
+    "username": "刘洋",
     "patient_status": "patient",
     "audio_duration": 5.62,
-    "timestamp": "2025-05-27 08:00:28"
+    "timestamp": "2025-05-28 06:22:31"
   },
   {
     "audio_file": "spk16-4-1-129.wav",
@@ -1413,10 +1402,10 @@
     "a_value": 3,
     "emotion_type": "neutral",
     "discrete_emotion": null,
-    "username": "俞航镔",
+    "username": "刘洋",
     "patient_status": "patient",
     "audio_duration": 7.42,
-    "timestamp": "2025-05-27 08:00:37"
+    "timestamp": "2025-05-28 06:22:40"
   },
   {
     "audio_file": "spk16-4-1-130.wav",
@@ -1424,10 +1413,10 @@
     "a_value": 3,
     "emotion_type": "neutral",
     "discrete_emotion": null,
-    "username": "俞航镔",
+    "username": "刘洋",
     "patient_status": "patient",
     "audio_duration": 7.06,
-    "timestamp": "2025-05-27 08:00:46"
+    "timestamp": "2025-05-28 06:22:44"
   },
   {
     "audio_file": "spk16-4-1-131.wav",
@@ -1435,10 +1424,10 @@
     "a_value": 3,
     "emotion_type": "neutral",
     "discrete_emotion": null,
-    "username": "俞航镔",
+    "username": "刘洋",
     "patient_status": "patient",
     "audio_duration": 6.8,
-    "timestamp": "2025-05-27 08:00:55"
+    "timestamp": "2025-05-28 06:22:55"
   },
   {
     "audio_file": "spk16-4-1-132.wav",
@@ -1446,10 +1435,10 @@
     "a_value": 3,
     "emotion_type": "neutral",
     "discrete_emotion": null,
-    "username": "俞航镔",
+    "username": "刘洋",
     "patient_status": "patient",
     "audio_duration": 9.74,
-    "timestamp": "2025-05-27 08:01:07"
+    "timestamp": "2025-05-28 06:23:01"
   },
   {
     "audio_file": "spk16-4-1-133.wav",
@@ -1457,10 +1446,10 @@
     "a_value": 3,
     "emotion_type": "neutral",
     "discrete_emotion": null,
-    "username": "俞航镔",
+    "username": "刘洋",
     "patient_status": "patient",
     "audio_duration": 7.13,
-    "timestamp": "2025-05-27 08:01:33"
+    "timestamp": "2025-05-28 06:23:10"
   },
   {
     "audio_file": "spk16-4-1-134.wav",
@@ -1468,10 +1457,10 @@
     "a_value": 3,
     "emotion_type": "neutral",
     "discrete_emotion": null,
-    "username": "俞航镔",
+    "username": "刘洋",
     "patient_status": "patient",
     "audio_duration": 5.4,
-    "timestamp": "2025-05-27 08:01:40"
+    "timestamp": "2025-05-28 06:23:16"
   },
   {
     "audio_file": "spk16-4-1-135.wav",
@@ -1479,10 +1468,10 @@
     "a_value": 3,
     "emotion_type": "neutral",
     "discrete_emotion": null,
-    "username": "俞航镔",
+    "username": "刘洋",
     "patient_status": "patient",
     "audio_duration": 3.7,
-    "timestamp": "2025-05-27 08:01:47"
+    "timestamp": "2025-05-28 06:23:20"
   },
   {
     "audio_file": "spk16-4-1-136.wav",
@@ -1490,10 +1479,10 @@
     "a_value": 3,
     "emotion_type": "neutral",
     "discrete_emotion": null,
-    "username": "俞航镔",
+    "username": "刘洋",
     "patient_status": "patient",
     "audio_duration": 5.36,
-    "timestamp": "2025-05-27 08:01:54"
+    "timestamp": "2025-05-28 06:23:24"
   },
   {
     "audio_file": "spk16-4-1-137.wav",
@@ -1501,32 +1490,32 @@
     "a_value": 3,
     "emotion_type": "neutral",
     "discrete_emotion": null,
-    "username": "俞航镔",
+    "username": "刘洋",
     "patient_status": "patient",
     "audio_duration": 1.78,
-    "timestamp": "2025-05-27 08:01:59"
+    "timestamp": "2025-05-28 06:23:26"
   },
   {
     "audio_file": "spk16-4-1-138.wav",
-    "v_value": 1,
-    "a_value": 3.5,
-    "emotion_type": "non-neutral",
-    "discrete_emotion": "happy",
-    "username": "俞航镔",
+    "v_value": 0,
+    "a_value": 3,
+    "emotion_type": "neutral",
+    "discrete_emotion": null,
+    "username": "刘洋",
     "patient_status": "patient",
     "audio_duration": 8.66,
-    "timestamp": "2025-05-27 08:02:17"
+    "timestamp": "2025-05-28 06:23:30"
   },
   {
     "audio_file": "spk16-4-1-139.wav",
-    "v_value": 0.5,
+    "v_value": 0,
     "a_value": 3,
-    "emotion_type": "non-neutral",
-    "discrete_emotion": "happy",
-    "username": "俞航镔",
+    "emotion_type": "neutral",
+    "discrete_emotion": null,
+    "username": "刘洋",
     "patient_status": "patient",
     "audio_duration": 4.27,
-    "timestamp": "2025-05-27 08:02:28"
+    "timestamp": "2025-05-28 06:23:33"
   },
   {
     "audio_file": "spk16-4-1-140.wav",
@@ -1534,10 +1523,10 @@
     "a_value": 3,
     "emotion_type": "neutral",
     "discrete_emotion": null,
-    "username": "俞航镔",
+    "username": "刘洋",
     "patient_status": "patient",
     "audio_duration": 1.1,
-    "timestamp": "2025-05-27 08:02:30"
+    "timestamp": "2025-05-28 06:23:36"
   },
   {
     "audio_file": "spk16-4-1-141.wav",
@@ -1545,10 +1534,10 @@
     "a_value": 3,
     "emotion_type": "neutral",
     "discrete_emotion": null,
-    "username": "俞航镔",
+    "username": "刘洋",
     "patient_status": "patient",
     "audio_duration": 5.36,
-    "timestamp": "2025-05-27 08:02:36"
+    "timestamp": "2025-05-28 06:23:42"
   },
   {
     "audio_file": "spk16-4-1-142.wav",
@@ -1556,10 +1545,10 @@
     "a_value": 3,
     "emotion_type": "neutral",
     "discrete_emotion": null,
-    "username": "俞航镔",
+    "username": "刘洋",
     "patient_status": "patient",
     "audio_duration": 1.72,
-    "timestamp": "2025-05-27 08:02:43"
+    "timestamp": "2025-05-28 06:23:44"
   },
   {
     "audio_file": "spk16-4-1-143.wav",
@@ -1567,10 +1556,10 @@
     "a_value": 3,
     "emotion_type": "neutral",
     "discrete_emotion": null,
-    "username": "俞航镔",
+    "username": "刘洋",
     "patient_status": "patient",
     "audio_duration": 1.54,
-    "timestamp": "2025-05-27 08:02:46"
+    "timestamp": "2025-05-28 06:23:55"
   },
   {
     "audio_file": "spk16-4-1-144.wav",
@@ -1578,21 +1567,21 @@
     "a_value": 3,
     "emotion_type": "neutral",
     "discrete_emotion": null,
-    "username": "俞航镔",
+    "username": "刘洋",
     "patient_status": "patient",
     "audio_duration": 6.78,
-    "timestamp": "2025-05-27 08:02:55"
+    "timestamp": "2025-05-28 06:24:02"
   },
   {
     "audio_file": "spk16-4-1-145.wav",
     "v_value": 0,
-    "a_value": 3.5,
+    "a_value": 3,
     "emotion_type": "neutral",
     "discrete_emotion": null,
-    "username": "俞航镔",
+    "username": "刘洋",
     "patient_status": "patient",
     "audio_duration": 5.64,
-    "timestamp": "2025-05-27 08:03:03"
+    "timestamp": "2025-05-28 06:25:16"
   },
   {
     "audio_file": "spk16-4-1-146.wav",
@@ -1600,21 +1589,10 @@
     "a_value": 3,
     "emotion_type": "neutral",
     "discrete_emotion": null,
-    "username": "俞航镔",
+    "username": "刘洋",
     "patient_status": "patient",
     "audio_duration": 1.86,
-    "timestamp": "2025-05-27 08:03:06"
-  },
-  {
-    "audio_file": "spk16-4-1-147.wav",
-    "v_value": 0,
-    "a_value": 3,
-    "emotion_type": "neutral",
-    "discrete_emotion": null,
-    "username": "俞航镔",
-    "patient_status": "patient",
-    "audio_duration": 3.78,
-    "timestamp": "2025-05-27 08:03:10"
+    "timestamp": "2025-05-28 06:25:23"
   },
   {
     "audio_file": "spk16-4-1-148.wav",
@@ -1622,10 +1600,10 @@
     "a_value": 3,
     "emotion_type": "neutral",
     "discrete_emotion": null,
-    "username": "俞航镔",
+    "username": "刘洋",
     "patient_status": "patient",
     "audio_duration": 6.22,
-    "timestamp": "2025-05-27 08:03:19"
+    "timestamp": "2025-05-28 06:25:33"
   },
   {
     "audio_file": "spk16-4-1-149.wav",
@@ -1633,10 +1611,10 @@
     "a_value": 3,
     "emotion_type": "neutral",
     "discrete_emotion": null,
-    "username": "俞航镔",
+    "username": "刘洋",
     "patient_status": "patient",
     "audio_duration": 5.175,
-    "timestamp": "2025-05-27 08:03:27"
+    "timestamp": "2025-05-28 06:25:38"
   },
   {
     "audio_file": "spk16-4-1-150.wav",
@@ -1644,10 +1622,10 @@
     "a_value": 3,
     "emotion_type": "neutral",
     "discrete_emotion": null,
-    "username": "俞航镔",
+    "username": "刘洋",
     "patient_status": "patient",
     "audio_duration": 11.76,
-    "timestamp": "2025-05-27 08:03:40"
+    "timestamp": "2025-05-28 06:25:43"
   },
   {
     "audio_file": "spk16-4-1-151.wav",
@@ -1655,10 +1633,10 @@
     "a_value": 3,
     "emotion_type": "neutral",
     "discrete_emotion": null,
-    "username": "俞航镔",
+    "username": "刘洋",
     "patient_status": "patient",
     "audio_duration": 4.06,
-    "timestamp": "2025-05-27 08:05:26"
+    "timestamp": "2025-05-28 06:25:50"
   },
   {
     "audio_file": "spk16-4-1-152.wav",
@@ -1666,10 +1644,10 @@
     "a_value": 3,
     "emotion_type": "neutral",
     "discrete_emotion": null,
-    "username": "俞航镔",
+    "username": "刘洋",
     "patient_status": "patient",
     "audio_duration": 3.06,
-    "timestamp": "2025-05-27 08:05:30"
+    "timestamp": "2025-05-28 06:25:58"
   },
   {
     "audio_file": "spk16-4-1-153.wav",
@@ -1677,10 +1655,10 @@
     "a_value": 3,
     "emotion_type": "neutral",
     "discrete_emotion": null,
-    "username": "俞航镔",
+    "username": "刘洋",
     "patient_status": "patient",
     "audio_duration": 6.1,
-    "timestamp": "2025-05-27 08:05:41"
+    "timestamp": "2025-05-28 06:26:05"
   },
   {
     "audio_file": "spk16-4-1-154.wav",
@@ -1688,10 +1666,10 @@
     "a_value": 3,
     "emotion_type": "neutral",
     "discrete_emotion": null,
-    "username": "俞航镔",
+    "username": "刘洋",
     "patient_status": "patient",
     "audio_duration": 3.22,
-    "timestamp": "2025-05-27 08:05:48"
+    "timestamp": "2025-05-28 06:26:09"
   },
   {
     "audio_file": "spk16-4-1-155.wav",
@@ -1699,21 +1677,21 @@
     "a_value": 3,
     "emotion_type": "neutral",
     "discrete_emotion": null,
-    "username": "俞航镔",
+    "username": "刘洋",
     "patient_status": "patient",
     "audio_duration": 0.96,
-    "timestamp": "2025-05-27 08:05:55"
+    "timestamp": "2025-05-28 06:26:14"
   },
   {
     "audio_file": "spk16-4-1-156.wav",
-    "v_value": 1,
-    "a_value": 3,
+    "v_value": 0.5,
+    "a_value": 4,
     "emotion_type": "non-neutral",
     "discrete_emotion": "happy",
-    "username": "俞航镔",
+    "username": "刘洋",
     "patient_status": "patient",
     "audio_duration": 4.9,
-    "timestamp": "2025-05-27 08:06:19"
+    "timestamp": "2025-05-28 06:26:31"
   },
   {
     "audio_file": "spk16-4-1-157.wav",
@@ -1721,10 +1699,10 @@
     "a_value": 3,
     "emotion_type": "neutral",
     "discrete_emotion": null,
-    "username": "俞航镔",
+    "username": "刘洋",
     "patient_status": "patient",
     "audio_duration": 7.501,
-    "timestamp": "2025-05-27 08:06:31"
+    "timestamp": "2025-05-28 06:26:40"
   },
   {
     "audio_file": "spk16-4-1-158.wav",
@@ -1732,10 +1710,10 @@
     "a_value": 3,
     "emotion_type": "neutral",
     "discrete_emotion": null,
-    "username": "俞航镔",
+    "username": "刘洋",
     "patient_status": "patient",
     "audio_duration": 5.46,
-    "timestamp": "2025-05-27 08:06:48"
+    "timestamp": "2025-05-28 06:26:47"
   },
   {
     "audio_file": "spk16-4-1-159.wav",
@@ -1743,10 +1721,10 @@
     "a_value": 3,
     "emotion_type": "neutral",
     "discrete_emotion": null,
-    "username": "俞航镔",
+    "username": "刘洋",
     "patient_status": "patient",
     "audio_duration": 6.66,
-    "timestamp": "2025-05-27 08:07:05"
+    "timestamp": "2025-05-28 06:26:56"
   },
   {
     "audio_file": "spk16-4-1-160.wav",
@@ -1754,10 +1732,10 @@
     "a_value": 3,
     "emotion_type": "neutral",
     "discrete_emotion": null,
-    "username": "俞航镔",
+    "username": "刘洋",
     "patient_status": "patient",
     "audio_duration": 6.61,
-    "timestamp": "2025-05-27 08:07:17"
+    "timestamp": "2025-05-28 06:27:02"
   },
   {
     "audio_file": "spk16-4-1-161.wav",
@@ -1765,10 +1743,10 @@
     "a_value": 3,
     "emotion_type": "neutral",
     "discrete_emotion": null,
-    "username": "俞航镔",
+    "username": "刘洋",
     "patient_status": "patient",
     "audio_duration": 4.82,
-    "timestamp": "2025-05-27 08:07:23"
+    "timestamp": "2025-05-28 06:28:10"
   },
   {
     "audio_file": "spk16-4-1-162.wav",
@@ -1776,10 +1754,10 @@
     "a_value": 3,
     "emotion_type": "neutral",
     "discrete_emotion": null,
-    "username": "俞航镔",
+    "username": "刘洋",
     "patient_status": "patient",
     "audio_duration": 6.52,
-    "timestamp": "2025-05-27 08:07:32"
+    "timestamp": "2025-05-28 06:28:16"
   },
   {
     "audio_file": "spk16-4-1-163.wav",
@@ -1787,10 +1765,10 @@
     "a_value": 3,
     "emotion_type": "neutral",
     "discrete_emotion": null,
-    "username": "俞航镔",
+    "username": "刘洋",
     "patient_status": "patient",
     "audio_duration": 1.52,
-    "timestamp": "2025-05-27 08:07:36"
+    "timestamp": "2025-05-28 06:28:18"
   },
   {
     "audio_file": "spk16-4-1-164.wav",
@@ -1798,10 +1776,10 @@
     "a_value": 3,
     "emotion_type": "neutral",
     "discrete_emotion": null,
-    "username": "俞航镔",
+    "username": "刘洋",
     "patient_status": "patient",
     "audio_duration": 2.28,
-    "timestamp": "2025-05-27 08:07:40"
+    "timestamp": "2025-05-28 06:28:21"
   },
   {
     "audio_file": "spk16-4-1-165.wav",
@@ -1809,10 +1787,10 @@
     "a_value": 3,
     "emotion_type": "neutral",
     "discrete_emotion": null,
-    "username": "俞航镔",
+    "username": "刘洋",
     "patient_status": "patient",
     "audio_duration": 7.48,
-    "timestamp": "2025-05-27 08:07:49"
+    "timestamp": "2025-05-28 06:28:27"
   },
   {
     "audio_file": "spk16-4-1-166.wav",
@@ -1820,10 +1798,10 @@
     "a_value": 3,
     "emotion_type": "neutral",
     "discrete_emotion": null,
-    "username": "俞航镔",
+    "username": "刘洋",
     "patient_status": "patient",
     "audio_duration": 1.12,
-    "timestamp": "2025-05-27 08:07:56"
+    "timestamp": "2025-05-28 06:28:30"
   },
   {
     "audio_file": "spk16-4-1-167.wav",
@@ -1831,32 +1809,21 @@
     "a_value": 3,
     "emotion_type": "neutral",
     "discrete_emotion": null,
-    "username": "俞航镔",
-    "patient_status": "patient",
+    "username": "刘洋",
+    "patient_status": "non-patient",
     "audio_duration": 3.48,
-    "timestamp": "2025-05-27 08:08:05"
-  },
-  {
-    "audio_file": "spk16-4-1-168.wav",
-    "v_value": 0,
-    "a_value": 3,
-    "emotion_type": "neutral",
-    "discrete_emotion": null,
-    "username": "俞航镔",
-    "patient_status": "patient",
-    "audio_duration": 2.56,
-    "timestamp": "2025-05-27 08:08:10"
+    "timestamp": "2025-05-28 06:28:44"
   },
   {
     "audio_file": "spk16-4-1-169.wav",
     "v_value": 0,
-    "a_value": 3,
+    "a_value": 2.5,
     "emotion_type": "neutral",
     "discrete_emotion": null,
-    "username": "俞航镔",
+    "username": "刘洋",
     "patient_status": "patient",
     "audio_duration": 2.7,
-    "timestamp": "2025-05-27 08:08:28"
+    "timestamp": "2025-05-28 06:28:57"
   },
   {
     "audio_file": "spk16-4-1-170.wav",
@@ -1864,21 +1831,10 @@
     "a_value": 3,
     "emotion_type": "neutral",
     "discrete_emotion": null,
-    "username": "俞航镔",
+    "username": "刘洋",
     "patient_status": "patient",
     "audio_duration": 2.28,
-    "timestamp": "2025-05-27 08:08:36"
-  },
-  {
-    "audio_file": "spk16-4-1-171.wav",
-    "v_value": 0,
-    "a_value": 3,
-    "emotion_type": "neutral",
-    "discrete_emotion": null,
-    "username": "俞航镔",
-    "patient_status": "patient",
-    "audio_duration": 2.06,
-    "timestamp": "2025-05-27 08:08:42"
+    "timestamp": "2025-05-28 06:29:02"
   },
   {
     "audio_file": "spk16-4-1-172.wav",
@@ -1886,10 +1842,10 @@
     "a_value": 3,
     "emotion_type": "neutral",
     "discrete_emotion": null,
-    "username": "俞航镔",
+    "username": "刘洋",
     "patient_status": "patient",
     "audio_duration": 3.18,
-    "timestamp": "2025-05-27 08:08:50"
+    "timestamp": "2025-05-28 06:29:09"
   },
   {
     "audio_file": "spk16-4-1-173.wav",
@@ -1897,10 +1853,10 @@
     "a_value": 3,
     "emotion_type": "neutral",
     "discrete_emotion": null,
-    "username": "俞航镔",
+    "username": "刘洋",
     "patient_status": "patient",
     "audio_duration": 4.46,
-    "timestamp": "2025-05-27 08:09:00"
+    "timestamp": "2025-05-28 06:29:16"
   },
   {
     "audio_file": "spk16-4-1-174.wav",
@@ -1908,10 +1864,10 @@
     "a_value": 3,
     "emotion_type": "neutral",
     "discrete_emotion": null,
-    "username": "俞航镔",
-    "patient_status": "patient",
+    "username": "刘洋",
+    "patient_status": "non-patient",
     "audio_duration": 2.345,
-    "timestamp": "2025-05-27 08:09:10"
+    "timestamp": "2025-05-28 06:29:22"
   },
   {
     "audio_file": "spk16-4-1-175.wav",
@@ -1919,10 +1875,10 @@
     "a_value": 3,
     "emotion_type": "neutral",
     "discrete_emotion": null,
-    "username": "俞航镔",
+    "username": "刘洋",
     "patient_status": "patient",
     "audio_duration": 8.76,
-    "timestamp": "2025-05-27 08:09:21"
+    "timestamp": "2025-05-28 06:29:29"
   },
   {
     "audio_file": "spk16-4-1-176.wav",
@@ -1930,10 +1886,10 @@
     "a_value": 3,
     "emotion_type": "neutral",
     "discrete_emotion": null,
-    "username": "俞航镔",
+    "username": "刘洋",
     "patient_status": "patient",
     "audio_duration": 3.55,
-    "timestamp": "2025-05-27 08:09:26"
+    "timestamp": "2025-05-28 06:29:38"
   },
   {
     "audio_file": "spk16-4-1-177.wav",
@@ -1941,10 +1897,10 @@
     "a_value": 3,
     "emotion_type": "neutral",
     "discrete_emotion": null,
-    "username": "俞航镔",
+    "username": "刘洋",
     "patient_status": "patient",
     "audio_duration": 4.22,
-    "timestamp": "2025-05-27 08:09:35"
+    "timestamp": "2025-05-28 06:29:44"
   },
   {
     "audio_file": "spk16-4-1-178.wav",
@@ -1952,21 +1908,21 @@
     "a_value": 3,
     "emotion_type": "neutral",
     "discrete_emotion": null,
-    "username": "俞航镔",
+    "username": "刘洋",
     "patient_status": "patient",
     "audio_duration": 2.495,
-    "timestamp": "2025-05-27 08:09:39"
+    "timestamp": "2025-05-28 06:29:49"
   },
   {
     "audio_file": "spk16-4-1-179.wav",
-    "v_value": 0.5,
+    "v_value": 0,
     "a_value": 3,
-    "emotion_type": "non-neutral",
-    "discrete_emotion": "happy",
-    "username": "俞航镔",
+    "emotion_type": "neutral",
+    "discrete_emotion": null,
+    "username": "刘洋",
     "patient_status": "patient",
     "audio_duration": 6.93,
-    "timestamp": "2025-05-27 08:09:50"
+    "timestamp": "2025-05-28 06:29:58"
   },
   {
     "audio_file": "spk16-4-1-180.wav",
@@ -1974,10 +1930,10 @@
     "a_value": 3,
     "emotion_type": "neutral",
     "discrete_emotion": null,
-    "username": "俞航镔",
+    "username": "刘洋",
     "patient_status": "patient",
     "audio_duration": 3.445,
-    "timestamp": "2025-05-27 08:11:05"
+    "timestamp": "2025-05-28 06:30:02"
   },
   {
     "audio_file": "spk16-4-1-181.wav",
@@ -1985,10 +1941,10 @@
     "a_value": 3,
     "emotion_type": "neutral",
     "discrete_emotion": null,
-    "username": "俞航镔",
+    "username": "刘洋",
     "patient_status": "patient",
     "audio_duration": 1.785,
-    "timestamp": "2025-05-27 08:11:08"
+    "timestamp": "2025-05-28 06:30:05"
   },
   {
     "audio_file": "spk16-4-1-182.wav",
@@ -1996,10 +1952,10 @@
     "a_value": 3,
     "emotion_type": "neutral",
     "discrete_emotion": null,
-    "username": "俞航镔",
+    "username": "刘洋",
     "patient_status": "patient",
     "audio_duration": 2.24,
-    "timestamp": "2025-05-27 08:13:59"
+    "timestamp": "2025-05-28 06:30:30"
   },
   {
     "audio_file": "spk16-4-1-183.wav",
@@ -2007,10 +1963,10 @@
     "a_value": 3,
     "emotion_type": "neutral",
     "discrete_emotion": null,
-    "username": "俞航镔",
+    "username": "刘洋",
     "patient_status": "patient",
     "audio_duration": 2.48,
-    "timestamp": "2025-05-27 08:14:03"
+    "timestamp": "2025-05-28 06:30:40"
   },
   {
     "audio_file": "spk16-4-1-184.wav",
@@ -2018,10 +1974,10 @@
     "a_value": 3,
     "emotion_type": "neutral",
     "discrete_emotion": null,
-    "username": "俞航镔",
+    "username": "刘洋",
     "patient_status": "patient",
     "audio_duration": 6.13,
-    "timestamp": "2025-05-27 08:14:18"
+    "timestamp": "2025-05-28 06:30:44"
   },
   {
     "audio_file": "spk16-4-1-185.wav",
@@ -2029,10 +1985,10 @@
     "a_value": 3,
     "emotion_type": "neutral",
     "discrete_emotion": null,
-    "username": "俞航镔",
+    "username": "刘洋",
     "patient_status": "patient",
     "audio_duration": 0.7,
-    "timestamp": "2025-05-27 08:14:20"
+    "timestamp": "2025-05-28 06:30:46"
   },
   {
     "audio_file": "spk16-4-1-186.wav",
@@ -2040,10 +1996,10 @@
     "a_value": 3,
     "emotion_type": "neutral",
     "discrete_emotion": null,
-    "username": "俞航镔",
+    "username": "刘洋",
     "patient_status": "patient",
     "audio_duration": 1.18,
-    "timestamp": "2025-05-27 08:14:24"
+    "timestamp": "2025-05-28 06:30:48"
   },
   {
     "audio_file": "spk16-4-1-187.wav",
@@ -2051,10 +2007,10 @@
     "a_value": 3,
     "emotion_type": "neutral",
     "discrete_emotion": null,
-    "username": "俞航镔",
+    "username": "刘洋",
     "patient_status": "patient",
     "audio_duration": 2.92,
-    "timestamp": "2025-05-27 08:14:35"
+    "timestamp": "2025-05-28 06:30:53"
   },
   {
     "audio_file": "spk16-4-1-188.wav",
@@ -2062,10 +2018,10 @@
     "a_value": 3,
     "emotion_type": "neutral",
     "discrete_emotion": null,
-    "username": "俞航镔",
+    "username": "刘洋",
     "patient_status": "patient",
     "audio_duration": 2.64,
-    "timestamp": "2025-05-27 08:14:40"
+    "timestamp": "2025-05-28 06:30:56"
   },
   {
     "audio_file": "spk16-4-1-189.wav",
@@ -2073,10 +2029,10 @@
     "a_value": 3,
     "emotion_type": "neutral",
     "discrete_emotion": null,
-    "username": "俞航镔",
+    "username": "刘洋",
     "patient_status": "patient",
     "audio_duration": 5.3,
-    "timestamp": "2025-05-27 08:14:52"
+    "timestamp": "2025-05-28 06:31:05"
   },
   {
     "audio_file": "spk16-4-1-190.wav",
@@ -2084,10 +2040,10 @@
     "a_value": 3,
     "emotion_type": "neutral",
     "discrete_emotion": null,
-    "username": "俞航镔",
+    "username": "刘洋",
     "patient_status": "patient",
     "audio_duration": 6.84,
-    "timestamp": "2025-05-27 08:15:09"
+    "timestamp": "2025-05-28 06:31:11"
   },
   {
     "audio_file": "spk16-4-1-191.wav",
@@ -2095,10 +2051,10 @@
     "a_value": 3,
     "emotion_type": "neutral",
     "discrete_emotion": null,
-    "username": "俞航镔",
+    "username": "刘洋",
     "patient_status": "patient",
     "audio_duration": 5.18,
-    "timestamp": "2025-05-27 08:15:17"
+    "timestamp": "2025-05-28 06:31:15"
   },
   {
     "audio_file": "spk16-4-1-192.wav",
@@ -2106,10 +2062,10 @@
     "a_value": 3,
     "emotion_type": "neutral",
     "discrete_emotion": null,
-    "username": "俞航镔",
+    "username": "刘洋",
     "patient_status": "patient",
     "audio_duration": 3.34,
-    "timestamp": "2025-05-27 08:15:23"
+    "timestamp": "2025-05-28 06:31:24"
   },
   {
     "audio_file": "spk16-4-1-193.wav",
@@ -2117,10 +2073,10 @@
     "a_value": 3,
     "emotion_type": "neutral",
     "discrete_emotion": null,
-    "username": "俞航镔",
+    "username": "刘洋",
     "patient_status": "patient",
     "audio_duration": 5.66,
-    "timestamp": "2025-05-27 08:15:31"
+    "timestamp": "2025-05-28 06:31:29"
   },
   {
     "audio_file": "spk16-4-1-194.wav",
@@ -2128,10 +2084,10 @@
     "a_value": 3,
     "emotion_type": "neutral",
     "discrete_emotion": null,
-    "username": "俞航镔",
+    "username": "刘洋",
     "patient_status": "patient",
     "audio_duration": 2.62,
-    "timestamp": "2025-05-27 08:15:38"
+    "timestamp": "2025-05-28 06:31:32"
   },
   {
     "audio_file": "spk16-4-1-195.wav",
@@ -2139,21 +2095,21 @@
     "a_value": 3,
     "emotion_type": "neutral",
     "discrete_emotion": null,
-    "username": "俞航镔",
+    "username": "刘洋",
     "patient_status": "patient",
     "audio_duration": 2.495,
-    "timestamp": "2025-05-27 08:15:56"
+    "timestamp": "2025-05-28 06:31:35"
   },
   {
     "audio_file": "spk16-4-1-196.wav",
-    "v_value": 0.5,
+    "v_value": 0,
     "a_value": 3,
-    "emotion_type": "non-neutral",
-    "discrete_emotion": "happy",
-    "username": "俞航镔",
+    "emotion_type": "neutral",
+    "discrete_emotion": null,
+    "username": "刘洋",
     "patient_status": "patient",
     "audio_duration": 1.825,
-    "timestamp": "2025-05-27 08:16:09"
+    "timestamp": "2025-05-28 06:31:41"
   },
   {
     "audio_file": "spk16-4-1-197.wav",
@@ -2161,10 +2117,10 @@
     "a_value": 3,
     "emotion_type": "neutral",
     "discrete_emotion": null,
-    "username": "俞航镔",
+    "username": "刘洋",
     "patient_status": "patient",
     "audio_duration": 0.72,
-    "timestamp": "2025-05-27 08:16:13"
+    "timestamp": "2025-05-28 06:31:43"
   },
   {
     "audio_file": "spk16-4-1-198.wav",
@@ -2172,10 +2128,10 @@
     "a_value": 3,
     "emotion_type": "neutral",
     "discrete_emotion": null,
-    "username": "俞航镔",
+    "username": "刘洋",
     "patient_status": "patient",
     "audio_duration": 4.16,
-    "timestamp": "2025-05-27 08:16:20"
+    "timestamp": "2025-05-28 06:31:50"
   },
   {
     "audio_file": "spk16-4-1-199.wav",
@@ -2183,10 +2139,10 @@
     "a_value": 3,
     "emotion_type": "neutral",
     "discrete_emotion": null,
-    "username": "俞航镔",
+    "username": "刘洋",
     "patient_status": "patient",
     "audio_duration": 1.16,
-    "timestamp": "2025-05-27 08:16:23"
+    "timestamp": "2025-05-28 06:31:52"
   },
   {
     "audio_file": "spk16-4-1-200.wav",
@@ -2194,10 +2150,10 @@
     "a_value": 3,
     "emotion_type": "neutral",
     "discrete_emotion": null,
-    "username": "俞航镔",
+    "username": "刘洋",
     "patient_status": "patient",
     "audio_duration": 4.42,
-    "timestamp": "2025-05-27 08:16:29"
+    "timestamp": "2025-05-28 06:31:56"
   },
   {
     "audio_file": "spk16-4-1-201.wav",
@@ -2205,10 +2161,10 @@
     "a_value": 3,
     "emotion_type": "neutral",
     "discrete_emotion": null,
-    "username": "俞航镔",
+    "username": "刘洋",
     "patient_status": "patient",
     "audio_duration": 1.42,
-    "timestamp": "2025-05-27 08:16:32"
+    "timestamp": "2025-05-28 06:32:00"
   },
   {
     "audio_file": "spk16-4-1-202.wav",
@@ -2216,10 +2172,10 @@
     "a_value": 3,
     "emotion_type": "neutral",
     "discrete_emotion": null,
-    "username": "俞航镔",
+    "username": "刘洋",
     "patient_status": "patient",
     "audio_duration": 6.57,
-    "timestamp": "2025-05-27 08:16:40"
+    "timestamp": "2025-05-28 06:32:08"
   },
   {
     "audio_file": "spk16-4-1-203.wav",
@@ -2227,10 +2183,10 @@
     "a_value": 3,
     "emotion_type": "neutral",
     "discrete_emotion": null,
-    "username": "俞航镔",
+    "username": "刘洋",
     "patient_status": "patient",
     "audio_duration": 1.26,
-    "timestamp": "2025-05-27 08:16:44"
+    "timestamp": "2025-05-28 06:32:10"
   },
   {
     "audio_file": "spk16-4-1-204.wav",
@@ -2238,10 +2194,10 @@
     "a_value": 3,
     "emotion_type": "neutral",
     "discrete_emotion": null,
-    "username": "俞航镔",
+    "username": "刘洋",
     "patient_status": "patient",
     "audio_duration": 2.2,
-    "timestamp": "2025-05-27 08:16:51"
+    "timestamp": "2025-05-28 06:32:14"
   },
   {
     "audio_file": "spk16-4-1-205.wav",
@@ -2249,10 +2205,10 @@
     "a_value": 3,
     "emotion_type": "neutral",
     "discrete_emotion": null,
-    "username": "俞航镔",
+    "username": "刘洋",
     "patient_status": "patient",
     "audio_duration": 1.26,
-    "timestamp": "2025-05-27 08:16:55"
+    "timestamp": "2025-05-28 06:32:16"
   },
   {
     "audio_file": "spk16-4-1-206.wav",
@@ -2260,10 +2216,10 @@
     "a_value": 3,
     "emotion_type": "neutral",
     "discrete_emotion": null,
-    "username": "俞航镔",
+    "username": "刘洋",
     "patient_status": "patient",
     "audio_duration": 1.24,
-    "timestamp": "2025-05-27 08:16:59"
+    "timestamp": "2025-05-28 06:32:19"
   },
   {
     "audio_file": "spk16-4-1-207.wav",
@@ -2271,10 +2227,10 @@
     "a_value": 3,
     "emotion_type": "neutral",
     "discrete_emotion": null,
-    "username": "俞航镔",
+    "username": "刘洋",
     "patient_status": "patient",
     "audio_duration": 1.5,
-    "timestamp": "2025-05-27 08:17:03"
+    "timestamp": "2025-05-28 06:32:23"
   },
   {
     "audio_file": "spk16-4-1-208.wav",
@@ -2282,10 +2238,10 @@
     "a_value": 3,
     "emotion_type": "neutral",
     "discrete_emotion": null,
-    "username": "俞航镔",
+    "username": "刘洋",
     "patient_status": "patient",
     "audio_duration": 10.24,
-    "timestamp": "2025-05-27 08:17:16"
+    "timestamp": "2025-05-28 06:32:36"
   },
   {
     "audio_file": "spk16-4-1-209.wav",
@@ -2293,10 +2249,10 @@
     "a_value": 3,
     "emotion_type": "neutral",
     "discrete_emotion": null,
-    "username": "俞航镔",
+    "username": "刘洋",
     "patient_status": "patient",
     "audio_duration": 5.44,
-    "timestamp": "2025-05-27 08:17:23"
+    "timestamp": "2025-05-28 06:33:04"
   },
   {
     "audio_file": "spk16-4-1-210.wav",
@@ -2304,21 +2260,21 @@
     "a_value": 3,
     "emotion_type": "neutral",
     "discrete_emotion": null,
-    "username": "俞航镔",
+    "username": "刘洋",
     "patient_status": "patient",
     "audio_duration": 2.84,
-    "timestamp": "2025-05-27 08:17:27"
+    "timestamp": "2025-05-28 06:33:06"
   },
   {
     "audio_file": "spk16-4-1-211.wav",
     "v_value": 0.5,
-    "a_value": 3,
-    "emotion_type": "non-neutral",
-    "discrete_emotion": "happy",
-    "username": "俞航镔",
+    "a_value": 3.5,
+    "emotion_type": "neutral",
+    "discrete_emotion": null,
+    "username": "刘洋",
     "patient_status": "patient",
     "audio_duration": 6.08,
-    "timestamp": "2025-05-27 08:17:38"
+    "timestamp": "2025-05-28 06:33:36"
   },
   {
     "audio_file": "spk16-4-1-212.wav",
@@ -2326,10 +2282,10 @@
     "a_value": 3,
     "emotion_type": "neutral",
     "discrete_emotion": null,
-    "username": "俞航镔",
+    "username": "刘洋",
     "patient_status": "patient",
     "audio_duration": 6.94,
-    "timestamp": "2025-05-27 08:17:46"
+    "timestamp": "2025-05-28 06:33:29"
   },
   {
     "audio_file": "spk16-4-1-213.wav",
@@ -2337,10 +2293,10 @@
     "a_value": 3,
     "emotion_type": "neutral",
     "discrete_emotion": null,
-    "username": "俞航镔",
+    "username": "刘洋",
     "patient_status": "patient",
     "audio_duration": 5.18,
-    "timestamp": "2025-05-27 08:17:56"
+    "timestamp": "2025-05-28 06:33:45"
   },
   {
     "audio_file": "spk16-4-1-214.wav",
@@ -2348,10 +2304,10 @@
     "a_value": 3,
     "emotion_type": "neutral",
     "discrete_emotion": null,
-    "username": "俞航镔",
+    "username": "刘洋",
     "patient_status": "patient",
     "audio_duration": 5.52,
-    "timestamp": "2025-05-27 08:18:04"
+    "timestamp": "2025-05-28 06:33:58"
   },
   {
     "audio_file": "spk16-4-1-215.wav",
@@ -2359,10 +2315,10 @@
     "a_value": 3,
     "emotion_type": "neutral",
     "discrete_emotion": null,
-    "username": "俞航镔",
+    "username": "刘洋",
     "patient_status": "patient",
     "audio_duration": 1.1,
-    "timestamp": "2025-05-27 08:18:07"
+    "timestamp": "2025-05-28 06:34:03"
   },
   {
     "audio_file": "spk16-4-1-216.wav",
@@ -2370,10 +2326,10 @@
     "a_value": 3,
     "emotion_type": "neutral",
     "discrete_emotion": null,
-    "username": "俞航镔",
+    "username": "刘洋",
     "patient_status": "patient",
     "audio_duration": 1.7,
-    "timestamp": "2025-05-27 08:18:14"
+    "timestamp": "2025-05-28 06:34:06"
   },
   {
     "audio_file": "spk16-4-1-217.wav",
@@ -2381,10 +2337,10 @@
     "a_value": 3,
     "emotion_type": "neutral",
     "discrete_emotion": null,
-    "username": "俞航镔",
+    "username": "刘洋",
     "patient_status": "patient",
     "audio_duration": 5.88,
-    "timestamp": "2025-05-27 08:18:23"
+    "timestamp": "2025-05-28 06:34:13"
   },
   {
     "audio_file": "spk16-4-1-218.wav",
@@ -2392,10 +2348,10 @@
     "a_value": 3,
     "emotion_type": "neutral",
     "discrete_emotion": null,
-    "username": "俞航镔",
+    "username": "刘洋",
     "patient_status": "patient",
     "audio_duration": 7.62,
-    "timestamp": "2025-05-27 08:18:32"
+    "timestamp": "2025-05-28 06:34:21"
   },
   {
     "audio_file": "spk16-4-1-219.wav",
@@ -2403,10 +2359,10 @@
     "a_value": 3,
     "emotion_type": "neutral",
     "discrete_emotion": null,
-    "username": "俞航镔",
+    "username": "刘洋",
     "patient_status": "patient",
     "audio_duration": 5.1,
-    "timestamp": "2025-05-27 08:18:40"
+    "timestamp": "2025-05-28 06:34:22"
   },
   {
     "audio_file": "spk16-4-1-220.wav",
@@ -2414,10 +2370,10 @@
     "a_value": 3,
     "emotion_type": "neutral",
     "discrete_emotion": null,
-    "username": "俞航镔",
+    "username": "刘洋",
     "patient_status": "patient",
     "audio_duration": 7.9,
-    "timestamp": "2025-05-27 08:18:49"
+    "timestamp": "2025-05-28 06:34:26"
   },
   {
     "audio_file": "spk16-4-1-221.wav",
@@ -2425,10 +2381,10 @@
     "a_value": 3,
     "emotion_type": "neutral",
     "discrete_emotion": null,
-    "username": "俞航镔",
+    "username": "刘洋",
     "patient_status": "patient",
     "audio_duration": 7.96,
-    "timestamp": "2025-05-27 08:19:02"
+    "timestamp": "2025-05-28 06:34:29"
   },
   {
     "audio_file": "spk16-4-1-222.wav",
@@ -2436,10 +2392,10 @@
     "a_value": 3,
     "emotion_type": "neutral",
     "discrete_emotion": null,
-    "username": "俞航镔",
+    "username": "刘洋",
     "patient_status": "patient",
     "audio_duration": 1.5,
-    "timestamp": "2025-05-27 08:19:06"
+    "timestamp": "2025-05-28 06:34:31"
   },
   {
     "audio_file": "spk16-4-1-223.wav",
@@ -2447,21 +2403,21 @@
     "a_value": 3,
     "emotion_type": "neutral",
     "discrete_emotion": null,
-    "username": "俞航镔",
+    "username": "刘洋",
     "patient_status": "non-patient",
     "audio_duration": 3.18,
-    "timestamp": "2025-05-27 08:19:30"
+    "timestamp": "2025-05-28 06:34:44"
   },
   {
     "audio_file": "spk16-4-1-224.wav",
     "v_value": 0,
-    "a_value": 3,
+    "a_value": 2.5,
     "emotion_type": "neutral",
     "discrete_emotion": null,
-    "username": "俞航镔",
+    "username": "刘洋",
     "patient_status": "patient",
     "audio_duration": 4.045,
-    "timestamp": "2025-05-27 08:19:20"
+    "timestamp": "2025-05-28 06:34:48"
   },
   {
     "audio_file": "spk16-4-1-225.wav",
@@ -2469,10 +2425,10 @@
     "a_value": 3,
     "emotion_type": "neutral",
     "discrete_emotion": null,
-    "username": "俞航镔",
+    "username": "刘洋",
     "patient_status": "patient",
     "audio_duration": 4.08,
-    "timestamp": "2025-05-27 08:19:36"
+    "timestamp": "2025-05-28 06:34:52"
   },
   {
     "audio_file": "spk16-4-1-226.wav",
@@ -2480,10 +2436,10 @@
     "a_value": 3,
     "emotion_type": "neutral",
     "discrete_emotion": null,
-    "username": "俞航镔",
+    "username": "刘洋",
     "patient_status": "patient",
     "audio_duration": 0.86,
-    "timestamp": "2025-05-27 08:19:39"
+    "timestamp": "2025-05-28 06:34:56"
   },
   {
     "audio_file": "spk16-4-1-227.wav",
@@ -2491,9 +2447,20 @@
     "a_value": 3,
     "emotion_type": "neutral",
     "discrete_emotion": null,
-    "username": "俞航镔",
+    "username": "刘洋",
     "patient_status": "patient",
     "audio_duration": 1.6,
-    "timestamp": "2025-05-27 08:19:41"
+    "timestamp": "2025-05-28 06:35:03"
+  },
+  {
+    "audio_file": "spk16-4-1-66.wav",
+    "v_value": 0,
+    "a_value": 3,
+    "emotion_type": "neutral",
+    "discrete_emotion": null,
+    "username": "刘洋",
+    "patient_status": "patient",
+    "audio_duration": 7.26,
+    "timestamp": "2025-05-29 11:04:09"
   }
 ]
