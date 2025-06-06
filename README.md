@@ -29,6 +29,7 @@ start_server.py: 项目启动程序
 
 python 3.10.6
 
+把需要标注的数据解压放在emotion_annotation文件夹下
 
 
 第一步：
@@ -52,7 +53,7 @@ LABEL_FOLDER = os.getenv(
 第三步：
 
 ```bash
-start_server.py
+python start_server.py
 ```
 
 第四步：
