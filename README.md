@@ -35,7 +35,7 @@ python 3.10.6
 第一步：
 
 ```bash
-python -r requirement.txt
+pip install -r requirements.txt
 ```
 
 第二步：
