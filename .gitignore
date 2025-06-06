@@ -1,5 +1,9 @@
 # 忽略音频和标签数据文件夹
-emotion_annotation/
+emotion_annotation/*
+!emotion_annotation/
+
+# 数据压缩文件
+emotion_annotation.tar.gz
 
 # 虚拟环境
 .venv/

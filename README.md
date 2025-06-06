@@ -8,11 +8,13 @@
 
 /templates : 存放的是html文件
 
-app.py :主程序
+app.py :flask后端程序
 
 README.md ：项目的说明文档
 
 requirements.txt : 项目环境配置文件
+
+start_server.py: 项目启动程序
 
 包含的功能有：
 1.循环播放音频数据
@@ -36,11 +38,23 @@ python -r requirement.txt
 ```
 
 第二步：
+修改app.py里AUDIO_FOLDER和LABEL_FOLDER路径位置
 
-```bash
-python app.py
-```
+举例：
+AUDIO_FOLDER = os.getenv(
+    "AUDIO_FOLDER", "/mnt/shareEEx/liuyang/code/emotion_labeling/emotion_annotation"
+)
+LABEL_FOLDER = os.getenv(
+    "LABEL_FOLDER", "/mnt/shareEEx/liuyang/code/emotion_labeling/labels"
+)
+这是我目录下的AUDIO_FOLDER和LABEL_FOLDER，如果你需要在本地部署，将其修改成你的路径。
 
 第三步：
+
+```bash
+start_server.py
+```
+
+第四步：
 
 点击Running on http://10.10.1.213:5000/ (Press CTRL+C to quit)，这个地址，自动弹出网页界面。
