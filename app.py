@@ -129,9 +129,12 @@ def get_audio_list(speaker):
 
 @app.route("/api/speakers")
 def get_speakers():
-    """获取所有说话人列表，按spk编号分组"""
+    """获取所有说话人列表，按spk编号分组，使用固定的随机排序"""
+    # 获取用户名，用于创建用户专属的排序文件
+    username = request.args.get('username', 'default')
+    print(f"DEBUG: 接收到的用户名参数: {username}")  # 添加调试日志
+    
     if not os.path.exists(AUDIO_FOLDER):
-        # print(f"音频文件夹不存在: {AUDIO_FOLDER}")
         return jsonify({"error": f"音频文件夹不存在: {AUDIO_FOLDER}"}), 404
 
     # 获取所有说话人目录
@@ -156,18 +159,54 @@ def get_speakers():
             # 如果不符合格式，直接作为独立的说话人
             speaker_groups[speaker] = [speaker]
     
-    # 对分组后的说话人进行排序
-    def speaker_sort_key(s):
-        # 提取spk后的数字进行排序
-        match = re.match(r'spk(\d+)', s)
-        if match:
-            return int(match.group(1))
-        else:
-            return s
+    # 使用固定的随机排序，只在第一次时随机排序
+    # 获取用户名，用于创建用户专属的排序文件
+    username = request.args.get('username', 'default')
+    order_dir = os.path.join(os.path.dirname(LABEL_FOLDER), "order_list", username)
+    os.makedirs(order_dir, exist_ok=True)
+    speaker_order_file = os.path.join(order_dir, "speakers_order.json")
+
     
-    sorted_speaker_groups = sorted(speaker_groups.keys(), key=speaker_sort_key)
-    
-    # print(f"找到的说话人组: {sorted_speaker_groups}")
+    if os.path.exists(speaker_order_file):
+        # 如果排序文件存在，使用保存的顺序
+        try:
+            with open(speaker_order_file, "r", encoding="utf-8") as f:
+                saved_order = json.load(f)
+                # 按保存的顺序重新排列说话人组
+                sorted_speaker_groups = []
+                existing_groups = set(speaker_groups.keys())
+                for group in saved_order:
+                    if group in existing_groups:
+                        sorted_speaker_groups.append(group)
+                        existing_groups.remove(group)
+                # 添加新增的说话人组（如果有的话）
+                sorted_speaker_groups.extend(list(existing_groups))
+        except (json.JSONDecodeError, Exception):
+            # 如果文件损坏，重新进行基于用户名的个性化随机排序
+            speaker_group_list = list(speaker_groups.keys())
+            # 使用用户名作为随机种子，确保每个用户有不同但固定的排序
+            random.seed(hash(username) % (2**32))
+            random.shuffle(speaker_group_list)
+            sorted_speaker_groups = speaker_group_list
+            # 重置随机种子
+            random.seed()
+            # 保存新的排序
+            with open(speaker_order_file, "w", encoding="utf-8") as f:
+                json.dump(sorted_speaker_groups, f, ensure_ascii=False, indent=2)
+
+    else:
+        # 如果排序文件不存在，进行基于用户名的个性化随机排序并保存
+        speaker_group_list = list(speaker_groups.keys())
+        # 使用用户名作为随机种子，确保每个用户有不同但固定的排序
+        random.seed(hash(username) % (2**32))
+        random.shuffle(speaker_group_list)
+        sorted_speaker_groups = speaker_group_list
+        # 重置随机种子
+        random.seed()
+        # 保存排序结果
+        with open(speaker_order_file, "w", encoding="utf-8") as f:
+            json.dump(sorted_speaker_groups, f, ensure_ascii=False, indent=2)
+
     return jsonify(sorted_speaker_groups)
 
 

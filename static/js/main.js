@@ -345,7 +345,7 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // 初始化说话人下拉列表
     function initSpeakers() {
-        fetch('/api/speakers')
+        fetch(`/api/speakers?username=${encodeURIComponent(currentUsername)}`)
             .then(response => response.json())
             .then(speakers => {
                 speakerSelect.innerHTML = '<option value="">-- 请选择 --</option>';
