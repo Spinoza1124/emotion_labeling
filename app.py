@@ -38,11 +38,9 @@ def get_audio_duration(file_path):
         print(f"获取音频时长时出错: {e}")
         return 0.0
 
-
 @app.route("/")
 def index():
     return render_template("index.html")
-
 
 @app.route("/api/audio_list/<speaker>")
 def get_audio_list(speaker):
@@ -126,7 +124,6 @@ def get_audio_list(speaker):
 
     return jsonify(result)
 
-
 @app.route("/api/speakers")
 def get_speakers():
     """获取所有说话人列表，按spk编号分组，使用固定的随机排序"""
@@ -209,7 +206,6 @@ def get_speakers():
 
     return jsonify(sorted_speaker_groups)
 
-
 @app.route("/api/audio/<speaker>/<filename>")
 def get_audio(speaker, filename):
     """提供音频文件下载"""
@@ -233,7 +229,6 @@ def get_audio(speaker, filename):
         # 处理单个说话人文件夹
         directory = os.path.join(AUDIO_FOLDER, speaker)
         return send_from_directory(directory, filename)
-
 
 @app.route("/api/save_label", methods=["POST"])
 def save_label():
@@ -447,6 +442,82 @@ def get_label(username, speaker, filename):
                 
         except Exception as e:
             return jsonify({"error": f"读取标注数据时出错: {str(e)}"}), 500
+
+@app.route("/api/save_play_count", methods=["POST"])
+def save_play_count():
+    """保存音频播放次数"""
+    data = request.json
+    username = data.get("username")
+    speaker = data.get("speaker")
+    audio_file = data.get("audio_file")
+    
+    if not all([username, speaker, audio_file]):
+        return jsonify({"error": "缺少必要参数"}), 400
+    
+    # 创建用户专属目录
+    user_label_dir = os.path.join(LABEL_FOLDER, username)
+    os.makedirs(user_label_dir, exist_ok=True)
+    
+    # 播放计数文件路径
+    play_count_file = os.path.join(user_label_dir, f"{speaker}_play_counts.json")
+    
+    # 加载现有播放计数数据
+    play_counts = {}
+    if os.path.exists(play_count_file):
+        try:
+            with open(play_count_file, "r", encoding="utf-8") as f:
+                play_counts = json.load(f)
+        except json.JSONDecodeError:
+            play_counts = {}
+    
+    # 更新播放计数
+    if audio_file not in play_counts:
+        play_counts[audio_file] = {
+            "total_plays": 0,
+            "sessions": []
+        }
+    
+    play_counts[audio_file]["total_plays"] += 1
+    play_counts[audio_file]["sessions"].append({
+        "play_count": play_counts[audio_file]["total_plays"],
+        "timestamp": datetime.now().isoformat()
+    })
+    
+    # 保存播放计数数据
+    try:
+        with open(play_count_file, "w", encoding="utf-8") as f:
+            json.dump(play_counts, f, ensure_ascii=False, indent=2)
+        
+        return jsonify({
+            "success": True, 
+            "play_count": play_counts[audio_file]["total_plays"]
+        })
+    except Exception as e:
+        return jsonify({"error": f"保存播放计数失败: {str(e)}"}), 500
+
+@app.route("/api/get_play_count/<username>/<speaker>/<filename>")
+def get_play_count(username, speaker, filename):
+    """获取指定音频文件的播放次数"""
+    user_label_dir = os.path.join(LABEL_FOLDER, username)
+    play_count_file = os.path.join(user_label_dir, f"{speaker}_play_counts.json")
+    
+    if not os.path.exists(play_count_file):
+        return jsonify({"success": True, "play_count": 0})
+    
+    try:
+        with open(play_count_file, "r", encoding="utf-8") as f:
+            play_counts = json.load(f)
+            
+        if filename in play_counts:
+            return jsonify({
+                "success": True, 
+                "play_count": play_counts[filename]["total_plays"]
+            })
+        else:
+            return jsonify({"success": True, "play_count": 0})
+            
+    except Exception as e:
+        return jsonify({"error": f"获取播放计数失败: {str(e)}"}), 500
 
 if __name__ == "__main__":
     app.run(debug=False, host="0.0.0.0", port=5000)

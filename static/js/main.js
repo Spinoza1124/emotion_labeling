@@ -325,23 +325,6 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         }
     }
-
-    // 初始化数值点
-    // generateSliderTicks('a-slider', 'a-slider-ticks', 1, 5, 0.25);
-    // generateSliderTicks('v-slider', 'v-slider-ticks', -2, 2, 0.25);
-
-    // // 生成滑动条数值点
-    // function generateSliderTicks(sliderId, ticksContainerId, min, max, step) {
-    //     const ticksContainer = document.getElementById(ticksContainerId);
-    //     const range = max - min;
-    //     const steps = range / step;
-    //     for (let i = 0; i <= steps; i++) {
-    //         const value = (min + i * step).toFixed(2);
-    //         const tick = document.createElement('span');
-    //         tick.textContent = value;
-    //         ticksContainer.appendChild(tick);
-    //     }
-    // }
     
     // 初始化说话人下拉列表
     function initSpeakers() {
@@ -433,33 +416,34 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
     
-        // 为音频播放器添加专门的播放/暂停按钮（可选）
-        function setupPlayerControls() {
-            const playerControls = document.querySelector('.player-controls');
+    // 为音频播放器添加专门的播放/暂停按钮（可选）
+    function setupPlayerControls() {
+        const playerControls = document.querySelector('.player-controls');
+        
+        // 如果播放控制区域已存在但没有播放/暂停按钮，则添加
+        if (playerControls && !document.getElementById('play-pause-button')) {
+            const playPauseButton = document.createElement('button');
+            playPauseButton.id = 'play-pause-button';
+            playPauseButton.className = 'play-button'; // 初始状态为播放按钮样式
+            playPauseButton.textContent = '暂停 (空格)';
+            playPauseButton.addEventListener('click', togglePlayPause);
             
-            // 如果播放控制区域已存在但没有播放/暂停按钮，则添加
-            if (playerControls && !document.getElementById('play-pause-button')) {
-                const playPauseButton = document.createElement('button');
-                playPauseButton.id = 'play-pause-button';
-                playPauseButton.className = 'play-button'; // 初始状态为播放按钮样式
+            // 将按钮插入到循环控制前面
+            playerControls.insertBefore(playPauseButton, playerControls.firstChild);
+            
+            // 监听音频播放状态变化，更新按钮文本
+            audioPlayer.addEventListener('play', function() {
                 playPauseButton.textContent = '暂停 (空格)';
-                playPauseButton.addEventListener('click', togglePlayPause);
-                
-                // 将按钮插入到循环控制前面
-                playerControls.insertBefore(playPauseButton, playerControls.firstChild);
-                
-                // 监听音频播放状态变化，更新按钮文本
-                audioPlayer.addEventListener('play', function() {
-                    playPauseButton.textContent = '暂停 (空格)';
-                    playPauseButton.className = 'pause-button';
-                });
-                
-                audioPlayer.addEventListener('pause', function() {
-                    playPauseButton.textContent = '播放 (空格)';
-                    playPauseButton.className = 'play-button';
-                });
-            }
+                playPauseButton.className = 'pause-button';
+            });
+            
+            audioPlayer.addEventListener('pause', function() {
+                playPauseButton.textContent = '播放 (空格)';
+                playPauseButton.className = 'play-button';
+            });
         }
+    }
+
     // 修改 selectAudio 函数，确保加载新音频时正确设置按钮状态
     function selectAudio(index) {
         // 更新UI
@@ -673,55 +657,55 @@ document.addEventListener('DOMContentLoaded', function() {
         isModified = false;
     }
     
-        // 监听情感类型变化
-        document.querySelectorAll('input[name="emotion-type"]').forEach(radio => {
-            radio.addEventListener('change', function() {
-                emotionType = this.value;
-                isModified = true;
-                
-                // 显示/隐藏具体情感选择区域
-                if (emotionType === 'non-neutral') {
-                    specificEmotions.style.display = 'block';
-                    // 如果之前没有选择过具体情感，则需要选择
-                    if (!selectedDiscreteEmotion) {
-                        saveButton.disabled = true;
-                    } else {
-                        saveButton.disabled = false;
-                        // 如果按钮显示"已保存"，则将其更改为"保存"
-                        if (saveButton.textContent === '已保存(W') {
-                            saveButton.textContent = '保存(W)';
-                        }
-                    }
+    // 监听情感类型变化
+    document.querySelectorAll('input[name="emotion-type"]').forEach(radio => {
+        radio.addEventListener('change', function() {
+            emotionType = this.value;
+            isModified = true;
+            
+            // 显示/隐藏具体情感选择区域
+            if (emotionType === 'non-neutral') {
+                specificEmotions.style.display = 'block';
+                // 如果之前没有选择过具体情感，则需要选择
+                if (!selectedDiscreteEmotion) {
+                    saveButton.disabled = true;
                 } else {
-                    specificEmotions.style.display = 'none';
-                    selectedDiscreteEmotion = null;
-                    // 中性情感可以直接保存
                     saveButton.disabled = false;
                     // 如果按钮显示"已保存"，则将其更改为"保存"
-                    if (saveButton.textContent === '已保存(W)') {
+                    if (saveButton.textContent === '已保存(W') {
                         saveButton.textContent = '保存(W)';
                     }
-                    // 清除所有具体情感的选择
-                    discreteEmotionRadios.forEach(radio => {
-                        radio.checked = false;
-                    });
                 }
-            });
-        });
-        
-            // 修改具体情感选择变化监听器
-            discreteEmotionRadios.forEach(radio => {
-                radio.addEventListener('change', function() {
-                    selectedDiscreteEmotion = this.value;
-                    isModified = true;
-                    
-                    // 如果按钮显示"已保存(W)"，则将其更改为"保存"
-                    if (saveButton.textContent === '已保存(W)') {
-                        saveButton.textContent = '保存(W)';
-                    }
-                    saveButton.disabled = false;
+            } else {
+                specificEmotions.style.display = 'none';
+                selectedDiscreteEmotion = null;
+                // 中性情感可以直接保存
+                saveButton.disabled = false;
+                // 如果按钮显示"已保存"，则将其更改为"保存"
+                if (saveButton.textContent === '已保存(W)') {
+                    saveButton.textContent = '保存(W)';
+                }
+                // 清除所有具体情感的选择
+                discreteEmotionRadios.forEach(radio => {
+                    radio.checked = false;
                 });
-            });
+            }
+        });
+    });
+        
+    // 修改具体情感选择变化监听器
+    discreteEmotionRadios.forEach(radio => {
+        radio.addEventListener('change', function() {
+            selectedDiscreteEmotion = this.value;
+            isModified = true;
+            
+            // 如果按钮显示"已保存(W)"，则将其更改为"保存"
+            if (saveButton.textContent === '已保存(W)') {
+                saveButton.textContent = '保存(W)';
+            }
+            saveButton.disabled = false;
+        });
+    });
 
     // 修改保存标注函数
     function handleSave() {
