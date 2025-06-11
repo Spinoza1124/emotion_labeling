@@ -2,11 +2,14 @@ import glob
 import json
 import os
 import shutil
+import random
 from datetime import datetime
 
 from flask import Flask, jsonify, render_template, request, send_from_directory
 from pydub import AudioSegment  # 导入音频处理库
 import pydub.exceptions
+import glob
+import re
 
 app = Flask(__name__)
 
@@ -43,17 +46,35 @@ def index():
 
 @app.route("/api/audio_list/<speaker>")
 def get_audio_list(speaker):
-    """获取指定说话人的所有音频文件列表"""
-    speaker_folder = os.path.join(AUDIO_FOLDER, speaker)
-
-    if not os.path.exists(speaker_folder):
-        return jsonify({"error": f"找不到说话人 {speaker} 的文件夹"}), 404
-
-    audio_files = []
-    for ext in ["wav"]:
-        found_files = glob.glob(os.path.join(speaker_folder, f"*.{ext}"))
-        audio_files.extend(found_files)
-
+    """获取指定说话人组的所有音频文件列表，并随机排序"""
+    # 检查是否为分组的说话人（如spk2）
+    if re.match(r'spk\d+$', speaker):
+        # 获取该组下的所有子说话人文件夹
+        all_speakers = [
+            d for d in os.listdir(AUDIO_FOLDER)
+            if os.path.isdir(os.path.join(AUDIO_FOLDER, d)) and d.startswith(speaker + '-')
+        ]
+        
+        if not all_speakers:
+            return jsonify({"error": f"找不到说话人组 {speaker} 的文件夹"}), 404
+        
+        # 收集所有子说话人的音频文件
+        audio_files = []
+        for sub_speaker in all_speakers:
+            speaker_folder = os.path.join(AUDIO_FOLDER, sub_speaker)
+            for ext in ["wav"]:
+                found_files = glob.glob(os.path.join(speaker_folder, f"*.{ext}"))
+                audio_files.extend(found_files)
+    else:
+        # 处理单个说话人文件夹
+        speaker_folder = os.path.join(AUDIO_FOLDER, speaker)
+        if not os.path.exists(speaker_folder):
+            return jsonify({"error": f"找不到说话人 {speaker} 的文件夹"}), 404
+        
+        audio_files = []
+        for ext in ["wav"]:
+            found_files = glob.glob(os.path.join(speaker_folder, f"*.{ext}"))
+            audio_files.extend(found_files)
 
     # 获取已标注的文件列表
     username = request.args.get('username', '')
@@ -62,48 +83,34 @@ def get_audio_list(speaker):
     if username:
         user_label_dir = os.path.join(LABEL_FOLDER, username)
         if os.path.exists(user_label_dir):
-            label_path = os.path.join(user_label_dir, f"{speaker}_labels.json")
-            if os.path.exists(label_path):
-                with open(label_path, "r", encoding="utf-8") as f:
-                    try:
-                        labels = json.load(f)
-                        labeled_files = {item["audio_file"] for item in labels}
-                    except json.JSONDecodeError:
-                        pass
+            # 对于分组说话人，需要检查所有相关的标签文件
+            if re.match(r'spk\d+$', speaker):
+                all_speakers = [
+                    d for d in os.listdir(AUDIO_FOLDER)
+                    if os.path.isdir(os.path.join(AUDIO_FOLDER, d)) and d.startswith(speaker + '-')
+                ]
+                for sub_speaker in all_speakers:
+                    label_path = os.path.join(user_label_dir, f"{sub_speaker}_labels.json")
+                    if os.path.exists(label_path):
+                        with open(label_path, "r", encoding="utf-8") as f:
+                            try:
+                                labels = json.load(f)
+                                labeled_files.update({item["audio_file"] for item in labels})
+                            except json.JSONDecodeError:
+                                pass
+            else:
+                label_path = os.path.join(user_label_dir, f"{speaker}_labels.json")
+                if os.path.exists(label_path):
+                    with open(label_path, "r", encoding="utf-8") as f:
+                        try:
+                            labels = json.load(f)
+                            labeled_files = {item["audio_file"] for item in labels}
+                        except json.JSONDecodeError:
+                            pass
     
-    def natural_sort_key(s):
-        import re
-        # 提取音频文件名 (不包括扩展名)
-        filename = os.path.basename(s).split('.')[0]
-        
-        # 特殊处理类似 spk2-4-1-12.wav 的格式 (第四部分为数字)
-        pattern = r'(spk\d+-\d+-\d+)-(\d+)'
-        match = re.match(pattern, filename)
-        if match:
-            prefix, number = match.groups()
-            return (prefix, int(number))  # 先按前缀排序，再按数字大小排序
-        
-        # 解析标准格式: spk<id>-<part>-<section>
-        spk_match = re.match(r'(spk)(\d+)-(\d+)-(\d+)', filename)
-        if spk_match:
-            prefix, spk_id, part, section = spk_match.groups()
-            # 返回整数元组以便正确排序
-            return (int(spk_id), int(part), int(section))
-        
-        # 如果不是标准格式，提取文件名中的最后一个连字符后的数字
-        number_match = re.search(r'-(\d+)[^-\d]*$', filename)
-        if number_match:
-            # 提取最后一个连字符后的数字并返回数字值
-            last_number = int(number_match.group(1))
-            # 先按照前缀排序，如果前缀相同再按数字排序
-            prefix = filename[:number_match.start()]
-            return (prefix, last_number)
-        
-        # 如果没有找到数字，直接返回文件名
-        return filename
-
-    # 使用自然排序对文件进行排序
-    sorted_audio_files = sorted(audio_files, key=natural_sort_key)
+    # 对音频文件进行随机排序，不按顺序排序
+    random.shuffle(audio_files)
+    sorted_audio_files = audio_files
     
     # 格式化返回数据
     result = []
@@ -122,43 +129,71 @@ def get_audio_list(speaker):
 
 @app.route("/api/speakers")
 def get_speakers():
-    """获取所有说话人列表"""
+    """获取所有说话人列表，按spk编号分组"""
     if not os.path.exists(AUDIO_FOLDER):
         # print(f"音频文件夹不存在: {AUDIO_FOLDER}")
         return jsonify({"error": f"音频文件夹不存在: {AUDIO_FOLDER}"}), 404
 
     # 获取所有说话人目录
-    speakers = [
+    all_speakers = [
         d
         for d in os.listdir(AUDIO_FOLDER)
         if os.path.isdir(os.path.join(AUDIO_FOLDER, d))
     ]
     
-    # 自然排序函数
-    def speaker_sort_key(s):
-        import re
+    # 按spk编号分组
+    speaker_groups = {}
+    for speaker in all_speakers:
         # 解析格式: spk<id>-<part>-<section>
-        match = re.match(r'(spk)(\d+)-(\d+)-(\d+)', s)
+        match = re.match(r'(spk)(\d+)-(\d+)-(\d+)', speaker)
         if match:
             prefix, spk_id, part, section = match.groups()
-            # 返回整数元组以便正确排序
-            return (int(spk_id), int(part), int(section))
+            spk_group = f"spk{spk_id}"
+            if spk_group not in speaker_groups:
+                speaker_groups[spk_group] = []
+            speaker_groups[spk_group].append(speaker)
         else:
-            # 默认排序方式
+            # 如果不符合格式，直接作为独立的说话人
+            speaker_groups[speaker] = [speaker]
+    
+    # 对分组后的说话人进行排序
+    def speaker_sort_key(s):
+        # 提取spk后的数字进行排序
+        match = re.match(r'spk(\d+)', s)
+        if match:
+            return int(match.group(1))
+        else:
             return s
     
-    # 对说话人列表进行自然排序
-    sorted_speakers = sorted(speakers, key=speaker_sort_key)
+    sorted_speaker_groups = sorted(speaker_groups.keys(), key=speaker_sort_key)
     
-    # print(f"找到的说话人: {sorted_speakers}")
-    return jsonify(sorted_speakers)
+    # print(f"找到的说话人组: {sorted_speaker_groups}")
+    return jsonify(sorted_speaker_groups)
 
 
 @app.route("/api/audio/<speaker>/<filename>")
 def get_audio(speaker, filename):
     """提供音频文件下载"""
-    directory = os.path.join(AUDIO_FOLDER, speaker)
-    return send_from_directory(directory, filename)
+    # 检查是否为分组的说话人（如spk2）
+    if re.match(r'spk\d+$', speaker):
+        # 需要在所有子说话人文件夹中查找该音频文件
+        all_speakers = [
+            d for d in os.listdir(AUDIO_FOLDER)
+            if os.path.isdir(os.path.join(AUDIO_FOLDER, d)) and d.startswith(speaker + '-')
+        ]
+        
+        for sub_speaker in all_speakers:
+            file_path = os.path.join(AUDIO_FOLDER, sub_speaker, filename)
+            if os.path.exists(file_path):
+                directory = os.path.join(AUDIO_FOLDER, sub_speaker)
+                return send_from_directory(directory, filename)
+        
+        # 如果没有找到文件，返回404
+        return jsonify({"error": f"找不到音频文件 {filename}"}), 404
+    else:
+        # 处理单个说话人文件夹
+        directory = os.path.join(AUDIO_FOLDER, speaker)
+        return send_from_directory(directory, filename)
 
 
 @app.route("/api/save_label", methods=["POST"])
@@ -178,7 +213,28 @@ def save_label():
         return jsonify({"error": "缺少必要参数"}), 400
 
     # 获取音频文件完整路径
-    audio_path = os.path.join(AUDIO_FOLDER, speaker, audio_file)
+    # 检查是否为分组的说话人（如spk2）
+    if re.match(r'spk\d+$', speaker):
+        # 需要在所有子说话人文件夹中查找该音频文件
+        all_speakers = [
+            d for d in os.listdir(AUDIO_FOLDER)
+            if os.path.isdir(os.path.join(AUDIO_FOLDER, d)) and d.startswith(speaker + '-')
+        ]
+        
+        audio_path = None
+        actual_speaker = None
+        for sub_speaker in all_speakers:
+            file_path = os.path.join(AUDIO_FOLDER, sub_speaker, audio_file)
+            if os.path.exists(file_path):
+                audio_path = file_path
+                actual_speaker = sub_speaker
+                break
+        
+        if audio_path is None:
+            return jsonify({"error": f"找不到音频文件 {audio_file}"}), 404
+    else:
+        audio_path = os.path.join(AUDIO_FOLDER, speaker, audio_file)
+        actual_speaker = speaker
     
     # 获取音频时长
     audio_duration = get_audio_duration(audio_path)
@@ -187,8 +243,8 @@ def save_label():
     user_label_dir = os.path.join(LABEL_FOLDER, username)
     os.makedirs(user_label_dir, exist_ok=True)
 
-    # 加载现有标签
-    label_path = os.path.join(user_label_dir, f"{speaker}_labels.json")
+    # 加载现有标签，使用实际的说话人文件夹名称
+    label_path = os.path.join(user_label_dir, f"{actual_speaker}_labels.json")
     labels = []
     if os.path.exists(label_path):
         with open(label_path, "r", encoding="utf-8") as f:
@@ -308,25 +364,50 @@ def get_label(username, speaker, filename):
     
     if not os.path.exists(user_label_dir):
         return jsonify({"error": "未找到用户标注目录"}), 404
-        
-    label_path = os.path.join(user_label_dir, f"{speaker}_labels.json")
     
-    if not os.path.exists(label_path):
-        return jsonify({"error": "未找到标注文件"}), 404
+    # 检查是否为分组的说话人（如spk2）
+    if re.match(r'spk\d+$', speaker):
+        # 需要在所有子说话人的标签文件中查找
+        all_speakers = [
+            d for d in os.listdir(AUDIO_FOLDER)
+            if os.path.isdir(os.path.join(AUDIO_FOLDER, d)) and d.startswith(speaker + '-')
+        ]
         
-    try:
-        with open(label_path, "r", encoding="utf-8") as f:
-            labels = json.load(f)
+        for sub_speaker in all_speakers:
+            label_path = os.path.join(user_label_dir, f"{sub_speaker}_labels.json")
+            if os.path.exists(label_path):
+                try:
+                    with open(label_path, "r", encoding="utf-8") as f:
+                        labels = json.load(f)
+                        
+                        # 查找特定音频文件的标注
+                        for label in labels:
+                            if label.get("audio_file") == filename:
+                                return jsonify({"success": True, "data": label})
+                except Exception as e:
+                    continue
+        
+        return jsonify({"error": "未找到该音频的标注数据"}), 404
+    else:
+        # 处理单个说话人
+        label_path = os.path.join(user_label_dir, f"{speaker}_labels.json")
+        
+        if not os.path.exists(label_path):
+            return jsonify({"error": "未找到标注文件"}), 404
             
-            # 查找特定音频文件的标注
-            for label in labels:
-                if label.get("audio_file") == filename:
-                    return jsonify({"success": True, "data": label})
-                    
-            return jsonify({"error": "未找到该音频的标注数据"}), 404
-            
-    except Exception as e:
-        return jsonify({"error": f"读取标注数据时出错: {str(e)}"}), 500
+        try:
+            with open(label_path, "r", encoding="utf-8") as f:
+                labels = json.load(f)
+                
+                # 查找特定音频文件的标注
+                for label in labels:
+                    if label.get("audio_file") == filename:
+                        return jsonify({"success": True, "data": label})
+                        
+                return jsonify({"error": "未找到该音频的标注数据"}), 404
+                
+        except Exception as e:
+            return jsonify({"error": f"读取标注数据时出错: {str(e)}"}), 500
 
 if __name__ == "__main__":
     app.run(debug=False, host="0.0.0.0", port=5000)
