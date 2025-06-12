@@ -1,0 +1,24 @@
+[
+  {
+    "audio_file": "spk81-2-1-367.wav",
+    "v_value": 0,
+    "a_value": 3,
+    "emotion_type": "neutral",
+    "discrete_emotion": null,
+    "username": "test",
+    "patient_status": "patient",
+    "audio_duration": 6.0,
+    "timestamp": "2025-06-12 09:39:35"
+  },
+  {
+    "audio_file": "spk81-2-1-195.wav",
+    "v_value": 0,
+    "a_value": 3,
+    "emotion_type": "neutral",
+    "discrete_emotion": null,
+    "username": "test",
+    "patient_status": "patient",
+    "audio_duration": 0.5,
+    "timestamp": "2025-06-12 09:52:19"
+  }
+]

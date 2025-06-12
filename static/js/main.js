@@ -141,11 +141,9 @@ document.addEventListener('DOMContentLoaded', function() {
             patientStatus = this.value;
             isModified = true;
             
-            // 如果按钮显示"已保存"，则将其更改为"保存"
-            if (saveButton.textContent === '已保存') {
-                saveButton.textContent = '保存';
-            }
+            saveButton.textContent = '保存(W)';
             saveButton.disabled = false;
+            saveButton.classList.remove('saved-va', 'saved-complete');
         });
     });
 
@@ -391,9 +389,18 @@ document.addEventListener('DOMContentLoaded', function() {
         audioList.forEach((audio, index) => {
             const audioItem = document.createElement('div');
             audioItem.className = 'audio-item';
+            
+            // 根据标注完整性设置不同的样式类
             if (audio.labeled) {
-                audioItem.classList.add('labeled');
+                if (audio.annotation_completeness === 'va-only') {
+                    audioItem.classList.add('labeled-va'); // 红色 - 仅VA标注
+                } else if (audio.annotation_completeness === 'complete') {
+                    audioItem.classList.add('labeled-complete'); // 绿色 - 完整标注
+                } else {
+                    audioItem.classList.add('labeled'); // 默认绿色（向后兼容）
+                }
             }
+            
             if (index === currentAudioIndex) {
                 audioItem.classList.add('active');
             }
@@ -472,8 +479,10 @@ document.addEventListener('DOMContentLoaded', function() {
         
         // 启用按钮
         continueButton.disabled = false;
-        saveButton.textContent = '保存(W)'; // 先重置保存按钮文本
+        // 重置保存按钮状态
+        saveButton.textContent = '保存(W)';
         saveButton.disabled = false;
+        saveButton.classList.remove('saved-va', 'saved-complete');
         prevButton.disabled = index <= 0;
         nextButton.disabled = index >= audioList.length - 1;
         
@@ -490,6 +499,7 @@ document.addEventListener('DOMContentLoaded', function() {
             // 对于新标注的音频，保持保存按钮为"保存"状态
             saveButton.textContent = '保存(W)';
             saveButton.disabled = false;
+            saveButton.classList.remove('saved-va', 'saved-complete');
         }
         
         resetFocus();
@@ -567,9 +577,8 @@ document.addEventListener('DOMContentLoaded', function() {
                     console.log("已加载之前的标注数据");
                     isModified = false; // 重置修改标志
 
-                    // 设置保存按钮为"已保存"状态并禁用
-                    saveButton.textContent = '已保存(W)';
-                    saveButton.disabled = true;
+                    // 使用新的状态更新函数设置保存按钮
+                    updateSaveButtonStatus(true);
                 }
             })
             .catch(error => {
@@ -582,6 +591,57 @@ document.addEventListener('DOMContentLoaded', function() {
         audioPlayer.loop = loopCheckbox.checked;
     }
     
+    /**
+     * 判断当前标注是否完整
+     * @returns {string} 'none' - 无标注, 'va-only' - 仅VA标注, 'complete' - 完整标注
+     */
+    function getAnnotationCompleteness() {
+        const hasVA = vSlider.value !== '0' || aSlider.value !== '0';
+        const hasPatientStatus = patientStatus !== null;
+        const hasEmotionType = emotionType !== null;
+        const hasDiscreteEmotion = emotionType === 'neutral' || (emotionType === 'non-neutral' && selectedDiscreteEmotion !== null);
+        
+        if (!hasVA && !hasPatientStatus && !hasEmotionType) {
+            return 'none';
+        }
+        
+        if (hasVA && hasPatientStatus && hasEmotionType && hasDiscreteEmotion) {
+            return 'complete';
+        }
+        
+        return 'va-only';
+    }
+    
+    /**
+     * 更新保存按钮的状态和样式
+     * @param {boolean} isSaved - 是否已保存
+     */
+    function updateSaveButtonStatus(isSaved = false) {
+        // 清除所有状态类
+        saveButton.classList.remove('saved-va', 'saved-complete');
+        
+        if (isSaved) {
+            const completeness = getAnnotationCompleteness();
+            
+            if (completeness === 'complete') {
+                saveButton.textContent = '已保存(W)';
+                saveButton.classList.add('saved-complete');
+                saveButton.disabled = true;
+            } else if (completeness === 'va-only') {
+                saveButton.textContent = '已保存(W)';
+                saveButton.classList.add('saved-va');
+                saveButton.disabled = true;
+            } else {
+                saveButton.textContent = '保存(W)';
+                saveButton.disabled = false;
+            }
+        } else {
+            saveButton.textContent = '保存(W)';
+            saveButton.disabled = false;
+            saveButton.classList.remove('saved-va', 'saved-complete');
+        }
+    }
+    
     // 修改 handleSliderChange 函数，更新保存按钮状态
     function handleSliderChange(event) {
         const slider = event.target;
@@ -589,11 +649,9 @@ document.addEventListener('DOMContentLoaded', function() {
         valueElement.textContent = Number(slider.value).toFixed(2);
         
         isModified = true;
-        // 如果按钮显示"已保存"，则将其更改为"保存"
-        if (saveButton.textContent === '已保存(W)') {
-            saveButton.textContent = '保存(W)';
-        }
+        saveButton.textContent = '保存(W)';
         saveButton.disabled = false;
+        saveButton.classList.remove('saved-va', 'saved-complete');
     }
     
     // 处理"继续"按钮点击，从VA标注切换到离散标注
@@ -635,7 +693,9 @@ document.addEventListener('DOMContentLoaded', function() {
         discreteLabeling.style.display = 'none';
         continueButton.style.display = 'inline-block';
         backButton.style.display = 'none';
-        saveButton.disabled = false; // 在VA模式下启用保存按钮
+        saveButton.textContent = '保存(W)';
+        saveButton.disabled = false;
+        saveButton.classList.remove('saved-va', 'saved-complete'); // 在VA模式下启用保存按钮
     }
     
     // 切换到离散情感标注模式时的额外处理
@@ -645,10 +705,13 @@ document.addEventListener('DOMContentLoaded', function() {
         discreteLabeling.style.display = 'block';
         continueButton.style.display = 'none';
         backButton.style.display = 'inline-block';
-        saveButton.disabled = false;
         // 根据情感类型控制界面显示
         if (emotionType === 'non-neutral' && !selectedDiscreteEmotion) {
             saveButton.disabled = true; // 如果是非中性但没选具体情感，禁用保存按钮
+        } else {
+            saveButton.textContent = '保存(W)';
+            saveButton.disabled = false;
+            saveButton.classList.remove('saved-va', 'saved-complete');
         }
         isModified = false;
     }
@@ -667,20 +730,17 @@ document.addEventListener('DOMContentLoaded', function() {
                     saveButton.disabled = true;
                 } else {
                     saveButton.disabled = false;
-                    // 如果按钮显示"已保存"，则将其更改为"保存"
-                    if (saveButton.textContent === '已保存(W)') {
-                        saveButton.textContent = '保存(W)';
-                    }
+                    saveButton.textContent = '保存(W)';
+                    saveButton.disabled = false;
+                    saveButton.classList.remove('saved-va', 'saved-complete');
                 }
             } else {
                 specificEmotions.style.display = 'none';
                 selectedDiscreteEmotion = null;
                 // 中性情感可以直接保存
+                saveButton.textContent = '保存(W)';
                 saveButton.disabled = false;
-                // 如果按钮显示"已保存"，则将其更改为"保存"
-                if (saveButton.textContent === '已保存(W)') {
-                    saveButton.textContent = '保存(W)';
-                }
+                saveButton.classList.remove('saved-va', 'saved-complete');
                 // 清除所有具体情感的选择
                 discreteEmotionRadios.forEach(radio => {
                     radio.checked = false;
@@ -695,11 +755,9 @@ document.addEventListener('DOMContentLoaded', function() {
             selectedDiscreteEmotion = this.value;
             isModified = true;
             
-            // 如果按钮显示"已保存(W)"，则将其更改为"保存"
-            if (saveButton.textContent === '已保存(W)') {
-                saveButton.textContent = '保存(W)';
-            }
+            saveButton.textContent = '保存(W)';
             saveButton.disabled = false;
+            saveButton.classList.remove('saved-va', 'saved-complete');
         });
     });
 
@@ -733,10 +791,12 @@ document.addEventListener('DOMContentLoaded', function() {
         .then(data => {
             if (data.success) {
                 audioList[currentAudioIndex].labeled = true;
+                // 根据当前标注的完整性设置状态
+                const completeness = getAnnotationCompleteness();
+                audioList[currentAudioIndex].annotation_completeness = completeness;
                 renderAudioList();
                 isModified = false;
-                saveButton.textContent = '已保存(W)';
-                saveButton.disabled = true; // 保存成功后禁用按钮
+                updateSaveButtonStatus(true); // 使用新的状态更新函数
                 // 不再设置自动恢复为"保存"的定时器
             } else {
                 throw new Error(data.error || '保存失败');

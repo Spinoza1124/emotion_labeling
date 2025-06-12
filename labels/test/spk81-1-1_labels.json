@@ -1,0 +1,13 @@
+[
+  {
+    "audio_file": "spk81-1-1-208.wav",
+    "v_value": 0,
+    "a_value": 3,
+    "emotion_type": "neutral",
+    "discrete_emotion": null,
+    "username": "test",
+    "patient_status": "patient",
+    "audio_duration": 5.28,
+    "timestamp": "2025-06-12 09:53:55"
+  }
+]

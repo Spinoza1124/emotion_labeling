@@ -11,6 +11,34 @@ import pydub.exceptions
 import glob
 import re
 
+def calculate_annotation_completeness(label):
+    """计算标注的完整性状态
+    
+    Args:
+        label: 标注数据字典
+        
+    Returns:
+        str: 'none' - 无标注, 'va-only' - 仅VA标注, 'complete' - 完整标注
+    """
+    v_value = label.get('v_value', 0)
+    a_value = label.get('a_value', 0)
+    patient_status = label.get('patient_status')
+    emotion_type = label.get('emotion_type')
+    discrete_emotion = label.get('discrete_emotion')
+    
+    has_va = v_value != 0 or a_value != 0
+    has_patient_status = patient_status is not None
+    has_emotion_type = emotion_type is not None
+    has_discrete_emotion = emotion_type == 'neutral' or (emotion_type == 'non-neutral' and discrete_emotion is not None)
+    
+    if not has_va and not has_patient_status and not has_emotion_type:
+        return 'none'
+    
+    if has_va and has_patient_status and has_emotion_type and has_discrete_emotion:
+        return 'complete'
+    
+    return 'va-only'
+
 app = Flask(__name__)
 
 # 配置
@@ -74,9 +102,10 @@ def get_audio_list(speaker):
             found_files = glob.glob(os.path.join(speaker_folder, f"*.{ext}"))
             audio_files.extend(found_files)
 
-    # 获取已标注的文件列表
+    # 获取已标注的文件列表和完整性状态
     username = request.args.get('username', '')
     labeled_files = set()
+    annotation_completeness = {}
     
     if username:
         user_label_dir = os.path.join(LABEL_FOLDER, username)
@@ -93,7 +122,10 @@ def get_audio_list(speaker):
                         with open(label_path, "r", encoding="utf-8") as f:
                             try:
                                 labels = json.load(f)
-                                labeled_files.update({item["audio_file"] for item in labels})
+                                for item in labels:
+                                    audio_file = item["audio_file"]
+                                    labeled_files.add(audio_file)
+                                    annotation_completeness[audio_file] = calculate_annotation_completeness(item)
                             except json.JSONDecodeError:
                                 pass
             else:
@@ -102,23 +134,87 @@ def get_audio_list(speaker):
                     with open(label_path, "r", encoding="utf-8") as f:
                         try:
                             labels = json.load(f)
-                            labeled_files = {item["audio_file"] for item in labels}
+                            for item in labels:
+                                audio_file = item["audio_file"]
+                                labeled_files.add(audio_file)
+                                annotation_completeness[audio_file] = calculate_annotation_completeness(item)
                         except json.JSONDecodeError:
                             pass
     
-    # 基于用户名和说话人生成固定的随机排序
-    # 使用用户名和说话人的组合作为随机种子，确保每个用户每个说话人有不同但固定的排序
+    # 基于用户名和说话人生成固定的音频文件排序
+    # 检查是否已存在该用户该说话人的音频顺序文件
     if username:
-        seed_string = f"{username}_{speaker}"
-        random.seed(hash(seed_string) % (2**32))
-        random.shuffle(audio_files)
-        # 重置随机种子
-        random.seed()
+        user_order_dir = os.path.join("order_list", username)
+        os.makedirs(user_order_dir, exist_ok=True)
+        audio_order_file = os.path.join(user_order_dir, f"{speaker}_audio_order.json")
+        
+        # 获取所有音频文件名（不包含路径）
+        audio_file_names = [os.path.basename(f) for f in audio_files]
+        
+        if os.path.exists(audio_order_file):
+            # 如果顺序文件存在，按照保存的顺序排列
+            try:
+                with open(audio_order_file, "r", encoding="utf-8") as f:
+                    saved_order = json.load(f)
+                
+                # 按照保存的顺序重新排列音频文件
+                sorted_audio_files = []
+                saved_names = set(saved_order)
+                current_names = set(audio_file_names)
+                
+                # 首先添加保存顺序中存在的文件
+                for name in saved_order:
+                    if name in current_names:
+                        # 找到对应的完整路径
+                        for full_path in audio_files:
+                            if os.path.basename(full_path) == name:
+                                sorted_audio_files.append(full_path)
+                                break
+                
+                # 添加新增的文件（如果有的话）
+                new_files = current_names - saved_names
+                if new_files:
+                    new_file_paths = [f for f in audio_files if os.path.basename(f) in new_files]
+                    # 对新文件使用固定的随机排序
+                    seed_string = f"{username}_{speaker}_new"
+                    random.seed(hash(seed_string) % (2**32))
+                    random.shuffle(new_file_paths)
+                    random.seed()
+                    sorted_audio_files.extend(new_file_paths)
+                    
+                    # 更新保存的顺序文件
+                    updated_order = [os.path.basename(f) for f in sorted_audio_files]
+                    with open(audio_order_file, "w", encoding="utf-8") as f:
+                        json.dump(updated_order, f, ensure_ascii=False, indent=2)
+                        
+            except (json.JSONDecodeError, Exception):
+                # 如果文件损坏，重新生成
+                seed_string = f"{username}_{speaker}"
+                random.seed(hash(seed_string) % (2**32))
+                random.shuffle(audio_files)
+                random.seed()
+                sorted_audio_files = audio_files
+                
+                # 保存新的顺序
+                audio_order = [os.path.basename(f) for f in sorted_audio_files]
+                with open(audio_order_file, "w", encoding="utf-8") as f:
+                    json.dump(audio_order, f, ensure_ascii=False, indent=2)
+        else:
+            # 如果顺序文件不存在，生成新的固定随机排序并保存
+            seed_string = f"{username}_{speaker}"
+            random.seed(hash(seed_string) % (2**32))
+            random.shuffle(audio_files)
+            random.seed()
+            sorted_audio_files = audio_files
+            
+            # 保存音频文件顺序
+            audio_order = [os.path.basename(f) for f in sorted_audio_files]
+            with open(audio_order_file, "w", encoding="utf-8") as f:
+                json.dump(audio_order, f, ensure_ascii=False, indent=2)
     else:
-        # 如果没有用户名，使用默认的随机排序
+        # 如果没有用户名，使用默认的随机排序（不保存）
         random.shuffle(audio_files)
-    
-    sorted_audio_files = audio_files
+        sorted_audio_files = audio_files
     
     # 格式化返回数据
     result = []
@@ -129,6 +225,7 @@ def get_audio_list(speaker):
                 "file_name": file_name,
                 "path": f"/api/audio/{speaker}/{file_name}",
                 "labeled": file_name in labeled_files,
+                "annotation_completeness": annotation_completeness.get(file_name, 'none'),
             }
         )
 
@@ -427,6 +524,9 @@ def get_label(username, speaker, filename):
                         # 查找特定音频文件的标注
                         for label in labels:
                             if label.get("audio_file") == filename:
+                                # 计算标注完整性
+                                completeness = calculate_annotation_completeness(label)
+                                label["annotation_completeness"] = completeness
                                 return jsonify({"success": True, "data": label})
                 except Exception as e:
                     continue
@@ -446,6 +546,9 @@ def get_label(username, speaker, filename):
                 # 查找特定音频文件的标注
                 for label in labels:
                     if label.get("audio_file") == filename:
+                        # 计算标注完整性
+                        completeness = calculate_annotation_completeness(label)
+                        label["annotation_completeness"] = completeness
                         return jsonify({"success": True, "data": label})
                         
                 return jsonify({"error": "未找到该音频的标注数据"}), 404

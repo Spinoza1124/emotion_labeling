@@ -122,7 +122,19 @@ h3 {
     font-weight: bold;
 }
 
-/* 已标注的音频项 */
+/* 已标注的音频项 - 仅VA标注（红色） */
+.audio-item.labeled-va {
+    color: #e74c3c;
+    font-weight: bold;
+}
+
+/* 已标注的音频项 - 完整标注（绿色） */
+.audio-item.labeled-complete {
+    color: #2ecc71;
+    font-weight: bold;
+}
+
+/* 保持向后兼容的通用已标注样式 */
 .audio-item.labeled {
     color: #2ecc71;
 }
@@ -572,6 +584,25 @@ button {
 
 #save-button:hover {
     background-color: #2980b9;
+}
+
+/* 保存按钮状态样式 */
+#save-button.saved-va {
+    background-color: #e74c3c; /* 红色 - 只保存了VA标注 */
+    color: white;
+}
+
+#save-button.saved-va:hover {
+    background-color: #c0392b;
+}
+
+#save-button.saved-complete {
+    background-color: #27ae60; /* 绿色 - 保存了完整标注 */
+    color: white;
+}
+
+#save-button.saved-complete:hover {
+    background-color: #229954;
 }
 
 /* 继续和下一条按钮 */
