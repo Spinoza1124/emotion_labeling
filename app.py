@@ -632,5 +632,117 @@ def get_play_count(username, speaker, filename):
     except Exception as e:
         return jsonify({"error": f"获取播放计数失败: {str(e)}"}), 500
 
+#==============================================
+# 测试相关路由
+#==============================================
+
+@app.route('/test')
+def test_page():
+    """测试页面"""
+    return render_template('test.html')
+
+@app.route('/api/test/questions')
+def get_test_questions():
+    """获取测试题目"""
+    try:
+        test_examples_dir = os.path.join(AUDIO_FOLDER, '..', 'test_examples')
+        test_examples_dir = os.path.abspath(test_examples_dir)
+        
+        questions = []
+        
+        # 处理离散情感测试题目
+        discrete_dir = os.path.join(test_examples_dir, 'discrete_emotions')
+        if os.path.exists(discrete_dir):
+            for filename in os.listdir(discrete_dir):
+                if filename.endswith('.wav') or filename.endswith('.MP3'):
+                    # 从文件名提取正确答案 (例如: 愤怒-2.wav -> 愤怒)
+                    correct_answer = filename.split('-')[0]
+                    questions.append({
+                        'filename': filename,
+                        'type': 'discrete',
+                        'correct_answer': correct_answer,
+                        'folder': 'discrete_emotions'
+                    })
+        
+        # 处理效价测试题目（V值标注）
+        potency_dir = os.path.join(test_examples_dir, 'potency')
+        if os.path.exists(potency_dir):
+            for filename in os.listdir(potency_dir):
+                if filename.endswith('.wav'):
+                    # 从文件名提取正确答案 (例如: V0-2.wav -> V0, V负1-2.wav -> V负1)
+                    label_part = filename.split('-')[0]
+                    if label_part.startswith('V'):
+                        # 处理V负数格式
+                        if '负' in label_part:
+                            v_value = -float(label_part.replace('V负', ''))  # V负1 -> -1
+                        else:
+                            v_value = float(label_part[1:])  # V0 -> 0, V1 -> 1, etc.
+                        questions.append({
+                            'filename': filename,
+                            'type': 'potency',  # 专门的效价测试类型
+                            'correct_answer': v_value,  # 只需要V值
+                            'folder': 'potency'
+                        })
+        
+        # 处理唤醒测试题目（A值标注）
+        wake_up_dir = os.path.join(test_examples_dir, 'wake_up')
+        if os.path.exists(wake_up_dir):
+            for filename in os.listdir(wake_up_dir):
+                if filename.endswith('.wav'):
+                    # 从文件名提取正确答案 (例如: A2-1.wav -> A2)
+                    label_part = filename.split('-')[0]
+                    if label_part.startswith('A'):
+                        a_value = float(label_part[1:])  # A2 -> 2, A1 -> 1, etc.
+                        questions.append({
+                            'filename': filename,
+                            'type': 'arousal',  # 专门的唤醒测试类型
+                            'correct_answer': a_value,  # 只需要A值
+                            'folder': 'wake_up'
+                        })
+        
+        # 随机打乱题目顺序
+        import random
+        random.shuffle(questions)
+        
+        # 限制题目数量（例如最多10题）
+        questions = questions[:10]
+        
+        return jsonify({
+            'success': True,
+            'questions': questions
+        })
+        
+    except Exception as e:
+        print(f"获取测试题目失败: {e}")
+        return jsonify({
+            'success': False,
+            'error': str(e)
+        }), 500
+
+@app.route('/api/test/audio/<filename>')
+def get_test_audio(filename):
+    """获取测试音频文件"""
+    try:
+        test_examples_dir = os.path.join(AUDIO_FOLDER, '..', 'test_examples')
+        test_examples_dir = os.path.abspath(test_examples_dir)
+        
+        # 在各个子目录中查找文件
+        for subfolder in ['discrete_emotions', 'potency', 'wake_up']:
+            file_path = os.path.join(test_examples_dir, subfolder, filename)
+            if os.path.exists(file_path):
+                return send_from_directory(os.path.dirname(file_path), filename)
+            # 也尝试查找.MP3文件
+            if filename.endswith('.wav'):
+                mp3_filename = filename.replace('.wav', '.MP3')
+                mp3_file_path = os.path.join(test_examples_dir, subfolder, mp3_filename)
+                if os.path.exists(mp3_file_path):
+                    return send_from_directory(os.path.dirname(mp3_file_path), mp3_filename)
+        
+        return jsonify({'error': '音频文件不存在'}), 404
+        
+    except Exception as e:
+        print(f"获取测试音频失败: {e}")
+        return jsonify({'error': str(e)}), 500
+
 if __name__ == "__main__":
     app.run(debug=True, host="0.0.0.0", port=5000)

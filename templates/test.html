@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>标注能力测试 - 音频情感标注系统</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+    <style>
+        .test-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .test-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .test-progress {
+            background-color: #f0f0f0;
+            border-radius: 10px;
+            padding: 10px;
+            margin-bottom: 20px;
+        }
+        
+        .progress-bar {
+            background-color: #4CAF50;
+            height: 20px;
+            border-radius: 10px;
+            transition: width 0.3s ease;
+        }
+        
+        .test-audio-section {
+            background-color: #f9f9f9;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+        
+        .test-question {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+        
+        .test-options {
+            display: grid;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        
+        .test-option {
+            padding: 10px 15px;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .test-option:hover {
+            border-color: #4CAF50;
+            background-color: #f0f8f0;
+        }
+        
+        .test-option.selected {
+            border-color: #4CAF50;
+            background-color: #e8f5e8;
+        }
+        
+        .test-option.correct {
+            border-color: #4CAF50;
+            background-color: #d4edda;
+        }
+        
+        .test-option.incorrect {
+            border-color: #dc3545;
+            background-color: #f8d7da;
+        }
+        
+        .test-controls {
+            text-align: center;
+            margin-top: 20px;
+        }
+        
+        .test-button {
+            padding: 10px 20px;
+            margin: 0 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        
+        .test-button.primary {
+            background-color: #4CAF50;
+            color: white;
+        }
+        
+        .test-button.secondary {
+            background-color: #6c757d;
+            color: white;
+        }
+        
+        .test-button:disabled {
+            background-color: #ccc;
+            cursor: not-allowed;
+        }
+        
+        .test-result {
+            text-align: center;
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 20px;
+        }
+        
+        .test-result.pass {
+            background-color: #d4edda;
+            border: 1px solid #c3e6cb;
+            color: #155724;
+        }
+        
+        .test-result.fail {
+            background-color: #f8d7da;
+            border: 1px solid #f5c6cb;
+            color: #721c24;
+        }
+        
+        .va-slider-container {
+            margin: 15px 0;
+        }
+        
+        .va-slider-group {
+            margin-bottom: 15px;
+        }
+        
+        .va-slider {
+            width: 100%;
+            margin: 10px 0;
+        }
+        
+        .va-value-display {
+            text-align: center;
+            font-weight: bold;
+            margin-top: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="test-container">
+        <div class="test-header">
+            <h1>标注能力测试</h1>
+            <p>欢迎，<span id="test-username"></span>！</p>
+            <p>请完成以下测试以验证您的标注能力。需要达到90%的正确率才能进入正式标注。</p>
+        </div>
+        
+        <div class="test-progress">
+            <div class="progress-info">
+                <span>进度: <span id="current-question">1</span> / <span id="total-questions">10</span></span>
+                <span style="float: right;">正确率: <span id="accuracy">0%</span></span>
+            </div>
+            <div class="progress-bar" id="progress-bar" style="width: 10%;"></div>
+        </div>
+        
+        <div class="test-audio-section" id="test-section">
+            <div class="test-question" id="test-question">
+                请听音频并选择正确的标注
+            </div>
+            
+            <div class="audio-player">
+                <audio id="test-audio" controls>
+                    您的浏览器不支持音频播放。
+                </audio>
+            </div>
+            
+            <!-- 离散情感测试选项 -->
+            <div class="test-options" id="discrete-options" style="display: none;">
+                <div class="test-option" data-value="中性">中性</div>
+                <div class="test-option" data-value="快乐">快乐</div>
+                <div class="test-option" data-value="愤怒">愤怒</div>
+                <div class="test-option" data-value="悲伤">悲伤</div>
+                <div class="test-option" data-value="恐惧">恐惧</div>
+                <div class="test-option" data-value="厌恶">厌恶</div>
+                <div class="test-option" data-value="惊讶">惊讶</div>
+            </div>
+            
+            <!-- VA值测试选项 -->
+            <div class="va-slider-container" id="va-options" style="display: none;">
+                <div class="va-slider-group">
+                    <label for="test-v-slider">V值(效价): <span id="test-v-display">0</span></label>
+                    <input type="range" id="test-v-slider" class="va-slider" min="-2" max="2" value="0" step="1">
+                    <div class="slider-descriptions">
+                        <span>-2</span>
+                        <span>-1</span>
+                        <span>0</span>
+                        <span>1</span>
+                        <span>2</span>
+                    </div>
+                </div>
+                
+                <div class="va-slider-group">
+                    <label for="test-a-slider">A值(唤醒): <span id="test-a-display">1</span></label>
+                    <input type="range" id="test-a-slider" class="va-slider" min="1" max="5" value="1" step="1">
+                    <div class="slider-descriptions">
+                        <span>1</span>
+                        <span>2</span>
+                        <span>3</span>
+                        <span>4</span>
+                        <span>5</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="test-controls">
+            <button class="test-button secondary" id="skip-test-btn">跳过测试</button>
+            <button class="test-button primary" id="submit-answer-btn" disabled>提交答案</button>
+            <button class="test-button primary" id="next-question-btn" style="display: none;">下一题</button>
+            <button class="test-button primary" id="finish-test-btn" style="display: none;">完成测试</button>
+        </div>
+        
+        <div class="test-result" id="test-result" style="display: none;">
+            <!-- 测试结果将在这里显示 -->
+        </div>
+    </div>
+    
+    <script src="/static/js/test.js"></script>
+</body>
+</html>

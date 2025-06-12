@@ -106,6 +106,16 @@ document.addEventListener('DOMContentLoaded', function() {
         const forceLogin = !urlParams.has('keep_login'); // 除非有keep_login参数，否则都强制登录
         
         if (savedUsername && !forceLogin) {
+            // 检查是否需要进行测试
+            const testPassed = localStorage.getItem('test_passed_' + savedUsername);
+            const keepLogin = urlParams.get('keep_login');
+            
+            if (!testPassed && !keepLogin) {
+                // 需要进行测试，跳转到测试页面
+                window.location.href = '/test';
+                return;
+            }
+            
             previousUsername = currentUsername; // 保存之前的用户名
             currentUsername = savedUsername;
             currentUserSpan.textContent = currentUsername;
@@ -266,6 +276,15 @@ document.addEventListener('DOMContentLoaded', function() {
             }
             
             localStorage.setItem('emotion_labeling_username', username);
+            
+            // 检查是否通过测试
+            const testPassed = localStorage.getItem('test_passed_' + username);
+            if (!testPassed) {
+                // 需要进行测试，跳转到测试页面
+                window.location.href = '/test';
+                return;
+            }
+            
             currentUserSpan.textContent = username;
             loginModal.style.display = 'none';
             mainContainer.style.display = 'block';

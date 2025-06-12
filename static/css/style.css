@@ -389,17 +389,59 @@ audio {
     margin-bottom: 30px;
     height: 20px;
     position: relative;
-    display: flex;
-    justify-content: space-between; /* 与刻度保持一致的分布 */
     width: 100%;
 }
 
-/* 修改默认对齐方式，保证极低和极高唤醒位置正确 */
+/* 修改默认对齐方式，使用绝对定位精确对齐 */
 .slider-descriptions span {
+    position: absolute;
     text-align: center;
-    width: 20%;
-    white-space: nowrap; /* 确保文字不换行 */
-    transform: translateX(-50%); /* 居中对齐文字 */
+    white-space: nowrap;
+    transform: translateX(-50%);
+    font-size: 12px;
+    color: #666;
+}
+
+/* V值滑动条（-2到2）的数字标签定位 */
+#test-v-slider + .slider-descriptions span:nth-child(1) {
+    left: 0%; /* -2 */
+}
+
+#test-v-slider + .slider-descriptions span:nth-child(2) {
+    left: 25%; /* -1 */
+}
+
+#test-v-slider + .slider-descriptions span:nth-child(3) {
+    left: 50%; /* 0 */
+}
+
+#test-v-slider + .slider-descriptions span:nth-child(4) {
+    left: 75%; /* 1 */
+}
+
+#test-v-slider + .slider-descriptions span:nth-child(5) {
+    left: 100%; /* 2 */
+}
+
+/* A值滑动条（1到5）的数字标签定位 */
+#test-a-slider + .slider-descriptions span:nth-child(1) {
+    left: 0%; /* 1 */
+}
+
+#test-a-slider + .slider-descriptions span:nth-child(2) {
+    left: 25%; /* 2 */
+}
+
+#test-a-slider + .slider-descriptions span:nth-child(3) {
+    left: 50%; /* 3 */
+}
+
+#test-a-slider + .slider-descriptions span:nth-child(4) {
+    left: 75%; /* 4 */
+}
+
+#test-a-slider + .slider-descriptions span:nth-child(5) {
+    left: 100%; /* 5 */
 }
 
 /* 添加极低唤醒的特殊定位 */

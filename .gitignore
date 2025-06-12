@@ -10,3 +10,6 @@ __pycache__/
 
 # 日志相关
 logs/
+
+# 测试样例
+test_examples/

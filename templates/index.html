@@ -8,13 +8,11 @@
     
     <!-- URL参数处理脚本 - 控制登录状态 -->
     <script>
-        // 默认情况下清除登录状态，除非有keep_login参数
-        localStorage.removeItem('emotion_labeling_username');
-        
+        // 检查URL参数，只有在没有keep_login参数时才清除登录状态
         const urlParams = new URLSearchParams(window.location.search);
-        if (urlParams.has('keep_login')) {
-            // 保留登录状态
-            localStorage.getItem('emotion_labeling_username');
+        if (!urlParams.has('keep_login')) {
+            // 清除登录状态
+            localStorage.removeItem('emotion_labeling_username');
         }
     </script>
 </head>
