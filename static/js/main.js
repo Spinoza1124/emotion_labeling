@@ -115,8 +115,7 @@ document.addEventListener('DOMContentLoaded', function() {
             // 初始化应用
             initSpeakers();
             
-            // 设置播放器控件
-            setupPlayerControls();
+            // 播放器控件将在选择音频时设置
         } else {
             // 如果没有登录或需要强制登录，确保正确显示登录框
             loginModal.style.display = 'flex'; 
@@ -426,47 +425,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     
     // 为音频播放器添加专门的播放/暂停按钮（可选）
-    function setupPlayerControls() {
-        const playerControls = document.querySelector('.player-controls');
-        
-        // 如果播放控制区域已存在但没有播放/暂停按钮，则添加
-        if (playerControls && !document.getElementById('play-pause-button')) {
-            const playPauseButton = document.createElement('button');
-            playPauseButton.id = 'play-pause-button';
-            playPauseButton.className = 'play-button'; // 初始状态为播放按钮样式
-            playPauseButton.textContent = '暂停 (空格)';
-            playPauseButton.addEventListener('click', togglePlayPause);
-            
-            // 将按钮插入到循环控制前面
-            playerControls.insertBefore(playPauseButton, playerControls.firstChild);
-            
-            // 监听音频播放状态变化，更新按钮文本
-            audioPlayer.addEventListener('play', function() {
-                playPauseButton.textContent = '暂停 (空格)';
-                playPauseButton.className = 'pause-button';
-            });
-            
-            audioPlayer.addEventListener('pause', function() {
-                playPauseButton.textContent = '播放 (空格)';
-                playPauseButton.className = 'play-button';
-            });
-        }
-
-        // 添加播放事件监听，每次播放时增加计数
-        audioPlayer.addEventListener('play', function() {
-            // 只有在用户主动播放时才计数（不包括自动循环播放）
-            if (!audioPlayer.loop || audioPlayer.currentTime < 1) {
-                incrementPlayCount();
-            }
-            
-            // 更新按钮文本
-            const playPauseButton = document.getElementById('play-pause-button');
-            if (playPauseButton) {
-                playPauseButton.textContent = '暂停播放（空格键）';
-                playPauseButton.className = 'pause-button';
-            }
-        });
-    }
+    console.log('setupPlayerControls called');
 
     // 修改 selectAudio 函数，确保加载新音频时正确设置按钮状态
     function selectAudio(index) {
@@ -491,6 +450,18 @@ document.addEventListener('DOMContentLoaded', function() {
         // 设置音频播放器
         audioPlayer.src = audioFile.path;
         audioPlayer.load();
+        
+        // 移除之前的播放事件监听器，避免重复绑定
+        audioPlayer.removeEventListener('play', handleAudioPlay);
+        
+        // 添加播放事件监听器来处理播放计数
+        function handleAudioPlay() {
+            console.log('Audio play event triggered, calling incrementPlayCount');
+            incrementPlayCount();
+        }
+        
+        audioPlayer.addEventListener('play', handleAudioPlay);
+        
         audioPlayer.play();
 
         // 音频加载完成后，可以获取时长
@@ -857,30 +828,50 @@ document.addEventListener('DOMContentLoaded', function() {
     // 添加播放计数相关函数
     //增加播放次数计数
     function incrementPlayCount() {
-        if (currentAudioIndex === -1 || !currentUsername || !currentSpeaker) return;
+        if (currentAudioIndex === -1 || !currentUsername || !currentSpeaker) {
+            console.log('播放计数条件不满足:', {
+                currentAudioIndex,
+                currentUsername,
+                currentSpeaker
+            });
+            return;
+        }
         
         const audioFile = audioList[currentAudioIndex];
+        const requestData = {
+            username: currentUsername,
+            speaker: currentSpeaker,
+            audio_file: audioFile.file_name
+        };
+        
+        console.log('发送播放计数请求:', requestData);
         
         fetch('/api/save_play_count', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({
-                username: currentUsername,
-                speaker: currentSpeaker,
-                audio_file: audioFile.file_name
-            })
+            body: JSON.stringify(requestData)
         })
-        .then(response => response.json())
+        .then(response => {
+            console.log('播放计数响应状态:', response.status);
+            return response.json();
+        })
         .then(data => {
+            console.log('播放计数响应数据:', data);
             if (data.success) {
                 currentPlayCount = data.play_count;
                 updatePlayCountDisplay();
+            } else {
+                console.error('保存播放计数失败:', data.error || '未知错误');
             }
         })
         .catch(error => {
-            console.error('保存播放计数失败:', error);
+            console.error('保存播放计数请求失败:', error);
+            console.error('错误详情:', {
+                message: error.message,
+                stack: error.stack
+            });
         });
     }
 
@@ -916,11 +907,3 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
 });
-
-// 在DOMContentLoaded事件外部定义setupPlayerControls函数
-function setupPlayerControls() {
-    // 监听音频播放事件
-    audioPlayer.addEventListener('play', function() {
-        incrementPlayCount();
-    });
-}

@@ -90,7 +90,7 @@ if __name__ == "__main__":
     
     try:
         # 运行Flask应用
-        app.run(host=ip_address, port=port, debug=False, use_reloader=False)
+        app.run(host=ip_address, port=port, debug=True, use_reloader=False)
     except Exception as e:
         # 记录异常
         logger.error(f"服务器错误: {str(e)}", exc_info=True)

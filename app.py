@@ -106,8 +106,18 @@ def get_audio_list(speaker):
                         except json.JSONDecodeError:
                             pass
     
-    # 对音频文件进行随机排序，不按顺序排序
-    random.shuffle(audio_files)
+    # 基于用户名和说话人生成固定的随机排序
+    # 使用用户名和说话人的组合作为随机种子，确保每个用户每个说话人有不同但固定的排序
+    if username:
+        seed_string = f"{username}_{speaker}"
+        random.seed(hash(seed_string) % (2**32))
+        random.shuffle(audio_files)
+        # 重置随机种子
+        random.seed()
+    else:
+        # 如果没有用户名，使用默认的随机排序
+        random.shuffle(audio_files)
+    
     sorted_audio_files = audio_files
     
     # 格式化返回数据
@@ -474,14 +484,14 @@ def save_play_count():
     if audio_file not in play_counts:
         play_counts[audio_file] = {
             "total_plays": 0,
-            "sessions": []
+            "latest_session": None
         }
     
     play_counts[audio_file]["total_plays"] += 1
-    play_counts[audio_file]["sessions"].append({
+    play_counts[audio_file]["latest_session"] = {
         "play_count": play_counts[audio_file]["total_plays"],
         "timestamp": datetime.now().isoformat()
-    })
+    }
     
     # 保存播放计数数据
     try:
@@ -520,4 +530,4 @@ def get_play_count(username, speaker, filename):
         return jsonify({"error": f"获取播放计数失败: {str(e)}"}), 500
 
 if __name__ == "__main__":
-    app.run(debug=False, host="0.0.0.0", port=5000)
+    app.run(debug=True, host="0.0.0.0", port=5000)
