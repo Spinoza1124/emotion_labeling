@@ -58,6 +58,9 @@ document.addEventListener('DOMContentLoaded', function() {
     const vaLabeling = document.getElementById('va-labeling');
     const discreteLabeling = document.getElementById('discrete-labeling');
 
+    // 在DOM元素获取部分添加
+    const playCountValue = document.getElementById('play-count-value');
+
     // 状态变量
     let currentUsername = '';    // 当前用户名
     let previousUsername = '';   // 添加变量记录之前的用户名
@@ -69,6 +72,9 @@ document.addEventListener('DOMContentLoaded', function() {
     let isVaLabelingMode = true; // 当前是否处于VA标注模式
     let selectedDiscreteEmotion = null;  // 选中的离散情感类型
     let patientStatus = 'patient'; // 默认为患者
+
+    // 在文件开头的变量声明部分添加
+    let currentPlayCount = 0; // 当前音频播放次数
 
     // 标准值到滑动条值的映射
     const standardToSliderMap = {
@@ -108,6 +114,9 @@ document.addEventListener('DOMContentLoaded', function() {
             
             // 初始化应用
             initSpeakers();
+            
+            // 设置播放器控件
+            setupPlayerControls();
         } else {
             // 如果没有登录或需要强制登录，确保正确显示登录框
             loginModal.style.display = 'flex'; 
@@ -442,6 +451,21 @@ document.addEventListener('DOMContentLoaded', function() {
                 playPauseButton.className = 'play-button';
             });
         }
+
+        // 添加播放事件监听，每次播放时增加计数
+        audioPlayer.addEventListener('play', function() {
+            // 只有在用户主动播放时才计数（不包括自动循环播放）
+            if (!audioPlayer.loop || audioPlayer.currentTime < 1) {
+                incrementPlayCount();
+            }
+            
+            // 更新按钮文本
+            const playPauseButton = document.getElementById('play-pause-button');
+            if (playPauseButton) {
+                playPauseButton.textContent = '暂停播放（空格键）';
+                playPauseButton.className = 'pause-button';
+            }
+        });
     }
 
     // 修改 selectAudio 函数，确保加载新音频时正确设置按钮状态
@@ -460,6 +484,9 @@ document.addEventListener('DOMContentLoaded', function() {
         
         currentAudioIndex = index;
         const audioFile = audioList[index];
+        
+        // 加载播放次数
+        loadPlayCount(currentSpeaker, audioFile.file_name);
         
         // 设置音频播放器
         audioPlayer.src = audioFile.path;
@@ -648,12 +675,10 @@ document.addEventListener('DOMContentLoaded', function() {
         continueButton.style.display = 'none';
         backButton.style.display = 'inline-block';
         saveButton.disabled = false;
-        
         // 根据情感类型控制界面显示
         if (emotionType === 'non-neutral' && !selectedDiscreteEmotion) {
             saveButton.disabled = true; // 如果是非中性但没选具体情感，禁用保存按钮
         }
-        
         isModified = false;
     }
     
@@ -672,7 +697,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 } else {
                     saveButton.disabled = false;
                     // 如果按钮显示"已保存"，则将其更改为"保存"
-                    if (saveButton.textContent === '已保存(W') {
+                    if (saveButton.textContent === '已保存(W)') {
                         saveButton.textContent = '保存(W)';
                     }
                 }
@@ -823,5 +848,79 @@ document.addEventListener('DOMContentLoaded', function() {
             radio.checked = false;
         });
         selectedDiscreteEmotion = null;
+
+            // 重置播放计数显示
+        currentPlayCount = 0;
+        updatePlayCountDisplay();
     }
+
+    // 添加播放计数相关函数
+    //增加播放次数计数
+    function incrementPlayCount() {
+        if (currentAudioIndex === -1 || !currentUsername || !currentSpeaker) return;
+        
+        const audioFile = audioList[currentAudioIndex];
+        
+        fetch('/api/save_play_count', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                username: currentUsername,
+                speaker: currentSpeaker,
+                audio_file: audioFile.file_name
+            })
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                currentPlayCount = data.play_count;
+                updatePlayCountDisplay();
+            }
+        })
+        .catch(error => {
+            console.error('保存播放计数失败:', error);
+        });
+    }
+
+
+    //更新播放次数
+    function updatePlayCountDisplay() {
+        if (playCountValue) {
+            playCountValue.textContent = currentPlayCount;
+        }
+    }
+
+    // 加载音频播放次数
+    function loadPlayCount(speaker, filename) {
+        if (!currentUsername || !speaker || !filename) {
+            currentPlayCount = 0;
+            updatePlayCountDisplay();
+            return;
+        }
+        
+        fetch(`/api/get_play_count/${encodeURIComponent(currentUsername)}/${encodeURIComponent(speaker)}/${encodeURIComponent(filename)}`)
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    currentPlayCount = data.play_count || 0;
+                    updatePlayCountDisplay();
+                }
+            })
+            .catch(error => {
+                console.error('获取播放计数失败:', error);
+                currentPlayCount = 0;
+                updatePlayCountDisplay();
+            });
+    }
+
 });
+
+// 在DOMContentLoaded事件外部定义setupPlayerControls函数
+function setupPlayerControls() {
+    // 监听音频播放事件
+    audioPlayer.addEventListener('play', function() {
+        incrementPlayCount();
+    });
+}
