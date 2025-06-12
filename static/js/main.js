@@ -598,6 +598,17 @@ document.addEventListener('DOMContentLoaded', function() {
     function getAnnotationCompleteness() {
         const hasVA = vSlider.value !== '0' || aSlider.value !== '0';
         const hasPatientStatus = patientStatus !== null;
+        
+        // 如果当前在VA标注模式，只考虑VA值
+        if (isVaLabelingMode) {
+            if (hasVA) {
+                return 'va-only';
+            } else {
+                return 'none';
+            }
+        }
+        
+        // 如果在离散情感标注模式，考虑完整性
         const hasEmotionType = emotionType !== null;
         const hasDiscreteEmotion = emotionType === 'neutral' || (emotionType === 'non-neutral' && selectedDiscreteEmotion !== null);
         

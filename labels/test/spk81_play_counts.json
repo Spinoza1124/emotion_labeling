@@ -21,10 +21,38 @@
     }
   },
   "spk81-4-1-99.wav": {
-    "total_plays": 2,
+    "total_plays": 4,
     "latest_session": {
-      "play_count": 2,
-      "timestamp": "2025-06-12T09:58:16.229533"
+      "play_count": 4,
+      "timestamp": "2025-06-12T10:24:50.687037"
+    }
+  },
+  "spk81-5-1-65.wav": {
+    "total_plays": 1,
+    "latest_session": {
+      "play_count": 1,
+      "timestamp": "2025-06-12T10:25:11.117030"
+    }
+  },
+  "spk81-2-1-136.wav": {
+    "total_plays": 1,
+    "latest_session": {
+      "play_count": 1,
+      "timestamp": "2025-06-12T10:27:43.093356"
+    }
+  },
+  "spk81-1-1-268.wav": {
+    "total_plays": 1,
+    "latest_session": {
+      "play_count": 1,
+      "timestamp": "2025-06-12T10:35:01.952050"
+    }
+  },
+  "spk81-4-1-143.wav": {
+    "total_plays": 1,
+    "latest_session": {
+      "play_count": 1,
+      "timestamp": "2025-06-12T10:35:31.610717"
     }
   }
 }
