@@ -9,5 +9,16 @@
     "patient_status": "patient",
     "audio_duration": 8.92,
     "timestamp": "2025-06-12 09:58:24"
+  },
+  {
+    "audio_file": "spk81-4-1-143.wav",
+    "v_value": 0,
+    "a_value": 3,
+    "emotion_type": "neutral",
+    "discrete_emotion": null,
+    "username": "test",
+    "patient_status": "patient",
+    "audio_duration": 7.36,
+    "timestamp": "2025-06-13 04:48:26"
   }
 ]

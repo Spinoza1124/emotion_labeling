@@ -587,14 +587,26 @@ def save_play_count():
     if audio_file not in play_counts:
         play_counts[audio_file] = {
             "total_plays": 0,
-            "latest_session": None
+            "latest_session": {
+                "play_count": 0,
+                "timestamp": None
+            }
         }
     
+    # 增加总播放次数
     play_counts[audio_file]["total_plays"] += 1
-    play_counts[audio_file]["latest_session"] = {
-        "play_count": play_counts[audio_file]["total_plays"],
-        "timestamp": datetime.now().isoformat()
-    }
+    
+    # 更新当前会话的播放次数
+    current_timestamp = datetime.now().isoformat()
+    if (play_counts[audio_file]["latest_session"]["timestamp"] is None or 
+        play_counts[audio_file]["latest_session"]["timestamp"][:10] != current_timestamp[:10]):
+        # 如果是新的一天或者第一次播放，重置会话播放次数
+        play_counts[audio_file]["latest_session"]["play_count"] = 1
+    else:
+        # 同一天内，增加会话播放次数
+        play_counts[audio_file]["latest_session"]["play_count"] += 1
+    
+    play_counts[audio_file]["latest_session"]["timestamp"] = current_timestamp
     
     # 保存播放计数数据
     try:

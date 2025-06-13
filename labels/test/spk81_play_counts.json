@@ -1,58 +1,16 @@
 {
-  "spk81-1-1-208.wav": {
-    "total_plays": 3,
-    "latest_session": {
-      "play_count": 3,
-      "timestamp": "2025-06-12T09:53:54.722924"
-    }
-  },
-  "spk81-4-1-191.wav": {
-    "total_plays": 2,
-    "latest_session": {
-      "play_count": 2,
-      "timestamp": "2025-06-12T09:56:00.259440"
-    }
-  },
-  "spk81-2-1-335.wav": {
-    "total_plays": 3,
-    "latest_session": {
-      "play_count": 3,
-      "timestamp": "2025-06-12T09:56:10.783160"
-    }
-  },
-  "spk81-4-1-99.wav": {
-    "total_plays": 5,
-    "latest_session": {
-      "play_count": 5,
-      "timestamp": "2025-06-12T12:06:06.273621"
-    }
-  },
-  "spk81-5-1-65.wav": {
-    "total_plays": 1,
-    "latest_session": {
-      "play_count": 1,
-      "timestamp": "2025-06-12T10:25:11.117030"
-    }
-  },
-  "spk81-2-1-136.wav": {
-    "total_plays": 1,
-    "latest_session": {
-      "play_count": 1,
-      "timestamp": "2025-06-12T10:27:43.093356"
-    }
-  },
-  "spk81-1-1-268.wav": {
-    "total_plays": 1,
-    "latest_session": {
-      "play_count": 1,
-      "timestamp": "2025-06-12T10:35:01.952050"
-    }
-  },
   "spk81-4-1-143.wav": {
     "total_plays": 1,
     "latest_session": {
       "play_count": 1,
-      "timestamp": "2025-06-12T10:35:31.610717"
+      "timestamp": "2025-06-13T05:08:59.227236"
+    }
+  },
+  "spk81-4-1-99.wav": {
+    "total_plays": 1,
+    "latest_session": {
+      "play_count": 1,
+      "timestamp": "2025-06-13T05:09:12.421652"
     }
   }
 }
